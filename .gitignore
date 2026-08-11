@@ -1,0 +1,32 @@
+# LaTeX
+*.aux
+*.log
+*.out
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.synctex
+*.xdv
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Local Claude Code tooling (dev-server launch config, not part of the project)
+.claude/
+serve.dev.json
+
+# Build
+dist/
+build/
+*.o
+
+# Local scratch files (never committed)
+tmp/
