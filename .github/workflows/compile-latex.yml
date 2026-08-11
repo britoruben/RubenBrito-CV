@@ -1,0 +1,49 @@
+name: Compile LaTeX to PDF
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'main.tex'
+      - '.github/workflows/compile-latex.yml'
+  workflow_dispatch:
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Compile LaTeX to PDF
+      uses: xu-cheng/latex-action@v3
+      with:
+        root_file: main.tex
+        latexmk_use_xelatex: true
+        work_in_root_directory: true
+
+    - name: Move PDF to docs folder
+      run: |
+        mkdir -p docs
+        if [ -f "main.pdf" ]; then
+          mv main.pdf docs/RubenBrito-CV.pdf
+        fi
+
+    - name: Commit and push PDF
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+
+        if [ -f "docs/RubenBrito-CV.pdf" ]; then
+          git add docs/RubenBrito-CV.pdf
+
+          if ! git diff --cached --quiet; then
+            git commit -m "ci: update CV PDF from LaTeX [skip ci]"
+            git push
+          fi
+        fi
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

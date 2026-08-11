@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <script>
+    (function() {
+      var saved = localStorage.getItem('theme');
+      var theme = saved || 'dark';
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Rubén Brito - Software Engineer" />
+  <meta name="author" content="Rubén Brito" />
+  <title>Rubén Brito - Software Engineer</title>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Rubén Brito" />
+  <meta property="og:description" content="Software Engineer" />
+  <meta property="og:url" content="https://britoruben.github.io/RubenBrito-CV/" />
+  <meta property="og:image" content="https://britoruben.github.io/RubenBrito-CV/assets/tangata-manu.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="theme-color" content="#EC0000" />
+
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon-180.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="topnav">
+  <div class="nav-inner">
+    <div class="nav-head">
+      <a href="#top" class="nav-brand">Rubén Brito</a>
+      <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
+        <i class="fa-solid fa-moon icon-moon"></i>
+        <i class="fa-solid fa-sun icon-sun"></i>
+      </button>
+    </div>
+    <div class="nav-links-wrap">
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+        <a href="#projects">Projects</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<header class="hero" id="top">
+  <div class="hero-content">
+    <img class="hero-photo" src="assets/tangata-manu.png" alt="Rubén Brito — personal mark (Tangata Manu)" width="132" height="132" />
+    <div class="hero-text">
+      <h1 class="name">Rubén Brito</h1>
+      <div class="subtitle">Software Engineer &middot; Risk Systems &amp; Applied AI</div>
+      <div class="hero-accent" aria-hidden="true"></div>
+
+      <div class="contact-row">
+        <a href="mailto:britoruben1984@gmail.com"><i class="fa-solid fa-envelope"></i> britoruben1984@gmail.com</a>
+        <span class="dot">&middot;</span>
+        <span><i class="fa-solid fa-location-dot"></i> Madrid, Spain</span>
+      </div>
+      <div class="contact-row">
+        <a href="https://www.linkedin.com/in/brito-ruben/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+        <span class="dot">&middot;</span>
+        <a href="https://github.com/britoruben" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
+        <span class="dot">&middot;</span>
+        <a href="#cv" class="cv-link"><i class="fa-solid fa-file-pdf"></i> View CV</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="content">
+
+  <!-- About Section -->
+  <section id="about">
+    <h2 class="section-title"><i class="fa-solid fa-user"></i> About</h2>
+    <p class="lead">
+      Software Engineer with over 10 years of experience across banking, telecom and consulting,
+      based in Madrid. Currently at Santander UK, working on credit risk and scoring systems and
+      leading a small development team. Delivered one of Santander's earliest Machine Learning
+      proofs of concept in risk decisioning in 2017-2018; since 2024, deep into modern
+      AI-assisted engineering — daily use of Claude Code, GitHub Copilot and other AI tools,
+      plus building custom LLM agents for engineering workflows.
+    </p>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience">
+    <h2 class="section-title"><i class="fa-solid fa-briefcase"></i> Work Experience</h2>
+
+    <div class="role-block">
+      <div class="role-header">
+        <span class="company">Santander UK</span>
+        <span class="dot-sep"></span>
+        <span class="position">Software Engineer</span>
+        <span class="period">Nov 2019 - Present · United Kingdom (Remote)</span>
+      </div>
+      <ul class="project-list">
+        <li>Own credit risk and scoring models; drive improvements to risk processes and controls across retail and corporate banking.</li>
+        <li>Progressed from Software Developer to leading a small development team and advising technical architects on integration and security architecture decisions.</li>
+        <li>Built an AI-assisted internal dashboard for live case monitoring, replacing manual SQL queries with real-time visibility.</li>
+        <li>Use GitHub Copilot, Claude Code, OpenAI Codex, Google Antigravity and Devin daily for development and custom CI/CD workflows on OpenShift.</li>
+        <li>Stack: Java, Python, Spring, Node.js, Kafka, Docker, OpenShift.</li>
+      </ul>
+    </div>
+
+    <div class="dashed-divider"></div>
+
+    <div class="role-block">
+      <div class="role-header">
+        <span class="company">UST Global Spain</span>
+        <span class="dot-sep"></span>
+        <span class="position">Software Developer</span>
+        <span class="period">Jan 2019 - Nov 2019 · Madrid</span>
+      </div>
+      <ul class="project-list">
+        <li>Backend and API development for Inditex's Center of Excellence, including a Kafka + Apache Flink real-time monitoring dashboard providing alerting and traceability across internal and external APIs.</li>
+      </ul>
+    </div>
+
+    <div class="dashed-divider"></div>
+
+    <div class="role-block">
+      <div class="role-header">
+        <span class="company">Gfi Spain</span>
+        <span class="dot-sep"></span>
+        <span class="position">Software Developer</span>
+        <span class="period">Oct 2015 - Jan 2019 · Madrid area</span>
+      </div>
+      <ul class="project-list">
+        <li>Architecture department. Delivered software engineering services on external client engagements, including the Santander Global Tech and Telefónica placements below.</li>
+      </ul>
+    </div>
+
+    <div class="dashed-divider"></div>
+
+    <div class="role-block">
+      <div class="role-header">
+        <span class="company">Santander Global Tech</span>
+        <span class="dot-sep"></span>
+        <span class="position">Software Developer (external, via Gfi Spain)</span>
+        <span class="period">Sep 2017 - Dec 2018 · Madrid area</span>
+      </div>
+      <ul class="project-list">
+        <li>Risk Department - delivered one of Santander's earliest Machine Learning proofs of concept, integrating predictive models into the risk decisioning workflow years before enterprise AI adoption became mainstream.</li>
+        <li>Developed an API exposing risk prediction functionality for sales and financial products.</li>
+        <li>Requirements analysis, architecture design and development, using Agile methodology.</li>
+        <li>Stack: PMML, R, Python, Spring Boot, TIBCO BW 6, IBM API Connect, AngularJS.</li>
+      </ul>
+    </div>
+
+    <div class="dashed-divider"></div>
+
+    <div class="role-block">
+      <div class="role-header">
+        <span class="company">Telefónica</span>
+        <span class="dot-sep"></span>
+        <span class="position">Software Developer (external, via Gfi Spain)</span>
+        <span class="period">Jan 2016 - Dec 2016 · Madrid area</span>
+      </div>
+      <ul class="project-list">
+        <li>Telco 3.0 project - implemented REST architecture in the customer retention system.</li>
+        <li>Requirements analysis and technical documentation, using Agile methodology.</li>
+        <li>Stack: Oracle BPM, Java Spring, AngularJS.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills">
+    <h2 class="section-title"><i class="fa-solid fa-code"></i> Skills</h2>
+
+    <div class="skills-grid">
+      <div class="skill-category">
+        <h3>Languages</h3>
+        <p>Java, Python, JavaScript / Node.js, R</p>
+      </div>
+      <div class="skill-category">
+        <h3>Cloud &amp; Platforms</h3>
+        <p>AWS (S3, Lambda, Athena, CloudWatch), Terraform, Docker, OpenShift</p>
+      </div>
+      <div class="skill-category">
+        <h3>Data &amp; Streaming</h3>
+        <p>Kafka (MSK &amp; on-premise), Redis, Oracle, MongoDB, SQL, NoSQL</p>
+      </div>
+      <div class="skill-category">
+        <h3>Integration &amp; Middleware</h3>
+        <p>TIBCO BusinessWorks, Oracle SOA Suite, API Gateways (IBM API Connect/DataPower, CA), OAuth2 / JWT</p>
+      </div>
+      <div class="skill-category">
+        <h3>Observability</h3>
+        <p>Kibana, Dynatrace, Zipkin, Grafana</p>
+      </div>
+      <div class="skill-category">
+        <h3>Testing &amp; Quality</h3>
+        <p>Cucumber, Postman, Bruno, JMeter, Chaos Monkey</p>
+      </div>
+      <div class="skill-category">
+        <h3>AI Coding Tools</h3>
+        <p>Claude Code, GitHub Copilot, OpenAI Codex, Google Antigravity, Devin</p>
+      </div>
+      <div class="skill-category">
+        <h3>AI &amp; Automation</h3>
+        <p>Custom LLM agents (MCP: GitHub, Jira, Confluence, SonarQube, Elasticsearch), LLM-based predictive modeling, prompt/plan engineering</p>
+      </div>
+      <div class="skill-category">
+        <h3>Practices</h3>
+        <p>Microservices architecture, REST APIs, Agile methodology, ETL &amp; data modeling, CI/CD (GitHub Actions, Jenkins, GitLab CI)</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section id="education">
+    <h2 class="section-title"><i class="fa-solid fa-graduation-cap"></i> Education</h2>
+
+    <div class="edu-block">
+      <div class="edu-head">
+        <span class="school">Enrique Tierno Galván</span>
+        <span class="period">2013 - 2014</span>
+      </div>
+      <div class="edu-sub">Higher Education in Multiplatform Application Development</div>
+      <div class="edu-extra">Spanish higher vocational qualification (Ciclo Formativo de Grado Superior). One-year program: first-year credits transferred from the Web Application Development qualification below.</div>
+    </div>
+
+    <div class="dashed-divider"></div>
+
+    <div class="edu-block">
+      <div class="edu-head">
+        <span class="school">Domenico Scarlatti</span>
+        <span class="period">2011 - 2013</span>
+      </div>
+      <div class="edu-sub">Higher Education in Web Application Development</div>
+      <div class="edu-extra">Spanish higher vocational qualification (Ciclo Formativo de Grado Superior).</div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2 class="section-title"><i class="fa-solid fa-envelope"></i> Get in Touch</h2>
+    <p class="lead">
+      Open to conversations about software engineering, risk systems and applied AI — feel free to reach out.
+    </p>
+    <div class="contact-buttons">
+      <a href="mailto:britoruben1984@gmail.com" class="btn btn-primary">
+        <i class="fa-solid fa-envelope"></i> Send Email
+      </a>
+      <a href="https://www.linkedin.com/in/brito-ruben/" target="_blank" rel="noopener" class="btn btn-secondary">
+        <i class="fa-brands fa-linkedin"></i> LinkedIn
+      </a>
+      <a href="https://github.com/britoruben" target="_blank" rel="noopener" class="btn btn-secondary">
+        <i class="fa-brands fa-github"></i> GitHub
+      </a>
+    </div>
+  </section>
+
+  <!-- CV Download Section -->
+  <section id="cv">
+    <h2 class="section-title"><i class="fa-solid fa-file-pdf"></i> Curriculum Vitae</h2>
+    <p class="lead">Download my complete CV in PDF format.</p>
+    <a href="RubenBrito-CV.pdf" download class="btn btn-primary">
+      <i class="fa-solid fa-download"></i> Download CV (PDF)
+    </a>
+    <p class="cv-note">Auto-generated from this repository, always up to date.</p>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <h2 class="section-title"><i class="fa-brands fa-github"></i> Public Projects</h2>
+    <p class="section-note">Live from GitHub — fetched on load, not hand-curated.</p>
+
+    <div id="projects-grid" class="projects-grid">
+      <p class="projects-status">Loading from GitHub…</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>&copy; <span id="footerYear">2026</span> Rubén Brito &middot; Built with <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a></p>
+</footer>
+
+<script>
+  (function() {
+    var yearEl = document.getElementById('footerYear');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+  })();
+
+  (function() {
+    var btn = document.getElementById('themeToggle');
+    if (!btn) return;
+    btn.addEventListener('click', function() {
+      var current = document.documentElement.getAttribute('data-theme') || 'light';
+      var next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    });
+  })();
+
+  (function() {
+    var GITHUB_USER = 'britoruben';
+    var MAX_REPOS = 6;
+    var KNOWN_DESCRIPTIONS = {
+      'moai': 'Voice-enabled "second brain": your notes and tools become a navigable 3D knowledge graph, powered by Claude.',
+      'RubenBrito-CV': 'This site. Personal CV & portfolio, auto-built and deployed with GitHub Actions.'
+    };
+
+    function escapeHtml(str) {
+      var div = document.createElement('div');
+      div.textContent = str == null ? '' : str;
+      return div.innerHTML;
+    }
+
+    function timeAgo(dateStr) {
+      var days = Math.floor((Date.now() - new Date(dateStr).getTime()) / 86400000);
+      if (days < 1) return 'today';
+      if (days === 1) return '1 day ago';
+      if (days < 30) return days + ' days ago';
+      var months = Math.floor(days / 30);
+      if (months < 12) return months + (months === 1 ? ' month ago' : ' months ago');
+      var years = Math.floor(months / 12);
+      return years + (years === 1 ? ' year ago' : ' years ago');
+    }
+
+    function renderProjects(repos) {
+      var grid = document.getElementById('projects-grid');
+      if (!grid) return;
+      if (!repos.length) {
+        grid.innerHTML = '<p class="projects-status">No public repositories yet.</p>';
+        return;
+      }
+      grid.innerHTML = repos.map(function(repo) {
+        var desc = escapeHtml(KNOWN_DESCRIPTIONS[repo.name] || repo.description || 'No description yet.');
+        var lang = repo.language ? '<span class="project-stat">' + escapeHtml(repo.language) + '</span>' : '';
+        var stars = repo.stargazers_count > 0
+          ? '<span class="project-stat"><i class="fa-solid fa-star"></i> ' + repo.stargazers_count + '</span>'
+          : '';
+        return '<a class="project-card" href="' + repo.html_url + '" target="_blank" rel="noopener">'
+          + '<div class="project-card-title">' + escapeHtml(repo.name) + '</div>'
+          + '<p class="project-card-desc">' + desc + '</p>'
+          + '<div class="project-card-meta">' + lang + stars
+          + '<span class="project-stat">Updated ' + timeAgo(repo.pushed_at) + '</span></div>'
+          + '</a>';
+      }).join('');
+    }
+
+    fetch('https://api.github.com/users/' + GITHUB_USER + '/repos?sort=pushed&per_page=10&type=owner')
+      .then(function(res) {
+        if (!res.ok) throw new Error('GitHub API error');
+        return res.json();
+      })
+      .then(function(data) {
+        var repos = data.filter(function(r) { return !r.fork; }).slice(0, MAX_REPOS);
+        renderProjects(repos);
+      })
+      .catch(function() {
+        var grid = document.getElementById('projects-grid');
+        if (grid) {
+          grid.innerHTML = '<p class="projects-status">Couldn\'t load live data right now — see them directly on '
+            + '<a href="https://github.com/' + GITHUB_USER + '" target="_blank" rel="noopener">GitHub</a>.</p>';
+        }
+      });
+  })();
+</script>
+
+</body>
+</html>
