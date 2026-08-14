@@ -16,6 +16,7 @@
   --text: #1A1A1A;
   --text-muted: #5C5C5C;
   --link: var(--red-dark);
+  --red-text: var(--red-dark);
   --shadow-sm: 0 1px 2px rgba(20, 20, 20, 0.05), 0 1px 1px rgba(20, 20, 20, 0.03);
   --shadow-md: 0 8px 20px rgba(20, 20, 20, 0.08);
   --nav-shadow: 0 1px 0 var(--border), 0 2px 8px rgba(20, 20, 20, 0.04);
@@ -28,6 +29,7 @@
   --text: #ECECEC;
   --text-muted: #9A9DA3;
   --link: #F0464C;
+  --red-text: var(--link);
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
   --shadow-md: 0 12px 24px rgba(0, 0, 0, 0.45);
   --nav-shadow: 0 1px 0 var(--border), 0 2px 10px rgba(0, 0, 0, 0.3);
@@ -39,6 +41,11 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+::selection {
+  background: var(--red);
+  color: #FFFFFF;
 }
 
 body {
@@ -65,6 +72,24 @@ button:focus-visible {
   outline: 2px solid var(--red);
   outline-offset: 2px;
   border-radius: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  top: -48px;
+  left: 8px;
+  z-index: 100;
+  background: var(--red);
+  color: #FFFFFF;
+  padding: 10px 16px;
+  border-radius: var(--radius);
+  font-size: 14px;
+  font-weight: 600;
+  transition: top 0.15s ease;
+}
+
+.skip-link:focus {
+  top: 8px;
 }
 
 /* Navigation */
@@ -125,6 +150,18 @@ button:focus-visible {
 
 .nav-links-wrap {
   overflow-x: auto;
+  position: relative;
+}
+
+.nav-links-wrap::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 24px;
+  background: linear-gradient(to right, transparent, var(--bg));
+  pointer-events: none;
 }
 
 .nav-links {
@@ -142,6 +179,11 @@ button:focus-visible {
 .nav-links a:hover {
   color: var(--red);
   text-decoration: none;
+}
+
+.nav-links a.active {
+  color: var(--red);
+  font-weight: 600;
 }
 
 /* Hero */
@@ -175,7 +217,7 @@ button:focus-visible {
 .subtitle {
   margin-top: 4px;
   font-size: 16px;
-  color: var(--red);
+  color: var(--red-text);
   font-weight: 600;
 }
 
@@ -189,6 +231,21 @@ button:focus-visible {
   animation: heroShimmer 7s ease-in-out infinite;
 }
 
+@keyframes targetHighlight {
+  0% { background-color: rgba(236, 0, 0, 0.08); }
+  100% { background-color: transparent; }
+}
+
+section:target {
+  animation: targetHighlight 2s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  section:target {
+    animation: none;
+  }
+}
+
 @keyframes heroShimmer {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
@@ -198,6 +255,13 @@ button:focus-visible {
 @media (prefers-reduced-motion: reduce) {
   .hero-accent {
     animation: none;
+  }
+
+  .skill-category:hover,
+  .project-card:hover,
+  .btn:hover,
+  .theme-toggle:hover {
+    transform: none;
   }
 }
 
@@ -232,11 +296,14 @@ button:focus-visible {
 
 section {
   padding-top: 48px;
+  scroll-margin-top: 104px;
 }
 
 .section-title {
   font-size: 20px;
   font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
   border-bottom: 2px solid var(--red);
   padding-bottom: 10px;
   margin-bottom: 20px;
@@ -270,7 +337,13 @@ section {
 
 /* Experience */
 .role-block {
-  padding: 16px 0;
+  padding: 16px 0 16px 16px;
+  border-left: 2px solid var(--border);
+  transition: border-color 0.15s ease;
+}
+
+.role-block:hover {
+  border-left-color: var(--red);
 }
 
 .role-header {
@@ -283,7 +356,7 @@ section {
 
 .company {
   font-weight: 700;
-  color: var(--red);
+  color: var(--red-text);
 }
 
 .dot-sep {
@@ -309,6 +382,10 @@ section {
   padding-left: 18px;
   font-size: 14px;
   color: var(--text-muted);
+}
+
+.project-list li::marker {
+  color: var(--red-text);
 }
 
 .project-list li {
@@ -348,13 +425,33 @@ section {
   font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  color: var(--red);
+  color: var(--red-text);
 }
 
 .skill-category p {
   margin: 0;
   font-size: 14px;
   color: var(--text-muted);
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.skill-tag {
+  display: inline-block;
+  font-size: 12.5px;
+  line-height: 1.4;
+  color: var(--text-muted);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 3px 10px;
 }
 
 /* Projects (live from GitHub) */
@@ -384,7 +481,7 @@ section {
 
 .project-card-title {
   font-weight: 700;
-  color: var(--red);
+  color: var(--red-text);
   margin-bottom: 6px;
 }
 
@@ -393,6 +490,12 @@ section {
   color: var(--text-muted);
   margin: 0 0 10px;
   line-height: 1.5;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .project-card-meta {
@@ -417,7 +520,13 @@ section {
 
 /* Education */
 .edu-block {
-  padding: 14px 0;
+  padding: 14px 0 14px 16px;
+  border-left: 2px solid var(--border);
+  transition: border-color 0.15s ease;
+}
+
+.edu-block:hover {
+  border-left-color: var(--red);
 }
 
 .edu-head {
@@ -428,7 +537,7 @@ section {
 
 .school {
   font-weight: 700;
-  color: var(--red);
+  color: var(--red-text);
 }
 
 .edu-head .period {
@@ -507,6 +616,88 @@ section {
 
 .site-footer a {
   color: var(--text-muted);
+}
+
+/* Back to top */
+.back-to-top {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 50;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--red);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease, background-color 0.15s ease;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.back-to-top:hover {
+  background: var(--red-dark);
+  text-decoration: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .back-to-top {
+    transition: opacity 0.2s ease;
+    transform: none;
+  }
+}
+
+@media print {
+  .back-to-top {
+    display: none;
+  }
+}
+
+/* Print */
+@media print {
+  .topnav,
+  .skip-link,
+  .contact-buttons,
+  #cv .btn,
+  .hero-accent {
+    display: none;
+  }
+
+  body {
+    background: #FFFFFF;
+    color: #1A1A1A;
+  }
+
+  a {
+    color: #1A1A1A;
+    text-decoration: underline;
+  }
+
+  .skill-category,
+  .project-card {
+    box-shadow: none;
+    border: 1px solid #E5E5E5;
+    break-inside: avoid;
+  }
+
+  .role-block,
+  .edu-block {
+    break-inside: avoid;
+  }
+
+  section {
+    padding-top: 24px;
+  }
 }
 
 /* Responsive */

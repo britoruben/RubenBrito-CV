@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
+  <meta name="color-scheme" id="colorSchemeMeta" content="light dark" />
   <script>
     (function() {
       var saved = localStorage.getItem('theme');
-      var theme = saved || 'dark';
+      var theme = saved || 'light';
       document.documentElement.setAttribute('data-theme', theme);
+      var meta = document.getElementById('colorSchemeMeta');
+      if (meta) meta.setAttribute('content', theme === 'dark' ? 'dark light' : 'light dark');
     })();
   </script>
   <meta charset="UTF-8" />
@@ -20,6 +23,7 @@
   <meta property="og:image" content="https://britoruben.github.io/RubenBrito-CV/assets/tangata-manu.png" />
   <meta name="twitter:card" content="summary" />
   <meta name="theme-color" content="#EC0000" />
+  <link rel="canonical" href="https://britoruben.github.io/RubenBrito-CV/" />
 
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon-180.png" />
@@ -27,11 +31,35 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
   <link rel="stylesheet" href="styles.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Rubén Brito",
+    "jobTitle": "Software Engineer",
+    "url": "https://britoruben.github.io/RubenBrito-CV/",
+    "image": "https://britoruben.github.io/RubenBrito-CV/assets/tangata-manu.png",
+    "email": "mailto:britoruben1984@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Madrid",
+      "addressCountry": "Spain"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/in/brito-ruben/",
+      "https://github.com/britoruben"
+    ]
+  }
+  </script>
 </head>
 <body>
+
+<a href="#main-content" class="skip-link">Skip to content</a>
 
 <!-- Navigation -->
 <nav class="topnav">
@@ -67,21 +95,21 @@
 
       <div class="contact-row">
         <a href="mailto:britoruben1984@gmail.com"><i class="fa-solid fa-envelope"></i> britoruben1984@gmail.com</a>
-        <span class="dot">&middot;</span>
+        <span class="dot" aria-hidden="true">&middot;</span>
         <span><i class="fa-solid fa-location-dot"></i> Madrid, Spain</span>
       </div>
       <div class="contact-row">
         <a href="https://www.linkedin.com/in/brito-ruben/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-        <span class="dot">&middot;</span>
+        <span class="dot" aria-hidden="true">&middot;</span>
         <a href="https://github.com/britoruben" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
-        <span class="dot">&middot;</span>
+        <span class="dot" aria-hidden="true">&middot;</span>
         <a href="#cv" class="cv-link"><i class="fa-solid fa-file-pdf"></i> View CV</a>
       </div>
     </div>
   </div>
 </header>
 
-<main class="content">
+<main class="content" id="main-content">
 
   <!-- About Section -->
   <section id="about">
@@ -103,7 +131,7 @@
     <div class="role-block">
       <div class="role-header">
         <span class="company">Santander UK</span>
-        <span class="dot-sep"></span>
+        <span class="dot-sep" aria-hidden="true"></span>
         <span class="position">Software Engineer</span>
         <span class="period">Nov 2019 - Present · United Kingdom (Remote)</span>
       </div>
@@ -121,7 +149,7 @@
     <div class="role-block">
       <div class="role-header">
         <span class="company">UST Global Spain</span>
-        <span class="dot-sep"></span>
+        <span class="dot-sep" aria-hidden="true"></span>
         <span class="position">Software Developer</span>
         <span class="period">Jan 2019 - Nov 2019 · Madrid</span>
       </div>
@@ -135,7 +163,7 @@
     <div class="role-block">
       <div class="role-header">
         <span class="company">Gfi Spain</span>
-        <span class="dot-sep"></span>
+        <span class="dot-sep" aria-hidden="true"></span>
         <span class="position">Software Developer</span>
         <span class="period">Oct 2015 - Jan 2019 · Madrid area</span>
       </div>
@@ -149,7 +177,7 @@
     <div class="role-block">
       <div class="role-header">
         <span class="company">Santander Global Tech</span>
-        <span class="dot-sep"></span>
+        <span class="dot-sep" aria-hidden="true"></span>
         <span class="position">Software Developer (external, via Gfi Spain)</span>
         <span class="period">Sep 2017 - Dec 2018 · Madrid area</span>
       </div>
@@ -166,7 +194,7 @@
     <div class="role-block">
       <div class="role-header">
         <span class="company">Telefónica</span>
-        <span class="dot-sep"></span>
+        <span class="dot-sep" aria-hidden="true"></span>
         <span class="position">Software Developer (external, via Gfi Spain)</span>
         <span class="period">Jan 2016 - Dec 2016 · Madrid area</span>
       </div>
@@ -185,39 +213,57 @@
     <div class="skills-grid">
       <div class="skill-category">
         <h3>Languages</h3>
-        <p>Java, Python, JavaScript / Node.js, R</p>
+        <ul class="skill-tags">
+          <li class="skill-tag">Java</li><li class="skill-tag">Python</li><li class="skill-tag">JavaScript / Node.js</li><li class="skill-tag">R</li>
+        </ul>
       </div>
       <div class="skill-category">
         <h3>Cloud &amp; Platforms</h3>
-        <p>AWS (S3, Lambda, Athena, CloudWatch), Terraform, Docker, OpenShift</p>
+        <ul class="skill-tags">
+          <li class="skill-tag">AWS (S3, Lambda, Athena, CloudWatch)</li><li class="skill-tag">Terraform</li><li class="skill-tag">Docker</li><li class="skill-tag">OpenShift</li>
+        </ul>
       </div>
       <div class="skill-category">
         <h3>Data &amp; Streaming</h3>
-        <p>Kafka (MSK &amp; on-premise), Redis, Oracle, MongoDB, SQL, NoSQL</p>
+        <ul class="skill-tags">
+          <li class="skill-tag">Kafka (MSK &amp; on-premise)</li><li class="skill-tag">Redis</li><li class="skill-tag">Oracle</li><li class="skill-tag">MongoDB</li><li class="skill-tag">SQL</li><li class="skill-tag">NoSQL</li>
+        </ul>
       </div>
       <div class="skill-category">
         <h3>Integration &amp; Middleware</h3>
-        <p>TIBCO BusinessWorks, Oracle SOA Suite, API Gateways (IBM API Connect/DataPower, CA), OAuth2 / JWT</p>
+        <ul class="skill-tags">
+          <li class="skill-tag">TIBCO BusinessWorks</li><li class="skill-tag">Oracle SOA Suite</li><li class="skill-tag">API Gateways (IBM API Connect/DataPower, CA)</li><li class="skill-tag">OAuth2 / JWT</li>
+        </ul>
       </div>
       <div class="skill-category">
         <h3>Observability</h3>
-        <p>Kibana, Dynatrace, Zipkin, Grafana</p>
+        <ul class="skill-tags">
+          <li class="skill-tag">Kibana</li><li class="skill-tag">Dynatrace</li><li class="skill-tag">Zipkin</li><li class="skill-tag">Grafana</li>
+        </ul>
       </div>
       <div class="skill-category">
         <h3>Testing &amp; Quality</h3>
-        <p>Cucumber, Postman, Bruno, JMeter, Chaos Monkey</p>
+        <ul class="skill-tags">
+          <li class="skill-tag">Cucumber</li><li class="skill-tag">Postman</li><li class="skill-tag">Bruno</li><li class="skill-tag">JMeter</li><li class="skill-tag">Chaos Monkey</li>
+        </ul>
       </div>
       <div class="skill-category">
         <h3>AI Coding Tools</h3>
-        <p>Claude Code, GitHub Copilot, OpenAI Codex, Google Antigravity, Devin</p>
+        <ul class="skill-tags">
+          <li class="skill-tag">Claude Code</li><li class="skill-tag">GitHub Copilot</li><li class="skill-tag">OpenAI Codex</li><li class="skill-tag">Google Antigravity</li><li class="skill-tag">Devin</li>
+        </ul>
       </div>
       <div class="skill-category">
         <h3>AI &amp; Automation</h3>
-        <p>Custom LLM agents (MCP: GitHub, Jira, Confluence, SonarQube, Elasticsearch), LLM-based predictive modeling, prompt/plan engineering</p>
+        <ul class="skill-tags">
+          <li class="skill-tag">Custom LLM agents (MCP: GitHub, Jira, Confluence, SonarQube, Elasticsearch)</li><li class="skill-tag">LLM-based predictive modeling</li><li class="skill-tag">prompt/plan engineering</li>
+        </ul>
       </div>
       <div class="skill-category">
         <h3>Practices</h3>
-        <p>Microservices architecture, REST APIs, Agile methodology, ETL &amp; data modeling, CI/CD (GitHub Actions, Jenkins, GitLab CI)</p>
+        <ul class="skill-tags">
+          <li class="skill-tag">Microservices architecture</li><li class="skill-tag">REST APIs</li><li class="skill-tag">Agile methodology</li><li class="skill-tag">ETL &amp; data modeling</li><li class="skill-tag">CI/CD (GitHub Actions, Jenkins, GitLab CI)</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -251,7 +297,7 @@
   <section id="contact">
     <h2 class="section-title"><i class="fa-solid fa-envelope"></i> Get in Touch</h2>
     <p class="lead">
-      Open to conversations about software engineering, risk systems and applied AI — feel free to reach out.
+      Open to conversations about software engineering and applied AI — feel free to reach out.
     </p>
     <div class="contact-buttons">
       <a href="mailto:britoruben1984@gmail.com" class="btn btn-primary">
@@ -292,6 +338,10 @@
   <p>&copy; <span id="footerYear">2026</span> Rubén Brito &middot; Built with <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a></p>
 </footer>
 
+<a href="#top" id="backToTop" class="back-to-top" aria-label="Back to top">
+  <i class="fa-solid fa-arrow-up"></i>
+</a>
+
 <script>
   (function() {
     var yearEl = document.getElementById('footerYear');
@@ -306,7 +356,51 @@
       var next = current === 'dark' ? 'light' : 'dark';
       document.documentElement.setAttribute('data-theme', next);
       localStorage.setItem('theme', next);
+      var meta = document.getElementById('colorSchemeMeta');
+      if (meta) meta.setAttribute('content', next === 'dark' ? 'dark light' : 'light dark');
     });
+  })();
+
+  (function() {
+    var navLinks = Array.prototype.slice.call(document.querySelectorAll('.nav-links a[href^="#"]'));
+    if (!navLinks.length || !('IntersectionObserver' in window)) return;
+    var sections = navLinks
+      .map(function(link) { return document.getElementById(link.getAttribute('href').slice(1)); })
+      .filter(Boolean);
+
+    function setActive(id) {
+      navLinks.forEach(function(link) {
+        var isActive = link.getAttribute('href') === '#' + id;
+        link.classList.toggle('active', isActive);
+        if (isActive) {
+          link.setAttribute('aria-current', 'true');
+        } else {
+          link.removeAttribute('aria-current');
+        }
+      });
+    }
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) setActive(entry.target.id);
+      });
+    }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
+
+    sections.forEach(function(section) { observer.observe(section); });
+  })();
+
+  (function() {
+    var btn = document.getElementById('backToTop');
+    var hero = document.getElementById('top');
+    if (!btn || !hero || !('IntersectionObserver' in window)) return;
+
+    var heroObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        btn.classList.toggle('visible', !entry.isIntersecting);
+      });
+    }, { threshold: 0 });
+
+    heroObserver.observe(hero);
   })();
 
   (function() {
