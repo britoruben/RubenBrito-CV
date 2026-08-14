@@ -5,7 +5,7 @@
 % License: MIT
 %
 
-\documentclass[a4paper,11pt]{article}
+\documentclass[a4paper,10.5pt]{article}
 
 % Package imports
 \usepackage{graphicx}
@@ -46,7 +46,7 @@
 \fancyfoot{}
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
-\geometry{left=1.3cm, top=1.3cm, right=1.1cm, bottom=1.3cm}
+\geometry{left=1.2cm, top=1.1cm, right=1.0cm, bottom=1.1cm}
 \setlength{\footskip}{5pt}
 
 % Hyperlink setup
@@ -56,6 +56,10 @@
     linkcolor=accentDark,
     filecolor=accentDark,
     urlcolor=accentDark,
+    pdftitle={Rubén Brito - Software Engineer},
+    pdfauthor={Rubén Brito},
+    pdfsubject={Software Engineer},
+    pdfkeywords={Software Engineer, Applied AI},
 }
 \usepackage{tikz}
 
@@ -117,8 +121,8 @@
     \vspace{-2.4mm}
 }
 
-\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*,labelsep=1mm,label={}]}
-\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=*,labelsep=1mm,itemsep=0.3mm]}
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*,labelsep=1mm,label={},itemsep=0.3mm,topsep=0pt]}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=*,labelsep=1mm,itemsep=0.3mm,label=\textcolor{primaryColor}{\textbullet}]}
 \newcommand{\resumeSubHeadingListEnd}{\end{itemize}\vspace{1mm}}
 \newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-2mm}}
 
@@ -154,12 +158,12 @@
 
 \vspace{-3mm}
 
-\section{\faUser~~Summary}
+\section{\faUser~~\MakeUppercase{Summary}}
 \vspace{-0.4mm}
 Software Engineer with over 10 years of experience across banking, telecom and consulting, based in Madrid. Currently at Santander UK, working on credit risk and scoring systems and leading a small development team. Delivered one of Santander's earliest Machine Learning proofs of concept in risk decisioning in 2017--2018; since 2024, deep into modern AI-assisted engineering -- daily use of Claude Code, GitHub Copilot and other AI tools, plus building custom LLM agents for engineering workflows.
 \vspace{-4mm}
 
-\section{\faBriefcase~~Work Experience}
+\section{\faBriefcase~~\MakeUppercase{Work Experience}}
 \vspace{-0.4mm}
   \resumeSubHeadingListStart
 
@@ -205,7 +209,7 @@ Software Engineer with over 10 years of experience across banking, telecom and c
   \resumeSubHeadingListEnd
 \vspace{-6mm}
 
-\section{\faGraduationCap~~Education}
+\section{\faGraduationCap~~\MakeUppercase{Education}}
 \vspace{-0.4mm}
 \resumeSubHeadingListStart
 
@@ -226,8 +230,10 @@ Software Engineer with over 10 years of experience across banking, telecom and c
 \resumeSubHeadingListEnd
 \vspace{-6mm}
 
-\section{\faCode~~Technical Skills}
+\section{\faCode~~\MakeUppercase{Technical Skills}}
 \vspace{-0.4mm}
+\begin{multicols}{2}
+\raggedcolumns
 \resumeSubHeadingListStart
 \resumeItem{Languages}{Java, Python, JavaScript / Node.js, R}
 \resumeItem{Cloud \& Platforms}{AWS (S3, Lambda, Athena, CloudWatch), Terraform, Docker, OpenShift}
@@ -239,5 +245,6 @@ Software Engineer with over 10 years of experience across banking, telecom and c
 \resumeItem{AI \& Automation}{Custom LLM agents (MCP: GitHub, Jira, Confluence, SonarQube, Elasticsearch), LLM-based predictive modeling, prompt/plan engineering}
 \resumeItem{Practices}{Microservices architecture, REST APIs, Agile methodology, ETL \& data modeling, CI/CD (GitHub Actions, Jenkins, GitLab CI)}
 \resumeSubHeadingListEnd
+\end{multicols}
 
 \end{document}
