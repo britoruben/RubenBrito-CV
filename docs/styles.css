@@ -525,6 +525,7 @@ section {
 
 .edu-head {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: baseline;
 }
@@ -634,6 +635,7 @@ section {
   opacity: 0;
   transform: translateY(8px);
   pointer-events: none;
+  visibility: hidden;
   transition: opacity 0.2s ease, transform 0.2s ease, background-color 0.15s ease;
 }
 
@@ -641,6 +643,7 @@ section {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
+  visibility: visible;
 }
 
 .back-to-top:hover {

@@ -1,5 +1,7 @@
 # Rubén Brito - CV
 
+![Compile LaTeX to PDF](https://github.com/britoruben/RubenBrito-CV/actions/workflows/compile-latex.yml/badge.svg)
+
 Personal homepage + LaTeX CV in one repo.
 
 **Live site:** https://britoruben.github.io/RubenBrito-CV/
