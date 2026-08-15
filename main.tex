@@ -8,23 +8,17 @@
 \documentclass[a4paper,10.5pt]{article}
 
 % Package imports
-\usepackage{graphicx}
-\usepackage{latexsym}
 \usepackage{xcolor}
-\usepackage{float}
 \usepackage{ragged2e}
 \usepackage[empty]{fullpage}
-\usepackage{wrapfig}
-\usepackage{tabularx}
 \usepackage{titlesec}
 \usepackage{geometry}
-\usepackage{marvosym}
-\usepackage{verbatim}
 \usepackage{enumitem}
 \usepackage{fancyhdr}
-\usepackage{multicol}
 \usepackage[T1]{fontenc}
 \usepackage{fontawesome5}
+\usepackage{accsupp}
+\usepackage{microtype}
 
 % Font - clean sans-serif (TeX Gyre Heros, a Helvetica clone), no external
 % font files or engine change required.
@@ -40,7 +34,6 @@
 \definecolor{boxBg}{HTML}{FAFAFA}             % Very light gray box background
 
 % Page layout
-\setlength{\multicolsep}{0pt}
 \pagestyle{fancy}
 \fancyhf{}
 \fancyfoot{}
@@ -60,6 +53,8 @@
     pdfauthor={Rubén Brito},
     pdfsubject={Software Engineer},
     pdfkeywords={Software Engineer, Applied AI},
+    pdfpagemode=UseOutlines,
+    pdfdisplaydoctitle=true,
 }
 \usepackage{tikz}
 
@@ -98,6 +93,13 @@
   top=1pt, bottom=1pt, fontupper=\footnotesize\bfseries\color{accentDark}}
 
 % Custom commands
+% Accessible icon: substitutes a plain-text label for the icon glyph when
+% the PDF text is copied or read by assistive tools/screen readers.
+\newcommand{\accIcon}[2]{\BeginAccSupp{method=plain,ActualText=#2}#1\EndAccSupp{}}
+
+% Subtle hairline divider between individual entries within a list.
+\newcommand{\entryDivider}{\vspace{0.3mm}{\color{mutedGray!30}\hrule height 0.3pt}\vspace{0.3mm}}
+
 \newcommand{\resumeItem}[2]{
   \item{
     \textbf{#1}{\hspace{0.5mm}#2 \vspace{-0.5mm}}
@@ -126,10 +128,6 @@
 \newcommand{\resumeSubHeadingListEnd}{\end{itemize}\vspace{1mm}}
 \newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-2mm}}
 
-\newcolumntype{L}{>{\raggedright\arraybackslash}X}%
-\newcolumntype{R}{>{\raggedleft\arraybackslash}X}%
-\newcolumntype{C}{>{\centering\arraybackslash}X}%
-
 \begin{document}
 
 % Header
@@ -145,28 +143,31 @@
 
 \begin{center}
     \small{
-    \faEnvelope~\href{mailto:britoruben1984@gmail.com}{britoruben1984@gmail.com}~$\cdot$~\faMapMarker~Madrid, Spain
+    \accIcon{\faEnvelope}{Email:}~\href{mailto:britoruben1984@gmail.com}{britoruben1984@gmail.com}~$\cdot$~\accIcon{\faMapMarker}{Location:}~Madrid, Spain
     }
 \end{center}
 \vspace{-3mm}
 
 \begin{center}
     \small{
-    \faLinkedin~\href{https://www.linkedin.com/in/brito-ruben/}{LinkedIn}~$\cdot$~\faGithub~\href{https://github.com/britoruben}{GitHub}~$\cdot$~\faGlobe~\href{https://britoruben.github.io/RubenBrito-CV/}{Portfolio}
+    \accIcon{\faLinkedin}{LinkedIn:}~\href{https://www.linkedin.com/in/brito-ruben/}{LinkedIn}~$\cdot$~\accIcon{\faGithub}{GitHub:}~\href{https://github.com/britoruben}{GitHub}~$\cdot$~\accIcon{\faGlobe}{Portfolio:}~\href{https://britoruben.github.io/RubenBrito-CV/}{Portfolio}
     }
 \end{center}
 
 \vspace{-3mm}
 
+\phantomsection\pdfbookmark[1]{Summary}{sec:summary}
 \section{\faUser~~\MakeUppercase{Summary}}
 \vspace{-0.4mm}
 Software Engineer with over 10 years of experience across banking, telecom and consulting, based in Madrid. Currently at Santander UK, working on credit risk and scoring systems and leading a small development team. Delivered one of Santander's earliest Machine Learning proofs of concept in risk decisioning in 2017--2018; since 2024, deep into modern AI-assisted engineering -- daily use of Claude Code, GitHub Copilot and other AI tools, plus building custom LLM agents for engineering workflows.
 \vspace{-4mm}
 
+\phantomsection\pdfbookmark[1]{Work Experience}{sec:work-experience}
 \section{\faBriefcase~~\MakeUppercase{Work Experience}}
 \vspace{-0.4mm}
   \resumeSubHeadingListStart
 
+  \begin{samepage}
   \resumeSubheading
       {Santander UK}{Software Engineer}{Nov 2019 -- Present, United Kingdom (Remote)}
       \resumeItemListStart
@@ -176,19 +177,28 @@ Software Engineer with over 10 years of experience across banking, telecom and c
       \item Use GitHub Copilot, Claude Code, OpenAI Codex, Google Antigravity and Devin daily for development and custom CI/CD workflows on OpenShift.
       \item \venuebadge{Java} \venuebadge{Python} \venuebadge{Spring} \venuebadge{Node.js} \venuebadge{Kafka} \venuebadge{Docker} \venuebadge{OpenShift}
       \resumeItemListEnd
+      \end{samepage}
+      \entryDivider
 
+  \begin{samepage}
   \resumeSubheading
       {UST Global Spain}{Software Developer}{Jan 2019 -- Nov 2019, Madrid}
       \resumeItemListStart
       \item Backend and API development for Inditex's Center of Excellence, including a Kafka + Apache Flink real-time monitoring dashboard providing alerting and traceability across internal and external APIs.
       \resumeItemListEnd
+      \end{samepage}
+      \entryDivider
 
+  \begin{samepage}
   \resumeSubheading
       {Gfi Spain}{Software Developer}{Oct 2015 -- Jan 2019, Madrid area}
       \resumeItemListStart
       \item Architecture department. Delivered software engineering services on external client engagements, including the Santander Global Tech and Telefónica placements below.
       \resumeItemListEnd
+      \end{samepage}
+      \entryDivider
 
+  \begin{samepage}
   \resumeSubheading
       {Santander Global Tech}{Software Developer (external, via Gfi Spain)}{Sep 2017 -- Dec 2018, Madrid area}
       \resumeItemListStart
@@ -197,7 +207,10 @@ Software Engineer with over 10 years of experience across banking, telecom and c
       \item Requirements analysis, architecture design and development, using Agile methodology.
       \item \venuebadge{PMML} \venuebadge{R} \venuebadge{Python} \venuebadge{Spring Boot} \venuebadge{TIBCO BW 6} \venuebadge{IBM API Connect} \venuebadge{AngularJS}
       \resumeItemListEnd
+      \end{samepage}
+      \entryDivider
 
+  \begin{samepage}
   \resumeSubheading
       {Telefónica}{Software Developer (external, via Gfi Spain)}{Jan 2016 -- Dec 2016, Madrid area}
       \resumeItemListStart
@@ -205,35 +218,40 @@ Software Engineer with over 10 years of experience across banking, telecom and c
       \item Requirements analysis and technical documentation, using Agile methodology.
       \item \venuebadge{Oracle BPM} \venuebadge{Java Spring} \venuebadge{AngularJS}
       \resumeItemListEnd
+      \end{samepage}
 
   \resumeSubHeadingListEnd
 \vspace{-6mm}
 
+\phantomsection\pdfbookmark[1]{Education}{sec:education}
 \section{\faGraduationCap~~\MakeUppercase{Education}}
 \vspace{-0.4mm}
 \resumeSubHeadingListStart
 
+\begin{samepage}
 \resumeEduheading
 {Enrique Tierno Galván}{}
 {Higher Education in Multiplatform Application Development}{2013 -- 2014}
 \resumeItemListStart
 \item Spanish higher vocational qualification (Ciclo Formativo de Grado Superior). One-year program: first-year credits transferred from the Web Application Development qualification below.
 \resumeItemListEnd
+\end{samepage}
 
+\begin{samepage}
 \resumeEduheading
 {Domenico Scarlatti}{}
 {Higher Education in Web Application Development}{2011 -- 2013}
 \resumeItemListStart
 \item Spanish higher vocational qualification (Ciclo Formativo de Grado Superior).
 \resumeItemListEnd
+\end{samepage}
 
 \resumeSubHeadingListEnd
 \vspace{-6mm}
 
+\phantomsection\pdfbookmark[1]{Technical Skills}{sec:technical-skills}
 \section{\faCode~~\MakeUppercase{Technical Skills}}
 \vspace{-0.4mm}
-\begin{multicols}{2}
-\raggedcolumns
 \resumeSubHeadingListStart
 \resumeItem{Languages}{Java, Python, JavaScript / Node.js, R}
 \resumeItem{Cloud \& Platforms}{AWS (S3, Lambda, Athena, CloudWatch), Terraform, Docker, OpenShift}
@@ -245,6 +263,5 @@ Software Engineer with over 10 years of experience across banking, telecom and c
 \resumeItem{AI \& Automation}{Custom LLM agents (MCP: GitHub, Jira, Confluence, SonarQube, Elasticsearch), LLM-based predictive modeling, prompt/plan engineering}
 \resumeItem{Practices}{Microservices architecture, REST APIs, Agile methodology, ETL \& data modeling, CI/CD (GitHub Actions, Jenkins, GitLab CI)}
 \resumeSubHeadingListEnd
-\end{multicols}
 
 \end{document}
