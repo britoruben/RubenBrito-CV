@@ -5,7 +5,7 @@
   <script>
     (function() {
       var saved = localStorage.getItem('theme');
-      var theme = saved || 'light';
+      var theme = saved || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
       document.documentElement.setAttribute('data-theme', theme);
       var meta = document.getElementById('colorSchemeMeta');
       if (meta) meta.setAttribute('content', theme === 'dark' ? 'dark light' : 'light dark');
@@ -21,6 +21,8 @@
   <meta property="og:description" content="Software Engineer with 10+ years across banking, telecom and consulting. Credit risk and scoring systems at Santander UK, plus modern AI-assisted engineering and custom LLM agents." />
   <meta property="og:url" content="https://britoruben.github.io/RubenBrito-CV/" />
   <meta property="og:image" content="https://britoruben.github.io/RubenBrito-CV/assets/tangata-manu.png" />
+  <meta property="og:image:width" content="240" />
+  <meta property="og:image:height" content="240" />
   <meta name="twitter:card" content="summary" />
   <meta name="theme-color" content="#EC0000" />
   <link rel="canonical" href="https://britoruben.github.io/RubenBrito-CV/" />
