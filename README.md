@@ -25,7 +25,7 @@ git add -A && git commit -m "Update CV" && git push
 `npm run check` verifies the generated files are in sync with the content
 source without writing anything; CI runs it on every push and pull request.
 
-Styling (`docs/styles.css`) and page structure (`build/render-html.mjs`) are
+Styling (`docs/styles.css`) and page structure (`tools/render-html.mjs`) are
 edited directly — only the *content* is generated.
 
 ## Structure
@@ -33,11 +33,11 @@ edited directly — only the *content* is generated.
 ### Source (edit these)
 
 - **content/cv.json** - single source of truth for all CV content
-- **build/render-html.mjs** - website template
-- **build/render-tex.mjs** - LaTeX body template
-- **build/preamble.tex** - LaTeX preamble, macros and page setup
-- **build/lib.mjs** - shared helpers (locale resolution, HTML/LaTeX escaping)
-- **build/build.mjs** - build entry point (`npm run build` / `npm run check`)
+- **tools/render-html.mjs** - website template
+- **tools/render-tex.mjs** - LaTeX body template
+- **tools/preamble.tex** - LaTeX preamble, macros and page setup
+- **tools/lib.mjs** - shared helpers (locale resolution, HTML/LaTeX escaping)
+- **tools/build.mjs** - build entry point (`npm run build` / `npm run check`)
 - **docs/styles.css** - website styling (light/dark theme)
 - **docs/assets/** - personal mark and favicons
 

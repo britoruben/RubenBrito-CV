@@ -4,7 +4,7 @@
   "type": "module",
   "description": "Personal CV and homepage. Content lives in content/cv.json; the website and the LaTeX CV are generated from it.",
   "scripts": {
-    "build": "node build/build.mjs",
-    "check": "node build/build.mjs --check"
+    "build": "node tools/build.mjs",
+    "check": "node tools/build.mjs --check"
   }
 }
