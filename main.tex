@@ -1,3 +1,6 @@
+% GENERATED FILE - do not edit by hand.
+% Content lives in content/cv.json; the preamble in tools/preamble.tex.
+% Regenerate with: npm run build
 %
 % Rubén Brito - CV LaTeX Template
 % Adapted from: ByungKwanLee-CV
@@ -25,22 +28,26 @@
 \usepackage{tgheros}
 \renewcommand{\familydefault}{\sfdefault}
 
-% Color definitions - Santander-inspired palette (red accent, neutral grays)
-\definecolor{primaryColor}{HTML}{EC0000}      % Santander red
-\definecolor{accentColor}{HTML}{EC0000}       % Santander red (rules)
-\definecolor{accentDark}{HTML}{B30000}        % Darker red for links (contrast)
-\definecolor{mutedGray}{HTML}{4D4D4D}         % Body/secondary text
-\definecolor{badgeBg}{HTML}{F5F5F5}           % Light gray badge background
-\definecolor{boxBg}{HTML}{FAFAFA}             % Very light gray box background
+% Color definitions - Basalto & Oceano palette, matching the website.
+% Deep ocean brand, warm sand accent, basalt neutrals. All pairs verified at
+% WCAG AA against the paper background.
+\definecolor{primaryColor}{HTML}{0E4F49}      % Deep ocean - headings, company names
+\definecolor{accentColor}{HTML}{0E4F49}       % Section rules
+\definecolor{accentDark}{HTML}{0A3B36}        % Links (darker for contrast)
+\definecolor{accentWarm}{HTML}{8A5A16}        % Warm sand - bullets, used sparingly
+\definecolor{mutedGray}{HTML}{58635F}         % Body/secondary text
+\definecolor{badgeBg}{HTML}{F2F4F2}           % Badge background
+\definecolor{boxBg}{HTML}{FBFBFA}             % Page-tone box background
 
 % Page layout
+\usepackage{lastpage}
 \pagestyle{fancy}
 \fancyhf{}
-\fancyfoot{}
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
-\geometry{left=1.2cm, top=1.1cm, right=1.0cm, bottom=1.1cm}
-\setlength{\footskip}{5pt}
+\fancyfoot[C]{\footnotesize\color{mutedGray}Rubén Brito~~$\cdot$~~\thepage\,/\,\pageref{LastPage}}
+\geometry{left=1.6cm, top=1.3cm, right=1.6cm, bottom=1.5cm}
+\setlength{\footskip}{24pt}
 
 % Hyperlink setup
 \usepackage[hidelinks]{hyperref}
@@ -52,7 +59,7 @@
     pdftitle={Rubén Brito - Software Engineer},
     pdfauthor={Rubén Brito},
     pdfsubject={Software Engineer},
-    pdfkeywords={Software Engineer, Applied AI},
+    pdfkeywords={Software Engineer, Credit Risk, Platform Engineering, Applied AI},
     pdflang={en-US},
     pdfpagemode=UseOutlines,
     pdfdisplaydoctitle=true,
@@ -83,9 +90,11 @@
 \setlength{\tabcolsep}{0in}
 
 % Section formatting
-\titleformat{\section}{
-  \vspace{-2pt}\bfseries\raggedright\large\color{primaryColor}
-}{}{0em}{}[\vspace{-2pt}{\color{accentColor}\titlerule[1.2pt]} \vspace{-7pt}]
+\titleformat{\section}
+  {\bfseries\raggedright\large\color{primaryColor}}
+  {}{0em}{}
+  [{\color{accentColor}\titlerule[1pt]}]
+\titlespacing*{\section}{0pt}{4.2mm}{1.8mm}
 
 % Badge for skills/tags
 \newtcbox{\venuebadge}{on line, colback=badgeBg, colframe=accentColor,
@@ -98,7 +107,7 @@
 \newcommand{\accIcon}[2]{\BeginAccSupp{method=plain,ActualText=#2}#1\EndAccSupp{}}
 
 % Subtle hairline divider between individual entries within a list.
-\newcommand{\entryDivider}{\vspace{0.3mm}{\color{mutedGray!30}\hrule height 0.3pt}\vspace{0.3mm}}
+\newcommand{\entryDivider}{\vspace{1.1mm}{\color{mutedGray!30}\hrule height 0.3pt}\vspace{1.1mm}}
 
 \newcommand{\resumeItem}[2]{
   \item{
@@ -111,7 +120,7 @@
     \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
         \textbf{\large{\color{primaryColor}#1}}~{\color{black}$\bullet$}~{\color{black}\textbf{\textit{#2}}} & \textit{\footnotesize{\color{mutedGray}#3}}
     \end{tabular*}
-    \vspace{-1.4mm}
+    \vspace{-0.4mm}
 }
 
 \newcommand{\resumeEduheading}[4]{
@@ -120,24 +129,24 @@
         \textbf{\color{primaryColor}#1} & \textit{\footnotesize{\color{mutedGray}#4}} \\
         \textit{\small{#3}} &  \footnotesize{\color{mutedGray}#2}\\
     \end{tabular*}
-    \vspace{-2.4mm}
+    \vspace{-1.0mm}
 }
 
-\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*,labelsep=1mm,label={},itemsep=0.3mm,topsep=0pt]}
-\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=*,labelsep=1mm,itemsep=0.3mm,label=\textcolor{primaryColor}{\textbullet}]}
-\newcommand{\resumeSubHeadingListEnd}{\end{itemize}\vspace{1mm}}
-\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-2mm}}
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*,labelsep=1mm,label={},itemsep=1.1mm,topsep=0pt]}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=*,labelsep=1mm,itemsep=0.7mm,label=\textcolor{accentWarm}{\textbullet}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}\vspace{2mm}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{0.4mm}}
+
+% Client engagement nested inside a consulting role.
+\newcommand{\resumeEngagementListStart}{\begin{itemize}[leftmargin=4mm,labelsep=1mm,itemsep=0.5mm,topsep=0.7mm,label=\textcolor{mutedGray}{\textbullet}]}
+\newcommand{\resumeEngagementListEnd}{\end{itemize}\vspace{0.3mm}}
+\newcommand{\resumeEngagement}[2]{\item \textbf{#1}\hfill{\footnotesize\textit{\color{mutedGray}#2}}}
 
 \begin{document}
 
 % Header
 \begin{center}
     {\Huge\textbf{\color{primaryColor}Rubén Brito}}
-\end{center}
-\vspace{-4mm}
-
-\begin{center}
-    {\small\color{mutedGray}Software Engineer -- Risk Systems \& Applied AI}
 \end{center}
 \vspace{-3mm}
 
@@ -158,23 +167,22 @@
 
 \phantomsection\pdfbookmark[1]{Summary}{sec:summary}
 \section{\faUser~~\MakeUppercase{Summary}}
-\vspace{-0.4mm}
-Software Engineer with over 10 years of experience across banking, telecom and consulting, based in Madrid. Currently at Santander UK, working on credit risk and scoring systems and leading a small development team. Delivered one of Santander's earliest Machine Learning proofs of concept in risk decisioning in 2017--2018; since 2024, deep into modern AI-assisted engineering -- daily use of Claude Code, GitHub Copilot and other AI tools, plus building custom LLM agents for engineering workflows.
-\vspace{-4mm}
+Software Engineer with 11 years across banking, telecom and consulting, based in Madrid. At Santander UK since 2019, on the credit risk and scoring systems behind retail and corporate lending -- owned end to end, from architecture and API contracts through delivery pipelines to how the services run in production: autoscaling, resource tuning and monitoring. Delivered one of Santander's earliest Machine Learning proofs of concept in risk decisioning in 2017--2018.
 
 \phantomsection\pdfbookmark[1]{Work Experience}{sec:work-experience}
 \section{\faBriefcase~~\MakeUppercase{Work Experience}}
-\vspace{-0.4mm}
   \resumeSubHeadingListStart
 
   \begin{samepage}
   \resumeSubheading
       {Santander UK}{Software Engineer}{Nov 2019 -- Present, United Kingdom (Remote)}
+      {\footnotesize\textit{\color{mutedGray}Based in the UK 2019--2021, remote from Madrid since.}}\vspace{0.4mm}
       \resumeItemListStart
-      \item Own credit risk and scoring models; drive improvements to risk processes and controls across retail and corporate banking.
-      \item Progressed from Software Developer to leading a small development team and advising technical architects on integration and security architecture decisions.
-      \item Built an AI-assisted internal dashboard for live case monitoring, replacing manual SQL queries with real-time visibility.
-      \item Use GitHub Copilot, Claude Code, OpenAI Codex, Google Antigravity and Devin daily for development and custom CI/CD workflows on OpenShift.
+      \item Integrate credit risk and scoring models into retail and corporate banking systems, implementing them into production.
+      \item Take the services behind them from architecture and API contracts to production on OpenShift -- delivery pipelines, load balancing, autoscaling, resource tuning and monitoring -- running at \textasciitilde{}100k requests/day on internal APIs and 5--10k/day across supporting services.
+      \item Run dependency and library vulnerability management end to end: analysis, remediation, and the CI pipelines that enforce it.
+      \item Built the team's internal monitoring dashboard, replacing manual SQL queries with live case visibility.
+      \item Automate engineering workflows with custom MCP agents and Devin -- SonarQube issue triage and Jira-driven branch creation.
       \item \venuebadge{Java} \venuebadge{Python} \venuebadge{Spring} \venuebadge{Node.js} \venuebadge{Kafka} \venuebadge{Docker} \venuebadge{OpenShift}
       \resumeItemListEnd
       \end{samepage}
@@ -191,77 +199,75 @@ Software Engineer with over 10 years of experience across banking, telecom and c
 
   \begin{samepage}
   \resumeSubheading
-      {Gfi Spain}{Software Developer}{Oct 2015 -- Jan 2019, Madrid area}
+      {Gfi Spain}{Software Developer}{May 2015 -- Jan 2019, Madrid area}
       \resumeItemListStart
-      \item Architecture department. Delivered software engineering services on external client engagements, including the Santander Global Tech and Telefónica placements below.
-      \resumeItemListEnd
-      \end{samepage}
-      \entryDivider
-
-  \begin{samepage}
-  \resumeSubheading
-      {Santander Global Tech}{Software Developer (external, via Gfi Spain)}{Sep 2017 -- Dec 2018, Madrid area}
-      \resumeItemListStart
-      \item Risk Department -- delivered one of Santander's earliest Machine Learning proofs of concept, integrating predictive models into the risk decisioning workflow years before enterprise AI adoption became mainstream.
-      \item Developed an API exposing risk prediction functionality for sales and financial products.
-      \item Requirements analysis, architecture design and development, using Agile methodology.
-      \item \venuebadge{PMML} \venuebadge{R} \venuebadge{Python} \venuebadge{Spring Boot} \venuebadge{TIBCO BW 6} \venuebadge{IBM API Connect} \venuebadge{AngularJS}
-      \resumeItemListEnd
-      \end{samepage}
-      \entryDivider
-
-  \begin{samepage}
-  \resumeSubheading
-      {Telefónica}{Software Developer (external, via Gfi Spain)}{Jan 2016 -- Dec 2016, Madrid area}
-      \resumeItemListStart
-      \item Telco 3.0 project -- implemented REST architecture in the customer retention system.
-      \item Requirements analysis and technical documentation, using Agile methodology.
-      \item \venuebadge{Oracle BPM} \venuebadge{Java Spring} \venuebadge{AngularJS}
+      \item Joined through the final-year internship programme and hired onto the permanent staff in October 2015. Architecture department, delivering engineering work on client engagements across telecom, security and banking.
+      \resumeEngagement{Telefónica}{Jan 2016 -- Dec 2016}
+      \resumeEngagementListStart
+        \item Telco 3.0 -- implemented REST architecture in the customer retention system.
+        \item Requirements analysis and technical documentation, using Agile methodology.
+        \item \venuebadge{Oracle BPM} \venuebadge{Java Spring} \venuebadge{AngularJS}
+      \resumeEngagementListEnd
+      \resumeEngagement{Securitas Direct}{Jan 2017 -- Aug 2017}
+      \resumeEngagementListStart
+        \item Cross-platform iOS/Android field application for door-to-door sales teams -- customer information, contracting and retention on tablet, integrated with Securitas Direct's internal APIs.
+        \item \venuebadge{Ionic} \venuebadge{Java} \venuebadge{Spring} \venuebadge{MongoDB}
+      \resumeEngagementListEnd
+      \resumeEngagement{Santander Global Tech}{Sep 2017 -- Dec 2018}
+      \resumeEngagementListStart
+        \item Risk Department -- delivered one of Santander's earliest Machine Learning proofs of concept, integrating predictive models into the credit decisioning workflow.
+        \item Improved affordability assessment in both directions: surfacing approvals that carried undetected repayment risk, and identifying creditworthy applicants the existing rules were declining.
+        \item Developed an API exposing risk prediction functionality for sales and financial products.
+        \item \venuebadge{PMML} \venuebadge{R} \venuebadge{Python} \venuebadge{Spring Boot} \venuebadge{TIBCO BW 6} \venuebadge{IBM API Connect} \venuebadge{AngularJS}
+      \resumeEngagementListEnd
       \resumeItemListEnd
       \end{samepage}
 
   \resumeSubHeadingListEnd
-\vspace{-6mm}
 
 \phantomsection\pdfbookmark[1]{Education}{sec:education}
 \section{\faGraduationCap~~\MakeUppercase{Education}}
-\vspace{-0.4mm}
 \resumeSubHeadingListStart
 
 \begin{samepage}
 \resumeEduheading
 {Enrique Tierno Galván}{}
-{Higher Education in Multiplatform Application Development}{2013 -- 2014}
+{Higher Education in Multiplatform Application Development}{2014 -- 2015}
 \resumeItemListStart
-\item Spanish higher vocational qualification (Ciclo Formativo de Grado Superior). One-year program: first-year credits transferred from the Web Application Development qualification below.
+\item Spanish higher vocational qualification (Ciclo Formativo de Grado Superior). One-year programme: first-year credits transferred from the Web Application Development qualification below.
 \resumeItemListEnd
 \end{samepage}
 
 \begin{samepage}
 \resumeEduheading
 {Domenico Scarlatti}{}
-{Higher Education in Web Application Development}{2011 -- 2013}
+{Higher Education in Web Application Development}{2012 -- 2014}
 \resumeItemListStart
 \item Spanish higher vocational qualification (Ciclo Formativo de Grado Superior).
 \resumeItemListEnd
 \end{samepage}
 
 \resumeSubHeadingListEnd
-\vspace{-6mm}
+
+\phantomsection\pdfbookmark[1]{Languages}{sec:languages}
+\section{\faGlobe~~\MakeUppercase{Languages}}
+\resumeSubHeadingListStart
+\resumeItem{Spanish}{Native}
+\resumeItem{English}{Professional working proficiency}
+\resumeSubHeadingListEnd
 
 \phantomsection\pdfbookmark[1]{Technical Skills}{sec:technical-skills}
 \section{\faCode~~\MakeUppercase{Technical Skills}}
-\vspace{-0.4mm}
 \resumeSubHeadingListStart
 \resumeItem{Languages}{Java, Python, JavaScript / Node.js, R}
-\resumeItem{Cloud \& Platforms}{AWS (S3, Lambda, Athena, CloudWatch), Terraform, Docker, OpenShift}
+\resumeItem{Platform \& Runtime}{OpenShift, Docker, AWS (S3, Lambda, Athena, CloudWatch), Terraform, Autoscaling \& resource tuning, Load balancing}
 \resumeItem{Data \& Streaming}{Kafka (MSK \& on-premise), Redis, Oracle, MongoDB, SQL, NoSQL}
-\resumeItem{Integration \& Middleware}{TIBCO BusinessWorks, Oracle SOA Suite, API Gateways (IBM API Connect/DataPower, CA), OAuth2 / JWT}
+\resumeItem{Integration \& APIs}{REST API \& contract design, API gateways (IBM API Connect/DataPower, CA), TIBCO BusinessWorks, Oracle SOA Suite}
+\resumeItem{Security}{Dependency \& library vulnerability management, CI security pipelines, OAuth2 / JWT (client credentials, resource owner)}
 \resumeItem{Observability}{Kibana, Dynatrace, Zipkin, Grafana}
-\resumeItem{Testing \& Quality}{Cucumber, Postman, Bruno, JMeter, Chaos Monkey}
-\resumeItem{AI Coding Tools}{Claude Code, GitHub Copilot, OpenAI Codex, Google Antigravity, Devin}
-\resumeItem{AI \& Automation}{Custom LLM agents (MCP: GitHub, Jira, Confluence, SonarQube, Elasticsearch), LLM-based predictive modeling, prompt/plan engineering}
-\resumeItem{Practices}{Microservices architecture, REST APIs, Agile methodology, ETL \& data modeling, CI/CD (GitHub Actions, Jenkins, GitLab CI)}
+\resumeItem{Testing \& Quality}{Cucumber, Postman, Bruno, JMeter, Chaos Monkey, SonarQube}
+\resumeItem{AI \& Automation}{Custom MCP agents (GitHub, Jira, Confluence, SonarQube, Elasticsearch), Claude Code, GitHub Copilot, OpenAI Codex, Devin, LLM-based predictive modeling}
+\resumeItem{Practices}{Microservices architecture, Agile methodology, ETL \& data modeling, CI/CD (GitHub Actions, Jenkins, GitLab CI)}
 \resumeSubHeadingListEnd
 
 \end{document}

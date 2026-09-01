@@ -1,0 +1,266 @@
+{
+  "_comment": "Single source of truth for the website and the LaTeX CV. Edit this file, then run `npm run build`. Never edit docs/index.html or main.tex by hand - they are generated.",
+
+  "meta": {
+    "siteUrl": "https://britoruben.github.io/RubenBrito-CV/",
+    "defaultLocale": "en",
+    "locales": ["en", "es"],
+    "themeColor": "#0E4F49"
+  },
+
+  "profile": {
+    "name": "Rubén Brito",
+    "role": { "en": "Software Engineer", "es": "Software Engineer" },
+    "title": { "en": "Rubén Brito - Software Engineer", "es": "Rubén Brito - Software Engineer" },
+    "email": "britoruben1984@gmail.com",
+    "location": { "en": "Madrid, Spain", "es": "Madrid, España" },
+    "addressLocality": "Madrid",
+    "addressCountry": "Spain",
+    "jobTitle": { "en": "Software Engineer", "es": "Software Engineer" },
+    "photo": {
+      "src": "assets/tangata-manu.png",
+      "alt": {
+        "en": "Rubén Brito — personal mark (Tangata Manu)",
+        "es": "Rubén Brito — marca personal (Tangata Manu)"
+      },
+      "width": 96,
+      "height": 96
+    },
+    "links": {
+      "linkedin": "https://www.linkedin.com/in/brito-ruben/",
+      "github": "https://github.com/britoruben"
+    },
+    "metaDescription": {
+      "en": "Software Engineer with 11 years across banking, telecom and consulting. Credit risk and scoring systems at Santander UK, owned end to end from API design to production.",
+      "es": "Software Engineer con 11 años en banca, telecomunicaciones y consultoría. Sistemas de riesgo de crédito y scoring en Santander UK, de principio a fin: del diseño de la API a producción."
+    }
+  },
+
+  "summary": {
+    "en": "Software Engineer with 11 years across banking, telecom and consulting, based in Madrid. At Santander UK since 2019, on the credit risk and scoring systems behind retail and corporate lending — owned end to end, from architecture and API contracts through delivery pipelines to how the services run in production: autoscaling, resource tuning and monitoring. Delivered one of Santander's earliest Machine Learning proofs of concept in risk decisioning in 2017–2018.",
+    "es": "Ingeniero de software con 11 años de experiencia en banca, telecomunicaciones y consultoría, afincado en Madrid. Desde 2019 en Santander UK, en los sistemas de riesgo de crédito y scoring que sostienen las decisiones de financiación a particulares y empresas, de los que soy responsable de principio a fin: arquitectura y contratos de API, desarrollo, pipelines de despliegue y el funcionamiento de los servicios en producción, incluidos autoescalado, ajuste de recursos y monitorización. En 2017–2018 entregué una de las primeras pruebas de concepto de Machine Learning del Santander en decisión de riesgo."
+  },
+
+  "experience": [
+    {
+      "company": "Santander UK",
+      "position": { "en": "Software Engineer", "es": "Software Engineer" },
+      "start": "Nov 2019",
+      "end": { "en": "Present", "es": "Actualidad" },
+      "location": { "en": "United Kingdom (Remote)", "es": "Reino Unido (remoto)" },
+      "note": {
+        "en": "Based in the UK 2019–2021, remote from Madrid since.",
+        "es": "Residente en Reino Unido de 2019 a 2021; en remoto desde Madrid desde entonces."
+      },
+      "bullets": {
+        "en": [
+          "Integrate credit risk and scoring models into retail and corporate banking systems, implementing them into production.",
+          "Take the services behind them from architecture and API contracts to production on OpenShift — delivery pipelines, load balancing, autoscaling, resource tuning and monitoring — running at ~100k requests/day on internal APIs and 5–10k/day across supporting services.",
+          "Run dependency and library vulnerability management end to end: analysis, remediation, and the CI pipelines that enforce it.",
+          "Built the team's internal monitoring dashboard, replacing manual SQL queries with live case visibility.",
+          "Automate engineering workflows with custom MCP agents and Devin — SonarQube issue triage and Jira-driven branch creation."
+        ],
+        "es": [
+          "Integro los modelos de riesgo de crédito y scoring de banca particular y de empresas, implementándolos en los sistemas de producción.",
+          "Llevo los servicios que hay detrás desde la arquitectura y los contratos de API hasta producción en OpenShift — pipelines de despliegue, balanceo de carga, autoescalado, ajuste de recursos y monitorización — con ~100k peticiones/día en APIs internas y 5–10k/día en los servicios de apoyo.",
+          "Gestiono de forma integral las vulnerabilidades en dependencias y librerías: análisis, resolución y los pipelines de CI que lo garantizan.",
+          "Construí el panel de monitorización interno del equipo, que sustituyó las consultas SQL manuales por visibilidad de casos en tiempo real.",
+          "Automatizo flujos de trabajo de ingeniería con agentes MCP propios y Devin — triaje de incidencias de SonarQube y creación de ramas a partir de Jira."
+        ]
+      },
+      "stack": ["Java", "Python", "Spring", "Node.js", "Kafka", "Docker", "OpenShift"]
+    },
+    {
+      "company": "UST Global Spain",
+      "position": { "en": "Software Developer", "es": "Software Developer" },
+      "start": { "en": "Jan 2019", "es": "Ene 2019" },
+      "end": { "en": "Nov 2019", "es": "Nov 2019" },
+      "location": { "en": "Madrid", "es": "Madrid" },
+      "bullets": {
+        "en": [
+          "Backend and API development for Inditex's Center of Excellence, including a Kafka + Apache Flink real-time monitoring dashboard providing alerting and traceability across internal and external APIs."
+        ],
+        "es": [
+          "Desarrollo de backend y APIs para el Centro de Excelencia de Inditex, incluido un panel de monitorización en tiempo real con Kafka y Apache Flink que aportaba alertas y trazabilidad sobre APIs internas y externas."
+        ]
+      },
+      "stack": []
+    },
+    {
+      "company": "Gfi Spain",
+      "position": { "en": "Software Developer", "es": "Software Developer" },
+      "start": "May 2015",
+      "end": { "en": "Jan 2019", "es": "Ene 2019" },
+      "location": { "en": "Madrid area", "es": "Comunidad de Madrid" },
+      "bullets": {
+        "en": [
+          "Joined through the final-year internship programme and hired onto the permanent staff in October 2015. Architecture department, delivering engineering work on client engagements across telecom, security and banking."
+        ],
+        "es": [
+          "Entré por el programa de prácticas de fin de ciclo y pasé a plantilla en octubre de 2015. Departamento de Arquitectura, prestando servicios de ingeniería en proyectos de cliente de telecomunicaciones, seguridad y banca."
+        ]
+      },
+      "stack": [],
+      "engagements": [
+        {
+          "client": "Telefónica",
+          "start": { "en": "Jan 2016", "es": "Ene 2016" },
+          "end": { "en": "Dec 2016", "es": "Dic 2016" },
+          "bullets": {
+            "en": [
+              "Telco 3.0 — implemented REST architecture in the customer retention system.",
+              "Requirements analysis and technical documentation, using Agile methodology."
+            ],
+            "es": [
+              "Telco 3.0 — implementación de arquitectura REST en el sistema de retención de clientes.",
+              "Análisis de requisitos y documentación técnica, con metodología Agile."
+            ]
+          },
+          "stack": ["Oracle BPM", "Java Spring", "AngularJS"]
+        },
+        {
+          "client": "Securitas Direct",
+          "start": { "en": "Jan 2017", "es": "Ene 2017" },
+          "end": { "en": "Aug 2017", "es": "Ago 2017" },
+          "bullets": {
+            "en": [
+              "Cross-platform iOS/Android field application for door-to-door sales teams — customer information, contracting and retention on tablet, integrated with Securitas Direct's internal APIs."
+            ],
+            "es": [
+              "Aplicación de campo multiplataforma iOS/Android para los equipos comerciales a puerta fría: información de cliente, contratación y retención desde tablet, integrada con las APIs internas de Securitas Direct."
+            ]
+          },
+          "stack": ["Ionic", "Java", "Spring", "MongoDB"]
+        },
+        {
+          "client": "Santander Global Tech",
+          "start": "Sep 2017",
+          "end": { "en": "Dec 2018", "es": "Dic 2018" },
+          "bullets": {
+            "en": [
+              "Risk Department — delivered one of Santander's earliest Machine Learning proofs of concept, integrating predictive models into the credit decisioning workflow.",
+              "Improved affordability assessment in both directions: surfacing approvals that carried undetected repayment risk, and identifying creditworthy applicants the existing rules were declining.",
+              "Developed an API exposing risk prediction functionality for sales and financial products."
+            ],
+            "es": [
+              "Departamento de Riesgos — entregué una de las primeras pruebas de concepto de Machine Learning del Santander en decisión de riesgo, integrando modelos predictivos en el flujo de decisión crediticia.",
+              "Mejoré la evaluación de capacidad de pago en ambos sentidos: aprobaciones que arrastraban riesgo de impago no detectado, y solicitantes solventes a los que las reglas vigentes estaban denegando.",
+              "Desarrollé una API que exponía la funcionalidad de predicción de riesgo para productos comerciales y financieros."
+            ]
+          },
+          "stack": ["PMML", "R", "Python", "Spring Boot", "TIBCO BW 6", "IBM API Connect", "AngularJS"]
+        }
+      ]
+    }
+  ],
+
+  "education": [
+    {
+      "school": "Enrique Tierno Galván",
+      "start": "2014",
+      "end": "2015",
+      "qualification": {
+        "en": "Higher Education in Multiplatform Application Development",
+        "es": "Técnico Superior en Desarrollo de Aplicaciones Multiplataforma"
+      },
+      "note": {
+        "en": "Spanish higher vocational qualification (Ciclo Formativo de Grado Superior). One-year programme: first-year credits transferred from the Web Application Development qualification below.",
+        "es": "Ciclo Formativo de Grado Superior. Programa de un año: primer curso convalidado desde el título de Desarrollo de Aplicaciones Web."
+      }
+    },
+    {
+      "school": "Domenico Scarlatti",
+      "start": "2012",
+      "end": "2014",
+      "qualification": {
+        "en": "Higher Education in Web Application Development",
+        "es": "Técnico Superior en Desarrollo de Aplicaciones Web"
+      },
+      "note": {
+        "en": "Spanish higher vocational qualification (Ciclo Formativo de Grado Superior).",
+        "es": "Ciclo Formativo de Grado Superior."
+      }
+    }
+  ],
+
+  "languages": [
+    { "name": { "en": "Spanish", "es": "Español" }, "level": { "en": "Native", "es": "Nativo" } },
+    { "name": { "en": "English", "es": "Inglés" }, "level": { "en": "Professional working proficiency", "es": "Competencia profesional" } }
+  ],
+
+  "skills": [
+    { "category": { "en": "Languages", "es": "Lenguajes" }, "items": ["Java", "Python", "JavaScript / Node.js", "R"] },
+    { "category": { "en": "Platform & Runtime", "es": "Plataforma y runtime" }, "items": ["OpenShift", "Docker", "AWS (S3, Lambda, Athena, CloudWatch)", "Terraform", "Autoscaling & resource tuning", "Load balancing"] },
+    { "category": { "en": "Data & Streaming", "es": "Datos y streaming" }, "items": ["Kafka (MSK & on-premise)", "Redis", "Oracle", "MongoDB", "SQL", "NoSQL"] },
+    { "category": { "en": "Integration & APIs", "es": "Integración y APIs" }, "items": ["REST API & contract design", "API gateways (IBM API Connect/DataPower, CA)", "TIBCO BusinessWorks", "Oracle SOA Suite"] },
+    { "category": { "en": "Security", "es": "Seguridad" }, "items": ["Dependency & library vulnerability management", "CI security pipelines", "OAuth2 / JWT (client credentials, resource owner)"] },
+    { "category": { "en": "Observability", "es": "Observabilidad" }, "items": ["Kibana", "Dynatrace", "Zipkin", "Grafana"] },
+    { "category": { "en": "Testing & Quality", "es": "Testing y calidad" }, "items": ["Cucumber", "Postman", "Bruno", "JMeter", "Chaos Monkey", "SonarQube"] },
+    { "category": { "en": "AI & Automation", "es": "IA y automatización" }, "items": ["Custom MCP agents (GitHub, Jira, Confluence, SonarQube, Elasticsearch)", "Claude Code", "GitHub Copilot", "OpenAI Codex", "Devin", "LLM-based predictive modeling"] },
+    { "category": { "en": "Practices", "es": "Prácticas" }, "items": ["Microservices architecture", "Agile methodology", "ETL & data modeling", "CI/CD (GitHub Actions, Jenkins, GitLab CI)"] }
+  ],
+
+  "projects": {
+    "githubUser": "britoruben",
+    "maxRepos": 6,
+    "requireDescription": true,
+    "exclude": [],
+    "knownDescriptions": {
+      "moai": "Voice-enabled \"second brain\": your notes and tools become a navigable 3D knowledge graph, powered by Claude.",
+      "RubenBrito-CV": "This site. Personal CV & portfolio, auto-built and deployed with GitHub Actions."
+    }
+  },
+
+  "sections": {
+    "about":      { "en": "About", "es": "Perfil" },
+    "experience": { "en": "Work Experience", "es": "Experiencia" },
+    "skills":     { "en": "Skills", "es": "Competencias" },
+    "education":  { "en": "Education", "es": "Formación" },
+    "languages":  { "en": "Languages", "es": "Idiomas" },
+    "contact":    { "en": "Get in Touch", "es": "Contacto" },
+    "cv":         { "en": "CV & Contact", "es": "CV y contacto" },
+    "projects":   { "en": "Public Projects", "es": "Proyectos públicos" }
+  },
+
+  "copy": {
+    "navAbout":       { "en": "About", "es": "Perfil" },
+    "navExperience":  { "en": "Experience", "es": "Experiencia" },
+    "navSkills":      { "en": "Skills", "es": "Competencias" },
+    "navEducation":   { "en": "Education", "es": "Formación" },
+    "navContact":     { "en": "Contact", "es": "Contacto" },
+    "navProjects":    { "en": "Projects", "es": "Proyectos" },
+    "navCv":          { "en": "CV", "es": "CV" },
+    "langLabel":      { "en": "Language", "es": "Idioma" },
+    "cvPreviewAlt":   { "en": "First page of the CV", "es": "Primera página del CV" },
+    "skipLink":       { "en": "Skip to content", "es": "Ir al contenido" },
+    "clientEngagements": { "en": "Client engagements", "es": "Proyectos de cliente" },
+    "contactLead":    {
+      "en": "Open to conversations about software engineering and applied AI — feel free to reach out.",
+      "es": "Abierto a conversaciones sobre ingeniería de software e IA aplicada. Escríbeme sin problema."
+    },
+    "sendEmail":      { "en": "Send Email", "es": "Enviar email" },
+    "cvLead":         { "en": "Download my complete CV in PDF format.", "es": "Descarga mi CV completo en PDF." },
+    "downloadCv":     { "en": "Download CV (PDF)", "es": "Descargar CV (PDF)" },
+    "cvNote":         { "en": "Auto-generated from this repository, always up to date.", "es": "Generado automáticamente desde este repositorio, siempre al día." },
+    "projectsNote":   { "en": "Live from GitHub — fetched on load, not hand-curated.", "es": "En directo desde GitHub: se consultan al cargar, no están seleccionados a mano." },
+    "projectsLoading":{ "en": "Loading from GitHub…", "es": "Cargando desde GitHub…" },
+    "projectsEmpty":  { "en": "No public repositories yet.", "es": "Todavía no hay repositorios públicos." },
+    "projectsError":  { "en": "Couldn't load live data right now — see them directly on", "es": "No se han podido cargar los datos ahora mismo. Puedes verlos directamente en" },
+    "noDescription":  { "en": "No description yet.", "es": "Sin descripción todavía." },
+    "builtWith":      { "en": "Built with", "es": "Hecho con" },
+    "backToTop":      { "en": "Back to top", "es": "Volver arriba" },
+    "toggleTheme":    { "en": "Toggle dark mode", "es": "Cambiar a modo oscuro" }
+  },
+
+  "pdf": {
+    "sections": {
+      "summary":    { "en": "Summary" },
+      "experience": { "en": "Work Experience" },
+      "education":  { "en": "Education" },
+      "languages":  { "en": "Languages" },
+      "skills":     { "en": "Technical Skills" }
+    },
+    "keywords": "Software Engineer, Credit Risk, Platform Engineering, Applied AI",
+    "subject": "Software Engineer"
+  }
+}

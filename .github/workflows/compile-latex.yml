@@ -1,5 +1,19 @@
 name: Compile LaTeX to PDF
 
+# main.tex is generated and committed, so filtering on it is enough: any
+# content change that affects the PDF shows up as a change to this file. A
+# content change committed WITHOUT regenerating is caught by verify-build,
+# which fails the push.
+#
+# NOTE: this job pushes with secrets.PDF_PUSH_TOKEN, a fine-grained PAT. The
+# repository ruleset requiring pull requests on main cannot be bypassed by
+# GITHUB_TOKEN (GitHub evaluates ruleset bypass against real actor identities,
+# not the ephemeral Actions token), which is why the PAT exists. PATs expire,
+# and when it does this job will start failing with a push permission error
+# rather than anything descriptive. A GitHub App installation token via
+# actions/create-github-app-token, added to the ruleset bypass list, would
+# remove the expiry entirely - it needs the App created and installed first.
+
 on:
   push:
     branches: [ main ]
@@ -44,7 +58,7 @@ jobs:
     - name: Generate PDF page-1 thumbnail
       run: |
         if [ -f "docs/RubenBrito-CV.pdf" ]; then
-          pdftoppm -png -r 150 -singlefile docs/RubenBrito-CV.pdf docs/assets/cv-preview
+          pdftoppm -png -r 60 -singlefile docs/RubenBrito-CV.pdf docs/assets/cv-preview
         fi
 
     - name: Commit and push PDF

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://britoruben.github.io/RubenBrito-CV/sitemap.xml

@@ -1,0 +1,33 @@
+name: Verify generated files
+
+# The pages and main.tex are generated from content/cv.json. This job fails if
+# they were edited by hand, if someone changed the content without regenerating
+# them, or if a template change broke an internal link or anchor.
+
+on:
+  push:
+    branches: [ main, sandbox ]
+  pull_request:
+    branches: [ main, sandbox ]
+
+concurrency:
+  group: verify-build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Check that generated files match the content source
+        run: npm run check
+
+      - name: Check internal links and anchors
+        run: npm run check:links

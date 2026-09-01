@@ -6,6 +6,10 @@ on:
     paths:
       - 'main.tex'
 
+concurrency:
+  group: pr-preview-pdf-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build-preview:
     runs-on: ubuntu-latest
@@ -34,11 +38,53 @@ jobs:
       uses: actions/github-script@v7
       with:
         script: |
+          // Hidden marker used to find our own previous comment on this PR
+          // so repeated pushes update one comment instead of piling up a
+          // new one every time. Keep this exact string stable across edits
+          // to this workflow -- changing it orphans any existing comment.
+          const marker = '<!-- cv-pdf-preview -->';
+
           const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
-          const body = `CV PDF preview built successfully. Download it from the workflow run artifacts:\n${runUrl}`;
-          await github.rest.issues.createComment({
-            issue_number: context.issue.number,
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            body
+          const headSha = context.payload.pull_request && context.payload.pull_request.head
+            ? context.payload.pull_request.head.sha.substring(0, 7)
+            : context.sha.substring(0, 7);
+
+          const body = [
+            marker,
+            '### CV PDF Preview',
+            '',
+            `CV PDF preview built successfully from commit \`${headSha}\`. Download it from the workflow run artifacts (expires per repo artifact retention settings):`,
+            runUrl,
+            '',
+            `<sub>Last updated by run #${context.runNumber}.</sub>`,
+          ].join('\n');
+
+          const { owner, repo } = context.repo;
+          const issue_number = context.issue.number;
+
+          // List (with pagination) every comment on this PR and look for
+          // one we posted previously, identified by the hidden marker.
+          const comments = await github.paginate(github.rest.issues.listComments, {
+            owner,
+            repo,
+            issue_number,
+            per_page: 100,
           });
+
+          const existing = comments.find((c) => c.body && c.body.includes(marker));
+
+          if (existing) {
+            await github.rest.issues.updateComment({
+              owner,
+              repo,
+              comment_id: existing.id,
+              body,
+            });
+          } else {
+            await github.rest.issues.createComment({
+              owner,
+              repo,
+              issue_number,
+              body,
+            });
+          }
