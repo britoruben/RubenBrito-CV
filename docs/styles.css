@@ -208,8 +208,8 @@ button:focus-visible {
 
 .hero-content {
   display: flex;
-  align-items: center;
-  gap: 24px;
+  align-items: flex-start;
+  gap: 28px;
 }
 
 .hero-photo {
@@ -227,13 +227,14 @@ button:focus-visible {
   font-weight: 700;
 }
 
-.subtitle {
+.role-label {
   margin-top: 4px;
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--accent);
+  margin: 6px 0 0;
 }
 
 .hero-accent {
@@ -311,7 +312,7 @@ section:target {
 
 section {
   padding-top: 48px;
-  scroll-margin-top: 104px;
+  scroll-margin-top: calc(var(--nav-height, 62px) + 16px);
 }
 
 .section-title {
@@ -383,7 +384,10 @@ section {
 }
 
 .company {
+  margin: 0;
+  font-size: 18px;
   font-weight: 700;
+  letter-spacing: -0.015em;
   color: var(--brand);
 }
 
@@ -857,5 +861,238 @@ section {
 @media (max-width: 560px) {
   .engagement-period {
     margin-left: 0;
+  }
+}
+
+/* ---------- Navigation tools ---------- */
+.nav-tools {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.lang-switch {
+  display: flex;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.lang-option {
+  padding: 4px 10px;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.lang-option:hover {
+  text-decoration: none;
+  color: var(--brand);
+}
+
+.lang-option.is-current {
+  background: var(--brand);
+  color: var(--on-brand);
+}
+
+.lang-option.is-current:hover {
+  color: var(--on-brand);
+}
+
+/* ---------- Hero ---------- */
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+/* ---------- Client engagements ---------- */
+.engagement {
+  position: relative;
+  padding-left: 20px;
+}
+
+.engagement + .engagement {
+  margin-top: 4px;
+}
+
+/* The rail and its node: a timeline for the client engagements inside a
+   consulting role, so the reader sees them as one continuous placement. */
+.engagement::before {
+  content: '';
+  position: absolute;
+  left: 3px;
+  top: 14px;
+  bottom: -4px;
+  width: 1px;
+  background: var(--border);
+}
+
+.engagement:last-child::before {
+  bottom: auto;
+  height: 0;
+}
+
+.engagement::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--brand);
+  box-shadow: 0 0 0 3px var(--bg);
+}
+
+.engagement-summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px;
+  cursor: pointer;
+  list-style: none;
+  padding: 2px 0;
+}
+
+.engagement-summary::-webkit-details-marker {
+  display: none;
+}
+
+.engagement-summary:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+.engagement-list {
+  margin-top: 6px;
+  margin-bottom: 10px;
+  font-size: 13.5px;
+}
+
+/* ---------- Subsection (languages inside education) ---------- */
+.subsection-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 32px 0 12px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.subsection-title .icon {
+  color: var(--accent);
+}
+
+/* ---------- CV & contact panel ---------- */
+.cv-panel {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.cv-thumb {
+  display: block;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+  background: #FFFFFF;
+}
+
+.cv-thumb:hover {
+  border-color: var(--brand);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.cv-thumb img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.contact-list {
+  list-style: none;
+  margin: 18px 0 0;
+  padding: 0;
+  font-size: var(--fs-base);
+  color: var(--text-muted);
+}
+
+.contact-list li {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 7px;
+}
+
+.contact-list .icon {
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+/* ---------- Reveal on scroll ---------- */
+/* Content is visible by default; the script only opts in when it runs and
+   motion is allowed, so no-JS and reduced-motion readers see everything. */
+.reveal-ready [data-reveal] {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.reveal-ready [data-reveal].is-revealed {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-ready [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .cv-thumb:hover {
+    transform: none;
+  }
+}
+
+@media print {
+  .lang-switch,
+  .nav-tools,
+  .hero-actions,
+  .cv-thumb {
+    display: none;
+  }
+
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .cv-panel {
+    display: block;
+  }
+}
+
+@media (max-width: 720px) {
+  .cv-panel {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .cv-thumb {
+    max-width: 260px;
   }
 }

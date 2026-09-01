@@ -1,11 +1,13 @@
 import { t, escHtml, escAttr, period } from './lib.mjs';
 import { icon } from './icons.mjs';
 
-const DASH = '-';
+const DASH = '–';
 const SEP = ' · ';
 
-function bulletList(source, stack, locale, defaultLocale, cls, pad) {
-  const bullets = t(source, locale, defaultLocale).slice();
+/* ---------- fragments ---------- */
+
+function bulletList(source, stack, locale, dl, cls, pad) {
+  const bullets = t(source, locale, dl).slice();
   if (stack?.length) bullets.push(`Stack: ${stack.join(', ')}.`);
   const sp = ' '.repeat(pad);
   return `${sp}<ul class="${cls}">\n`
@@ -13,42 +15,44 @@ function bulletList(source, stack, locale, defaultLocale, cls, pad) {
     + `\n${sp}</ul>`;
 }
 
-function engagementBlock(eng, locale, defaultLocale, label) {
-  const tr = (v) => t(v, locale, defaultLocale);
-  return `        <div class="engagement">
-          <div class="engagement-head">
-            <span class="engagement-client">${escHtml(eng.client)}</span>
-            <span class="engagement-period">${escHtml(`${tr(eng.start)} ${DASH} ${tr(eng.end)}`)}</span>
-          </div>
-${bulletList(eng.bullets, eng.stack, locale, defaultLocale, 'project-list engagement-list', 10)}
-        </div>`;
+/**
+ * A client engagement inside a consulting role. <details open> keeps the
+ * content visible and printable with no JavaScript, while still letting the
+ * reader collapse an engagement they do not care about.
+ */
+function engagementBlock(eng, locale, dl) {
+  const tr = (v) => t(v, locale, dl);
+  return `          <details class="engagement" open>
+            <summary class="engagement-summary">
+              <span class="engagement-client">${escHtml(eng.client)}</span>
+              <span class="engagement-period">${escHtml(`${tr(eng.start)} ${DASH} ${tr(eng.end)}`)}</span>
+            </summary>
+${bulletList(eng.bullets, eng.stack, locale, dl, 'project-list engagement-list', 12)}
+          </details>`;
 }
 
-function roleBlock(role, locale, defaultLocale, copy) {
-  const tr = (v) => t(v, locale, defaultLocale);
-  const note = role.note
-    ? `\n      <div class="role-note">${escHtml(tr(role.note))}</div>`
-    : '';
+function roleBlock(role, locale, dl, copy) {
+  const tr = (v) => t(v, locale, dl);
+  const note = role.note ? `\n      <div class="role-note">${escHtml(tr(role.note))}</div>` : '';
   const engagements = role.engagements?.length
     ? `\n      <div class="engagements">
         <div class="engagements-label">${escHtml(tr(copy.clientEngagements))}</div>
-${role.engagements.map((e) => engagementBlock(e, locale, defaultLocale)).join('\n')}
+${role.engagements.map((e) => engagementBlock(e, locale, dl)).join('\n')}
       </div>`
     : '';
-  return `    <div class="role-block">
+  return `    <article class="role-block" data-reveal>
       <div class="role-header">
-        <span class="company">${escHtml(role.company)}</span>
-        <span class="dot-sep" aria-hidden="true"></span>
+        <h3 class="company">${escHtml(role.company)}</h3>
         <span class="position">${escHtml(tr(role.position))}</span>
-        <span class="period">${escHtml(period(role, locale, { dash: DASH, separator: SEP, defaultLocale }))}</span>
+        <span class="period">${escHtml(period(role, locale, { dash: DASH, separator: SEP, defaultLocale: dl }))}</span>
       </div>${note}
-${bulletList(role.bullets, role.stack, locale, defaultLocale, 'project-list', 6)}${engagements}
-    </div>`;
+${bulletList(role.bullets, role.stack, locale, dl, 'project-list', 6)}${engagements}
+    </article>`;
 }
 
-function eduBlock(edu, locale, defaultLocale) {
-  const tr = (v) => t(v, locale, defaultLocale);
-  return `    <div class="edu-block">
+function eduBlock(edu, locale, dl) {
+  const tr = (v) => t(v, locale, dl);
+  return `    <div class="edu-block" data-reveal>
       <div class="edu-head">
         <span class="school">${escHtml(edu.school)}</span>
         <span class="period">${escHtml(`${edu.start} ${DASH} ${edu.end}`)}</span>
@@ -58,42 +62,60 @@ function eduBlock(edu, locale, defaultLocale) {
     </div>`;
 }
 
-function skillCategory(group, locale, defaultLocale) {
-  const tags = group.items
-    .map((item) => `<li class="skill-tag">${escHtml(item)}</li>`)
-    .join('');
-  return `      <div class="skill-category">
-        <h3>${escHtml(t(group.category, locale, defaultLocale))}</h3>
+function skillCategory(group, locale, dl) {
+  const tags = group.items.map((i) => `<li class="skill-tag">${escHtml(i)}</li>`).join('');
+  return `      <div class="skill-category" data-reveal>
+        <h3>${escHtml(t(group.category, locale, dl))}</h3>
         <ul class="skill-tags">
           ${tags}
         </ul>
       </div>`;
 }
 
-export function renderHtml(cv, locale = cv.meta.defaultLocale) {
+function sectionTitle(iconName, label) {
+  return `<h2 class="section-title">${icon(iconName)} ${escHtml(label)}</h2>`;
+}
+
+/* ---------- document ---------- */
+
+export function renderHtml(cv, locale = cv.meta.defaultLocale, pathPrefix = '') {
   const dl = cv.meta.defaultLocale;
   const tr = (v) => t(v, locale, dl);
   const { profile, meta, copy } = cv;
   const site = meta.siteUrl;
-  const photoUrl = `${site}${profile.photo.src.replace(/^assets\//, 'assets/')}`;
+  const asset = (f) => `${pathPrefix}${f}`;
+  const canonical = locale === dl ? site : `${site}${locale}/`;
+  const photoUrl = `${site}${profile.photo.src}`;
 
-  const roles = cv.experience
-    .map((r) => roleBlock(r, locale, dl, copy))
-    .join('\n\n    <div class="dashed-divider"></div>\n\n');
-
-  const edu = cv.education
-    .map((e) => eduBlock(e, locale, dl))
-    .join('\n\n    <div class="dashed-divider"></div>\n\n');
-
-  const skills = cv.skills.map((g) => skillCategory(g, locale, dl)).join('\n');
-
-  const languages = cv.languages
-    .map((l) => `      <li class="language-item"><span class="language-name">${escHtml(tr(l.name))}</span><span class="language-level">${escHtml(tr(l.level))}</span></li>`)
+  const localeHref = (loc) => (loc === dl ? (pathPrefix || './') : `${pathPrefix}${loc}/`);
+  const langSwitch = meta.locales
+    .map((loc) => {
+      const current = loc === locale;
+      return `        <a class="lang-option${current ? ' is-current' : ''}" href="${localeHref(loc)}" hreflang="${loc}"`
+        + `${current ? ' aria-current="true"' : ''}>${loc.toUpperCase()}</a>`;
+    })
     .join('\n');
+
+  const alternates = meta.locales
+    .map((loc) => `  <link rel="alternate" hreflang="${loc}" href="${loc === dl ? site : `${site}${loc}/`}" />`)
+    .concat(`  <link rel="alternate" hreflang="x-default" href="${site}" />`)
+    .join('\n');
+
+  const roles = cv.experience.map((r) => roleBlock(r, locale, dl, copy)).join('\n\n');
+  const edu = cv.education.map((e) => eduBlock(e, locale, dl)).join('\n\n');
+  const skills = cv.skills.map((g) => skillCategory(g, locale, dl)).join('\n');
+  const languages = cv.languages
+    .map((l) => `        <li class="language-item"><span class="language-name">${escHtml(tr(l.name))}</span>`
+      + `<span class="language-level">${escHtml(tr(l.level))}</span></li>`)
+    .join('\n');
+  const contextLine = tr(profile.contextLine)
+    .map((part) => escHtml(part))
+    .join(' <span class="dot" aria-hidden="true">&middot;</span> ');
 
   const knownDescriptions = Object.entries(cv.projects.knownDescriptions)
     .map(([k, v]) => `      '${k}': '${v.replace(/\\/g, '\\\\').replace(/'/g, "\\'")}'`)
     .join(',\n');
+  const jsStr = (v) => tr(v).replace(/\\/g, '\\\\').replace(/'/g, "\\'");
 
   return `<!DOCTYPE html>
 <!--
@@ -121,21 +143,24 @@ export function renderHtml(cv, locale = cv.meta.defaultLocale) {
   <meta property="og:type" content="website" />
   <meta property="og:title" content="${escAttr(profile.name)}" />
   <meta property="og:description" content="${escAttr(tr(profile.metaDescription))}" />
-  <meta property="og:url" content="${site}" />
+  <meta property="og:url" content="${canonical}" />
   <meta property="og:image" content="${photoUrl}" />
   <meta property="og:image:width" content="240" />
   <meta property="og:image:height" content="240" />
+  <meta property="og:locale" content="${locale}" />
   <meta name="twitter:card" content="summary" />
   <meta name="theme-color" content="${meta.themeColor}" />
-  <link rel="canonical" href="${site}" />
+  <link rel="canonical" href="${canonical}" />
+${alternates}
 
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon-180.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="${asset('assets/favicon-32.png')}" />
+  <link rel="apple-touch-icon" sizes="180x180" href="${asset('assets/favicon-180.png')}" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="${asset('styles.css')}" />
 
   <script type="application/ld+json">
   {
@@ -162,7 +187,6 @@ export function renderHtml(cv, locale = cv.meta.defaultLocale) {
 
 <a href="#main-content" class="skip-link">${escHtml(tr(copy.skipLink))}</a>
 
-<!-- Navigation -->
 <nav class="topnav">
   <div class="nav-inner">
     <a href="#top" class="nav-brand">${escHtml(profile.name)}</a>
@@ -170,43 +194,37 @@ export function renderHtml(cv, locale = cv.meta.defaultLocale) {
       <div class="nav-links">
         <a href="#about">${escHtml(tr(copy.navAbout))}</a>
         <a href="#experience">${escHtml(tr(copy.navExperience))}</a>
+        <a href="#projects">${escHtml(tr(copy.navProjects))}</a>
         <a href="#skills">${escHtml(tr(copy.navSkills))}</a>
         <a href="#education">${escHtml(tr(copy.navEducation))}</a>
-        <a href="#languages">${escHtml(tr(cv.sections.languages))}</a>
-        <a href="#contact">${escHtml(tr(copy.navContact))}</a>
-        <a href="#projects">${escHtml(tr(copy.navProjects))}</a>
+        <a href="#cv">${escHtml(tr(copy.navCv))}</a>
       </div>
     </div>
-    <button id="themeToggle" type="button" class="theme-toggle" aria-label="${escAttr(tr(copy.toggleTheme))}" title="Toggle theme">
-      ${icon('moon', 'icon-moon')}
-      ${icon('sun', 'icon-sun')}
-    </button>
+    <div class="nav-tools">
+      <div class="lang-switch" role="group" aria-label="${escAttr(tr(copy.langLabel))}">
+${langSwitch}
+      </div>
+      <button id="themeToggle" type="button" class="theme-toggle" aria-label="${escAttr(tr(copy.toggleTheme))}">
+        ${icon('moon', 'icon-moon')}
+        ${icon('sun', 'icon-sun')}
+      </button>
+    </div>
   </div>
 </nav>
 
-<!-- Hero Section -->
 <header class="hero" id="top">
   <div class="hero-content">
-    <img class="hero-photo" src="${profile.photo.src}" alt="${escAttr(tr(profile.photo.alt))}" width="${profile.photo.width}" height="${profile.photo.height}" />
+    <img class="hero-photo" src="${asset(profile.photo.src)}" alt="${escAttr(tr(profile.photo.alt))}" width="${profile.photo.width}" height="${profile.photo.height}" />
     <div class="hero-text">
       <h1 class="name">${escHtml(profile.name)}</h1>
-      <div class="subtitle">${escHtml(tr(profile.role))}</div>
+      <p class="role-label">${escHtml(tr(profile.role))}</p>
       <p class="hero-tagline">${escHtml(tr(profile.tagline))}</p>
       <div class="hero-accent" aria-hidden="true"></div>
-
-      <p class="hero-context">${tr(profile.contextLine).map((part) => escHtml(part)).join(' <span class="dot" aria-hidden="true">&middot;</span> ')}</p>
-
-      <div class="contact-row">
-        <a href="mailto:${profile.email}">${icon('mail')} ${escHtml(profile.email)}</a>
-        <span class="dot" aria-hidden="true">&middot;</span>
-        <span>${icon('pin')} ${escHtml(tr(profile.location))}</span>
-      </div>
-      <div class="contact-row">
-        <a href="${profile.links.linkedin}" target="_blank" rel="noopener">${icon('linkedin')} LinkedIn</a>
-        <span class="dot" aria-hidden="true">&middot;</span>
-        <a href="${profile.links.github}" target="_blank" rel="noopener">${icon('github')} GitHub</a>
-        <span class="dot" aria-hidden="true">&middot;</span>
-        <a href="#cv" class="cv-link">${icon('file')} ${escHtml(tr(copy.viewCv))}</a>
+      <p class="hero-context">${contextLine}</p>
+      <div class="hero-actions">
+        <a href="${asset('RubenBrito-CV.pdf')}" download class="btn btn-primary">${icon('download')} ${escHtml(tr(copy.downloadCv))}</a>
+        <a href="${profile.links.linkedin}" target="_blank" rel="noopener" class="btn btn-secondary">${icon('linkedin')} LinkedIn</a>
+        <a href="${profile.links.github}" target="_blank" rel="noopener" class="btn btn-secondary">${icon('github')} GitHub</a>
       </div>
     </div>
   </div>
@@ -214,88 +232,81 @@ export function renderHtml(cv, locale = cv.meta.defaultLocale) {
 
 <main class="content" id="main-content">
 
-  <!-- About Section -->
   <section id="about">
-    <h2 class="section-title">${icon('user')} ${escHtml(tr(cv.sections.about))}</h2>
+    ${sectionTitle('user', tr(cv.sections.about))}
     <p class="lead">
       ${escHtml(tr(cv.summary))}
     </p>
   </section>
 
-  <!-- Experience Section -->
   <section id="experience">
-    <h2 class="section-title">${icon('briefcase')} ${escHtml(tr(cv.sections.experience))}</h2>
+    ${sectionTitle('briefcase', tr(cv.sections.experience))}
 
 ${roles}
   </section>
 
-  <!-- Skills Section -->
+  <section id="projects">
+    ${sectionTitle('github', tr(cv.sections.projects))}
+    <p class="section-note">${escHtml(tr(copy.projectsNote))}</p>
+
+    <div id="projects-grid" class="projects-grid">
+      <p class="projects-status">${escHtml(tr(copy.projectsLoading))}</p>
+    </div>
+    <noscript>
+      <p class="projects-status">${escHtml(tr(copy.projectsError))}
+        <a href="${profile.links.github}" target="_blank" rel="noopener">GitHub</a>.</p>
+    </noscript>
+  </section>
+
   <section id="skills">
-    <h2 class="section-title">${icon('code')} ${escHtml(tr(cv.sections.skills))}</h2>
+    ${sectionTitle('code', tr(cv.sections.skills))}
 
     <div class="skills-grid">
 ${skills}
     </div>
   </section>
 
-  <!-- Education Section -->
   <section id="education">
-    <h2 class="section-title">${icon('graduation')} ${escHtml(tr(cv.sections.education))}</h2>
+    ${sectionTitle('graduation', tr(cv.sections.education))}
 
 ${edu}
-  </section>
 
-  <!-- Languages Section -->
-  <section id="languages">
-    <h2 class="section-title">${icon('globe')} ${escHtml(tr(cv.sections.languages))}</h2>
-    <ul class="language-list">
+    <div class="languages-block" data-reveal>
+      <h3 class="subsection-title">${icon('globe')} ${escHtml(tr(cv.sections.languages))}</h3>
+      <ul class="language-list">
 ${languages}
-    </ul>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact">
-    <h2 class="section-title">${icon('mail')} ${escHtml(tr(cv.sections.contact))}</h2>
-    <p class="lead">
-      ${escHtml(tr(copy.contactLead))}
-    </p>
-    <div class="contact-buttons">
-      <a href="mailto:${profile.email}" class="btn btn-primary">
-        ${icon('mail')} ${escHtml(tr(copy.sendEmail))}
-      </a>
-      <a href="${profile.links.linkedin}" target="_blank" rel="noopener" class="btn btn-secondary">
-        ${icon('linkedin')} LinkedIn
-      </a>
-      <a href="${profile.links.github}" target="_blank" rel="noopener" class="btn btn-secondary">
-        ${icon('github')} GitHub
-      </a>
+      </ul>
     </div>
   </section>
 
-  <!-- CV Download Section -->
   <section id="cv">
-    <h2 class="section-title">${icon('file')} ${escHtml(tr(cv.sections.cv))}</h2>
-    <p class="lead">${escHtml(tr(copy.cvLead))}</p>
-    <a href="RubenBrito-CV.pdf" download class="btn btn-primary">
-      ${icon('download')} ${escHtml(tr(copy.downloadCv))}
-    </a>
-    <p class="cv-note">${escHtml(tr(copy.cvNote))}</p>
-  </section>
+    ${sectionTitle('file', tr(cv.sections.cv))}
 
-  <!-- Projects Section -->
-  <section id="projects">
-    <h2 class="section-title">${icon('github')} ${escHtml(tr(cv.sections.projects))}</h2>
-    <p class="section-note">${escHtml(tr(copy.projectsNote))}</p>
-
-    <div id="projects-grid" class="projects-grid">
-      <p class="projects-status">${escHtml(tr(copy.projectsLoading))}</p>
+    <div class="cv-panel" data-reveal>
+      <a class="cv-thumb" href="${asset('RubenBrito-CV.pdf')}" download aria-label="${escAttr(tr(copy.downloadCv))}">
+        <img src="${asset('assets/cv-preview.png')}" alt="${escAttr(tr(copy.cvPreviewAlt))}" width="1241" height="1754" loading="lazy" />
+      </a>
+      <div class="cv-side">
+        <p class="lead">${escHtml(tr(copy.contactLead))}</p>
+        <div class="contact-buttons">
+          <a href="${asset('RubenBrito-CV.pdf')}" download class="btn btn-primary">${icon('download')} ${escHtml(tr(copy.downloadCv))}</a>
+          <a href="mailto:${profile.email}" class="btn btn-secondary">${icon('mail')} ${escHtml(tr(copy.sendEmail))}</a>
+        </div>
+        <ul class="contact-list">
+          <li>${icon('mail')} <a href="mailto:${profile.email}">${escHtml(profile.email)}</a></li>
+          <li>${icon('pin')} ${escHtml(tr(profile.location))}</li>
+          <li>${icon('linkedin')} <a href="${profile.links.linkedin}" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li>${icon('github')} <a href="${profile.links.github}" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+        <p class="cv-note">${escHtml(tr(copy.cvNote))}</p>
+      </div>
     </div>
   </section>
 
 </main>
 
 <footer class="site-footer">
-  <p>&copy; <span id="footerYear">2026</span> ${escHtml(profile.name)} &middot; ${escHtml(tr(copy.builtWith))} <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a></p>
+  <p>&copy; <span id="footerYear">2026</span> ${escHtml(profile.name)} &middot; ${escHtml(tr(copy.builtWith))} LaTeX + GitHub Actions</p>
 </footer>
 
 <a href="#top" id="backToTop" class="back-to-top" aria-label="${escAttr(tr(copy.backToTop))}">
@@ -323,6 +334,18 @@ ${languages}
     });
   })();
 
+  // Keep anchor targets clear of the sticky nav, whatever height it actually is.
+  (function() {
+    var nav = document.querySelector('.topnav');
+    if (!nav) return;
+    function sync() {
+      document.documentElement.style.setProperty('--nav-height', nav.offsetHeight + 'px');
+    }
+    sync();
+    window.addEventListener('resize', sync);
+    if ('ResizeObserver' in window) new ResizeObserver(sync).observe(nav);
+  })();
+
   (function() {
     var navLinks = Array.prototype.slice.call(document.querySelectorAll('.nav-links a[href^="#"]'));
     if (!navLinks.length || !('IntersectionObserver' in window)) return;
@@ -334,18 +357,13 @@ ${languages}
       navLinks.forEach(function(link) {
         var isActive = link.getAttribute('href') === '#' + id;
         link.classList.toggle('active', isActive);
-        if (isActive) {
-          link.setAttribute('aria-current', 'true');
-        } else {
-          link.removeAttribute('aria-current');
-        }
+        if (isActive) { link.setAttribute('aria-current', 'true'); }
+        else { link.removeAttribute('aria-current'); }
       });
     }
 
     var observer = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) setActive(entry.target.id);
-      });
+      entries.forEach(function(entry) { if (entry.isIntersecting) setActive(entry.target.id); });
     }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
 
     sections.forEach(function(section) { observer.observe(section); });
@@ -355,19 +373,36 @@ ${languages}
     var btn = document.getElementById('backToTop');
     var hero = document.getElementById('top');
     if (!btn || !hero || !('IntersectionObserver' in window)) return;
-
     var heroObserver = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        btn.classList.toggle('visible', !entry.isIntersecting);
-      });
+      entries.forEach(function(entry) { btn.classList.toggle('visible', !entry.isIntersecting); });
     }, { threshold: 0 });
-
     heroObserver.observe(hero);
+  })();
+
+  // Reveal on scroll. Elements start visible in CSS and are only hidden once
+  // this runs, so the page is fully readable with JavaScript disabled.
+  (function() {
+    var items = Array.prototype.slice.call(document.querySelectorAll('[data-reveal]'));
+    if (!items.length) return;
+    var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced || !('IntersectionObserver' in window)) return;
+    document.documentElement.classList.add('reveal-ready');
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+    items.forEach(function(item) { observer.observe(item); });
   })();
 
   (function() {
     var GITHUB_USER = '${cv.projects.githubUser}';
     var MAX_REPOS = ${cv.projects.maxRepos};
+    var REQUIRE_DESCRIPTION = ${cv.projects.requireDescription};
+    var EXCLUDE = ${JSON.stringify(cv.projects.exclude)};
     var KNOWN_DESCRIPTIONS = {
 ${knownDescriptions}
     };
@@ -393,11 +428,11 @@ ${knownDescriptions}
       var grid = document.getElementById('projects-grid');
       if (!grid) return;
       if (!repos.length) {
-        grid.innerHTML = '<p class="projects-status">${tr(copy.projectsEmpty)}</p>';
+        grid.innerHTML = '<p class="projects-status">${jsStr(copy.projectsEmpty)}</p>';
         return;
       }
       grid.innerHTML = repos.map(function(repo) {
-        var desc = escapeHtml(KNOWN_DESCRIPTIONS[repo.name] || repo.description || '${tr(copy.noDescription)}');
+        var desc = escapeHtml(KNOWN_DESCRIPTIONS[repo.name] || repo.description || '${jsStr(copy.noDescription)}');
         var lang = repo.language ? '<span class="project-stat">' + escapeHtml(repo.language) + '</span>' : '';
         var stars = repo.stargazers_count > 0
           ? '<span class="project-stat">${icon('star', 'icon-star')} ' + repo.stargazers_count + '</span>'
@@ -411,19 +446,27 @@ ${knownDescriptions}
       }).join('');
     }
 
-    fetch('https://api.github.com/users/' + GITHUB_USER + '/repos?sort=pushed&per_page=10&type=owner')
+    fetch('https://api.github.com/users/' + GITHUB_USER + '/repos?sort=pushed&per_page=30&type=owner')
       .then(function(res) {
         if (!res.ok) throw new Error('GitHub API error');
         return res.json();
       })
       .then(function(data) {
-        var repos = data.filter(function(r) { return !r.fork; }).slice(0, MAX_REPOS);
+        var repos = data.filter(function(r) {
+          if (r.fork || r.archived) return false;
+          if (EXCLUDE.indexOf(r.name) !== -1) return false;
+          // A repo with no description is almost always a scratch experiment;
+          // a curated one always has it. Keeps the front page respectable
+          // without any hand-maintained list.
+          if (REQUIRE_DESCRIPTION && !r.description && !KNOWN_DESCRIPTIONS[r.name]) return false;
+          return true;
+        }).slice(0, MAX_REPOS);
         renderProjects(repos);
       })
       .catch(function() {
         var grid = document.getElementById('projects-grid');
         if (grid) {
-          grid.innerHTML = '<p class="projects-status">${tr(copy.projectsError).replace(/'/g, "\\'")} '
+          grid.innerHTML = '<p class="projects-status">${jsStr(copy.projectsError)} '
             + '<a href="https://github.com/' + GITHUB_USER + '" target="_blank" rel="noopener">GitHub</a>.</p>';
         }
       });

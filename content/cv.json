@@ -235,7 +235,7 @@
     "education":  { "en": "Education", "es": "Formación" },
     "languages":  { "en": "Languages", "es": "Idiomas" },
     "contact":    { "en": "Get in Touch", "es": "Contacto" },
-    "cv":         { "en": "Curriculum Vitae", "es": "Curriculum Vitae" },
+    "cv":         { "en": "CV & Contact", "es": "CV y contacto" },
     "projects":   { "en": "Public Projects", "es": "Proyectos públicos" }
   },
 
@@ -246,6 +246,9 @@
     "navEducation":   { "en": "Education", "es": "Formación" },
     "navContact":     { "en": "Contact", "es": "Contacto" },
     "navProjects":    { "en": "Projects", "es": "Proyectos" },
+    "navCv":          { "en": "CV", "es": "CV" },
+    "langLabel":      { "en": "Language", "es": "Idioma" },
+    "cvPreviewAlt":   { "en": "First page of the CV", "es": "Primera página del CV" },
     "skipLink":       { "en": "Skip to content", "es": "Ir al contenido" },
     "viewCv":         { "en": "View CV", "es": "Ver CV" },
     "clientEngagements": { "en": "Client engagements", "es": "Proyectos de cliente" },
