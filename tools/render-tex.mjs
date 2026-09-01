@@ -8,6 +8,7 @@ const SECTION_ICONS = {
   summary: '\\faUser',
   experience: '\\faBriefcase',
   education: '\\faGraduationCap',
+  languages: '\\faGlobe',
   skills: '\\faCode',
 };
 
@@ -23,14 +24,29 @@ function badges(stack) {
   return stack.map((s) => `\\venuebadge{${escTex(s)}}`).join(' ');
 }
 
+function engagementEntry(eng, locale, dl) {
+  const tr = (v) => t(v, locale, dl);
+  const items = tr(eng.bullets).map((b) => `        \\item ${escTex(b)}`);
+  if (eng.stack?.length) items.push(`        \\item ${badges(eng.stack)}`);
+  const dates = escTex(`${tr(eng.start)} ${DASH} ${tr(eng.end)}`);
+  return `      \\resumeEngagement{${escTex(eng.client)}}{${dates}}
+      \\resumeEngagementListStart
+${items.join('\n')}
+      \\resumeEngagementListEnd`;
+}
+
 function roleEntry(role, locale, dl, isLast) {
   const tr = (v) => t(v, locale, dl);
   const items = tr(role.bullets).map((b) => `      \\item ${escTex(b)}`);
   if (role.stack?.length) items.push(`      \\item ${badges(role.stack)}`);
+  if (role.engagements?.length) {
+    items.push(...role.engagements.map((e) => engagementEntry(e, locale, dl)));
+  }
+  const note = role.note ? `\n      {\\footnotesize\\textit{\\color{mutedGray}${escTex(tr(role.note))}}}\\vspace{0.4mm}` : '';
   const divider = isLast ? '' : '\n      \\entryDivider';
   return `  \\begin{samepage}
   \\resumeSubheading
-      {${escTex(role.company)}}{${escTex(tr(role.position))}}{${escTex(period(role, locale, { dash: DASH, separator: SEP, defaultLocale: dl }))}}
+      {${escTex(role.company)}}{${escTex(tr(role.position))}}{${escTex(period(role, locale, { dash: DASH, separator: SEP, defaultLocale: dl }))}}${note}
       \\resumeItemListStart
 ${items.join('\n')}
       \\resumeItemListEnd
@@ -67,6 +83,10 @@ export function renderTex(cv, locale = cv.meta.defaultLocale, preamblePath) {
     .join('\n\n');
 
   const edu = cv.education.map((e) => eduEntry(e, locale, dl)).join('\n\n');
+
+  const languages = cv.languages
+    .map((l) => `\\resumeItem{${escTex(t(l.name, locale, dl))}}{${escTex(t(l.level, locale, dl))}}`)
+    .join('\n');
 
   const skills = cv.skills
     .map((g) => `\\resumeItem{${escTex(t(g.category, locale, dl))}}{${escTex(g.items.join(', '))}}`)
@@ -120,6 +140,12 @@ ${sectionHead('education', tr(S.education))}
 
 ${edu}
 
+\\resumeSubHeadingListEnd
+\\vspace{-6mm}
+
+${sectionHead('languages', tr(S.languages))}
+\\resumeSubHeadingListStart
+${languages}
 \\resumeSubHeadingListEnd
 \\vspace{-6mm}
 

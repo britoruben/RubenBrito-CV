@@ -3,21 +3,45 @@ import { t, escHtml, escAttr, period } from './lib.mjs';
 const DASH = '-';
 const SEP = ' · ';
 
-function roleBlock(role, locale, defaultLocale) {
+function bulletList(source, stack, locale, defaultLocale, cls, pad) {
+  const bullets = t(source, locale, defaultLocale).slice();
+  if (stack?.length) bullets.push(`Stack: ${stack.join(', ')}.`);
+  const sp = ' '.repeat(pad);
+  return `${sp}<ul class="${cls}">\n`
+    + bullets.map((b) => `${sp}  <li>${escHtml(b)}</li>`).join('\n')
+    + `\n${sp}</ul>`;
+}
+
+function engagementBlock(eng, locale, defaultLocale, label) {
   const tr = (v) => t(v, locale, defaultLocale);
-  const bullets = tr(role.bullets).slice();
-  if (role.stack?.length) bullets.push(`Stack: ${role.stack.join(', ')}.`);
-  const items = bullets.map((b) => `        <li>${escHtml(b)}</li>`).join('\n');
+  return `        <div class="engagement">
+          <div class="engagement-head">
+            <span class="engagement-client">${escHtml(eng.client)}</span>
+            <span class="engagement-period">${escHtml(`${tr(eng.start)} ${DASH} ${tr(eng.end)}`)}</span>
+          </div>
+${bulletList(eng.bullets, eng.stack, locale, defaultLocale, 'project-list engagement-list', 10)}
+        </div>`;
+}
+
+function roleBlock(role, locale, defaultLocale, copy) {
+  const tr = (v) => t(v, locale, defaultLocale);
+  const note = role.note
+    ? `\n      <div class="role-note">${escHtml(tr(role.note))}</div>`
+    : '';
+  const engagements = role.engagements?.length
+    ? `\n      <div class="engagements">
+        <div class="engagements-label">${escHtml(tr(copy.clientEngagements))}</div>
+${role.engagements.map((e) => engagementBlock(e, locale, defaultLocale)).join('\n')}
+      </div>`
+    : '';
   return `    <div class="role-block">
       <div class="role-header">
         <span class="company">${escHtml(role.company)}</span>
         <span class="dot-sep" aria-hidden="true"></span>
         <span class="position">${escHtml(tr(role.position))}</span>
         <span class="period">${escHtml(period(role, locale, { dash: DASH, separator: SEP, defaultLocale }))}</span>
-      </div>
-      <ul class="project-list">
-${items}
-      </ul>
+      </div>${note}
+${bulletList(role.bullets, role.stack, locale, defaultLocale, 'project-list', 6)}${engagements}
     </div>`;
 }
 
@@ -53,7 +77,7 @@ export function renderHtml(cv, locale = cv.meta.defaultLocale) {
   const photoUrl = `${site}${profile.photo.src.replace(/^assets\//, 'assets/')}`;
 
   const roles = cv.experience
-    .map((r) => roleBlock(r, locale, dl))
+    .map((r) => roleBlock(r, locale, dl, copy))
     .join('\n\n    <div class="dashed-divider"></div>\n\n');
 
   const edu = cv.education
@@ -61,6 +85,10 @@ export function renderHtml(cv, locale = cv.meta.defaultLocale) {
     .join('\n\n    <div class="dashed-divider"></div>\n\n');
 
   const skills = cv.skills.map((g) => skillCategory(g, locale, dl)).join('\n');
+
+  const languages = cv.languages
+    .map((l) => `      <li class="language-item"><span class="language-name">${escHtml(tr(l.name))}</span><span class="language-level">${escHtml(tr(l.level))}</span></li>`)
+    .join('\n');
 
   const knownDescriptions = Object.entries(cv.projects.knownDescriptions)
     .map(([k, v]) => `      '${k}': '${v.replace(/\\/g, '\\\\').replace(/'/g, "\\'")}'`)
@@ -146,6 +174,7 @@ export function renderHtml(cv, locale = cv.meta.defaultLocale) {
         <a href="#experience">${escHtml(tr(copy.navExperience))}</a>
         <a href="#skills">${escHtml(tr(copy.navSkills))}</a>
         <a href="#education">${escHtml(tr(copy.navEducation))}</a>
+        <a href="#languages">${escHtml(tr(cv.sections.languages))}</a>
         <a href="#contact">${escHtml(tr(copy.navContact))}</a>
         <a href="#projects">${escHtml(tr(copy.navProjects))}</a>
       </div>
@@ -163,8 +192,11 @@ export function renderHtml(cv, locale = cv.meta.defaultLocale) {
     <img class="hero-photo" src="${profile.photo.src}" alt="${escAttr(tr(profile.photo.alt))}" width="${profile.photo.width}" height="${profile.photo.height}" />
     <div class="hero-text">
       <h1 class="name">${escHtml(profile.name)}</h1>
-      <div class="subtitle">${escHtml(tr(profile.headline))}</div>
+      <div class="subtitle">${escHtml(tr(profile.role))}</div>
+      <p class="hero-tagline">${escHtml(tr(profile.tagline))}</p>
       <div class="hero-accent" aria-hidden="true"></div>
+
+      <p class="hero-context">${tr(profile.contextLine).map((part) => escHtml(part)).join(' <span class="dot" aria-hidden="true">&middot;</span> ')}</p>
 
       <div class="contact-row">
         <a href="mailto:${profile.email}"><i aria-hidden="true" class="fa-solid fa-envelope"></i> ${escHtml(profile.email)}</a>
@@ -213,6 +245,14 @@ ${skills}
     <h2 class="section-title"><i aria-hidden="true" class="fa-solid fa-graduation-cap"></i> ${escHtml(tr(cv.sections.education))}</h2>
 
 ${edu}
+  </section>
+
+  <!-- Languages Section -->
+  <section id="languages">
+    <h2 class="section-title"><i aria-hidden="true" class="fa-solid fa-language"></i> ${escHtml(tr(cv.sections.languages))}</h2>
+    <ul class="language-list">
+${languages}
+    </ul>
   </section>
 
   <!-- Contact Section -->
