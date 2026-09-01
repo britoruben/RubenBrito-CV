@@ -86,6 +86,7 @@ export function renderHtml(cv, locale = cv.meta.defaultLocale, pathPrefix = '') 
   const asset = (f) => `${pathPrefix}${f}`;
   const canonical = locale === dl ? site : `${site}${locale}/`;
   const photoUrl = `${site}${profile.photo.src}`;
+  const ogImage = `${site}assets/og-image.png`;
 
   const localeHref = (loc) => (loc === dl ? (pathPrefix || './') : `${pathPrefix}${loc}/`);
   const langSwitch = meta.locales
@@ -144,11 +145,13 @@ export function renderHtml(cv, locale = cv.meta.defaultLocale, pathPrefix = '') 
   <meta property="og:title" content="${escAttr(profile.name)}" />
   <meta property="og:description" content="${escAttr(tr(profile.metaDescription))}" />
   <meta property="og:url" content="${canonical}" />
-  <meta property="og:image" content="${photoUrl}" />
-  <meta property="og:image:width" content="240" />
-  <meta property="og:image:height" content="240" />
+  <meta property="og:image" content="${ogImage}" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="${escAttr(profile.name)} — ${escAttr(tr(profile.role))}" />
   <meta property="og:locale" content="${locale}" />
-  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="${ogImage}" />
   <meta name="theme-color" content="${meta.themeColor}" />
   <link rel="canonical" href="${canonical}" />
 ${alternates}
@@ -284,7 +287,7 @@ ${languages}
 
     <div class="cv-panel" data-reveal>
       <a class="cv-thumb" href="${asset('RubenBrito-CV.pdf')}" download aria-label="${escAttr(tr(copy.downloadCv))}">
-        <img src="${asset('assets/cv-preview.png')}" alt="${escAttr(tr(copy.cvPreviewAlt))}" width="1241" height="1754" loading="lazy" />
+        <img src="${asset('assets/cv-preview.png')}" alt="${escAttr(tr(copy.cvPreviewAlt))}" width="497" height="702" loading="lazy" />
       </a>
       <div class="cv-side">
         <p class="lead">${escHtml(tr(copy.contactLead))}</p>

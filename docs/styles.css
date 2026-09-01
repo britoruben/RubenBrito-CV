@@ -1096,3 +1096,45 @@ section {
     max-width: 260px;
   }
 }
+
+/* Compact navigation on small screens.
+   The nav is sticky, so every pixel it takes is permanently lost from the
+   viewport. At 390px it wrapped to two rows and 118px tall - about 14% of the
+   screen, held for the whole scroll. */
+@media (max-width: 560px) {
+  .nav-inner {
+    padding: 9px 16px;
+    gap: 12px;
+  }
+
+  .nav-brand {
+    font-size: 14px;
+  }
+
+  .nav-links-wrap {
+    margin-top: 6px;
+  }
+
+  .nav-links {
+    gap: 15px;
+    font-size: 13px;
+  }
+
+  .lang-option {
+    padding: 3px 8px;
+    font-size: 11px;
+  }
+
+  .theme-toggle {
+    width: 30px;
+    height: 30px;
+  }
+
+  .hero {
+    padding-top: 36px;
+  }
+
+  .hero-content {
+    gap: 18px;
+  }
+}

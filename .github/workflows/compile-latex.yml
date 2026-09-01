@@ -44,7 +44,7 @@ jobs:
     - name: Generate PDF page-1 thumbnail
       run: |
         if [ -f "docs/RubenBrito-CV.pdf" ]; then
-          pdftoppm -png -r 150 -singlefile docs/RubenBrito-CV.pdf docs/assets/cv-preview
+          pdftoppm -png -r 60 -singlefile docs/RubenBrito-CV.pdf docs/assets/cv-preview
         fi
 
     - name: Commit and push PDF

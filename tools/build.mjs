@@ -33,7 +33,27 @@ const outputs = [
     };
   }),
   { file: 'main.tex', content: renderTex(cv, cv.meta.defaultLocale, p('tools/preamble.tex')) },
+  { file: 'docs/robots.txt', content: renderRobots(cv) },
+  { file: 'docs/sitemap.xml', content: renderSitemap(cv) },
 ];
+
+function renderRobots({ meta }) {
+  return `User-agent: *\nAllow: /\n\nSitemap: ${meta.siteUrl}sitemap.xml\n`;
+}
+
+function renderSitemap({ meta }) {
+  const today = '2026-09-01';
+  const urls = meta.locales.map((locale) => {
+    const loc = locale === meta.defaultLocale ? meta.siteUrl : `${meta.siteUrl}${locale}/`;
+    const alts = meta.locales
+      .map((l) => `    <xhtml:link rel="alternate" hreflang="${l}" href="${l === meta.defaultLocale ? meta.siteUrl : `${meta.siteUrl}${l}/`}"/>`)
+      .join('\n');
+    return `  <url>\n    <loc>${loc}</loc>\n${alts}\n    <lastmod>${today}</lastmod>\n  </url>`;
+  }).join('\n');
+  return `<?xml version="1.0" encoding="UTF-8"?>\n`
+    + `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n`
+    + `${urls}\n</urlset>\n`;
+}
 
 let stale = 0;
 for (const { file, content } of outputs) {
