@@ -5,6 +5,7 @@
   "description": "Personal CV and homepage. Content lives in content/cv.json; the website and the LaTeX CV are generated from it.",
   "scripts": {
     "build": "node tools/build.mjs",
-    "check": "node tools/build.mjs --check"
+    "check": "node tools/build.mjs --check",
+    "check:links": "node tools/check-links.mjs"
   }
 }

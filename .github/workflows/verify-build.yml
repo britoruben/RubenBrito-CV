@@ -1,8 +1,8 @@
 name: Verify generated files
 
-# docs/index.html and main.tex are generated from content/cv.json. This job
-# fails if they were edited by hand or if someone changed the content without
-# regenerating them.
+# The pages and main.tex are generated from content/cv.json. This job fails if
+# they were edited by hand, if someone changed the content without regenerating
+# them, or if a template change broke an internal link or anchor.
 
 on:
   push:
@@ -28,3 +28,6 @@ jobs:
 
       - name: Check that generated files match the content source
         run: npm run check
+
+      - name: Check internal links and anchors
+        run: npm run check:links

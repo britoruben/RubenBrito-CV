@@ -23,7 +23,9 @@ git add -A && git commit -m "Update CV" && git push
 ```
 
 `npm run check` verifies the generated files are in sync with the content
-source without writing anything; CI runs it on every push and pull request.
+source without writing anything, and `npm run check:links` verifies every
+internal link and anchor resolves. CI runs both on every push and pull
+request.
 
 Styling (`docs/styles.css`) and page structure (`tools/render-html.mjs`) are
 edited directly — only the *content* is generated.
@@ -38,25 +40,52 @@ edited directly — only the *content* is generated.
 - **tools/preamble.tex** - LaTeX preamble, macros and page setup
 - **tools/lib.mjs** - shared helpers (locale resolution, HTML/LaTeX escaping)
 - **tools/build.mjs** - build entry point (`npm run build` / `npm run check`)
+- **tools/icons.mjs** - inline SVG icons (no icon CDN)
+- **tools/check-links.mjs** - internal link and anchor checker (`npm run check:links`)
 - **docs/styles.css** - website styling (light/dark theme)
 - **docs/assets/** - personal mark and favicons
 
 ### Generated (do not edit)
 
-- **docs/index.html** - website, built from `content/cv.json`
+- **docs/index.html** - website in English, built from `content/cv.json`
+- **docs/es/index.html** - Spanish version, same source
+- **docs/robots.txt**, **docs/sitemap.xml** - built from the site URL in `content/cv.json`
 - **main.tex** - LaTeX CV, built from `content/cv.json`
 - **docs/RubenBrito-CV.pdf** - compiled by GitHub Actions from `main.tex`
+- **docs/assets/cv-preview.png** - first page of the PDF, shown as a thumbnail on the site
 
 ### Workflows
 
-- **.github/workflows/verify-build.yml** - fails if the generated files are out of sync with `content/cv.json`
+- **.github/workflows/verify-build.yml** - fails if the generated files are out of sync with `content/cv.json`, or if an internal link or anchor is broken
 - **.github/workflows/compile-latex.yml** - compiles the PDF and publishes it to `docs/` on every push to `main`
 - **.github/workflows/pr-preview-pdf.yml** - compiles the PDF on pull requests to `main` and uploads it as a review artifact
+
+## Localisation
+
+The site is bilingual. English is served at the site root, Spanish at `/es/`,
+with `hreflang` alternates and a per-locale canonical. Both come from the same
+`content/cv.json`: text fields are keyed by locale and fall back to English
+when a translation is missing, so a partial translation still builds.
+
+The PDF is English only.
 
 ## Branches
 
 Work happens on `sandbox` and reaches `main` through a pull request. `main` is
 what GitHub Pages serves.
+
+## Maintenance note: the PDF push token
+
+`compile-latex.yml` pushes the compiled PDF back to `main` using
+`secrets.PDF_PUSH_TOKEN`, a fine-grained PAT. It exists because the repository
+ruleset requiring pull requests on `main` cannot be bypassed by the default
+`GITHUB_TOKEN` - GitHub evaluates ruleset bypass against real actor identities,
+not the ephemeral Actions token.
+
+**This PAT expires.** When it does, the workflow fails with a push permission
+error that does not mention expiry. Replacing it with a GitHub App installation
+token (`actions/create-github-app-token`) added to the ruleset bypass list
+would remove the expiry, at the cost of creating and installing an App.
 
 ## GitHub Pages Setup
 
