@@ -1,0 +1,10 @@
+{
+  "name": "rubenbrito-cv",
+  "private": true,
+  "type": "module",
+  "description": "Personal CV and homepage. Content lives in content/cv.json; the website and the LaTeX CV are generated from it.",
+  "scripts": {
+    "build": "node build/build.mjs",
+    "check": "node build/build.mjs --check"
+  }
+}

@@ -8,23 +8,55 @@ Personal homepage + LaTeX CV in one repo.
 
 ## Quick Start
 
-1. Edit `main.tex` for the LaTeX CV content
-2. Edit `docs/index.html` / `docs/styles.css` for the website
-3. Push to `main` — a GitHub Actions workflow compiles `main.tex` and commits the PDF to `docs/RubenBrito-CV.pdf` automatically
-4. Opening a pull request against `main` that touches `main.tex` triggers a second workflow that compiles the PDF and uploads it as a downloadable build artifact, so it can be reviewed before merging
+All CV content lives in a single file, `content/cv.json`. The website and the
+LaTeX CV are generated from it — **never edit `docs/index.html` or `main.tex` by
+hand**, your changes will be overwritten on the next build.
+
+1. Edit `content/cv.json`
+2. Run `npm run build` — regenerates `docs/index.html` and `main.tex`
+3. Commit both the source and the generated files
+4. Push to `sandbox`, then open a pull request to `main`
 
 ```bash
+npm run build
 git add -A && git commit -m "Update CV" && git push
 ```
 
+`npm run check` verifies the generated files are in sync with the content
+source without writing anything; CI runs it on every push and pull request.
+
+Styling (`docs/styles.css`) and page structure (`build/render-html.mjs`) are
+edited directly — only the *content* is generated.
+
 ## Structure
 
-- **main.tex** - CV in LaTeX format (compiled to PDF by GitHub Actions)
-- **docs/index.html** - Personal website/portfolio, including a "Public Projects" section that fetches repos live from the GitHub API
-- **docs/styles.css** - Website styling (light/dark theme)
-- **docs/assets/** - Profile photo and favicon
-- **.github/workflows/compile-latex.yml** - Compiles the PDF and publishes it to `docs/` on every push to `main`
-- **.github/workflows/pr-preview-pdf.yml** - Compiles the PDF on pull requests to `main` and uploads it as a review artifact
+### Source (edit these)
+
+- **content/cv.json** - single source of truth for all CV content
+- **build/render-html.mjs** - website template
+- **build/render-tex.mjs** - LaTeX body template
+- **build/preamble.tex** - LaTeX preamble, macros and page setup
+- **build/lib.mjs** - shared helpers (locale resolution, HTML/LaTeX escaping)
+- **build/build.mjs** - build entry point (`npm run build` / `npm run check`)
+- **docs/styles.css** - website styling (light/dark theme)
+- **docs/assets/** - personal mark and favicons
+
+### Generated (do not edit)
+
+- **docs/index.html** - website, built from `content/cv.json`
+- **main.tex** - LaTeX CV, built from `content/cv.json`
+- **docs/RubenBrito-CV.pdf** - compiled by GitHub Actions from `main.tex`
+
+### Workflows
+
+- **.github/workflows/verify-build.yml** - fails if the generated files are out of sync with `content/cv.json`
+- **.github/workflows/compile-latex.yml** - compiles the PDF and publishes it to `docs/` on every push to `main`
+- **.github/workflows/pr-preview-pdf.yml** - compiles the PDF on pull requests to `main` and uploads it as a review artifact
+
+## Branches
+
+Work happens on `sandbox` and reaches `main` through a pull request. `main` is
+what GitHub Pages serves.
 
 ## GitHub Pages Setup
 

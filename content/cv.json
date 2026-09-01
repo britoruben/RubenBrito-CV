@@ -1,0 +1,202 @@
+{
+  "_comment": "Single source of truth for the website and the LaTeX CV. Edit this file, then run `npm run build`. Never edit docs/index.html or main.tex by hand - they are generated.",
+
+  "meta": {
+    "siteUrl": "https://britoruben.github.io/RubenBrito-CV/",
+    "defaultLocale": "en",
+    "locales": ["en"],
+    "themeColor": "#EC0000"
+  },
+
+  "profile": {
+    "name": "Rubén Brito",
+    "headline": { "en": "Software Engineer · Risk Systems & Applied AI" },
+    "pdfHeadline": { "en": "Software Engineer -- Risk Systems & Applied AI" },
+    "title": { "en": "Rubén Brito - Software Engineer" },
+    "email": "britoruben1984@gmail.com",
+    "location": { "en": "Madrid, Spain" },
+    "addressLocality": "Madrid",
+    "addressCountry": "Spain",
+    "jobTitle": { "en": "Software Engineer" },
+    "photo": {
+      "src": "assets/tangata-manu.png",
+      "alt": { "en": "Rubén Brito — personal mark (Tangata Manu)" },
+      "width": 132,
+      "height": 132
+    },
+    "links": {
+      "linkedin": "https://www.linkedin.com/in/brito-ruben/",
+      "github": "https://github.com/britoruben"
+    },
+    "metaDescription": {
+      "en": "Software Engineer with 10+ years across banking, telecom and consulting. Credit risk and scoring systems at Santander UK, plus modern AI-assisted engineering and custom LLM agents."
+    }
+  },
+
+  "summary": {
+    "en": "Software Engineer with over 10 years of experience across banking, telecom and consulting, based in Madrid. Currently at Santander UK, working on credit risk and scoring systems and leading a small development team. Delivered one of Santander's earliest Machine Learning proofs of concept in risk decisioning in 2017–2018; since 2024, deep into modern AI-assisted engineering — daily use of Claude Code, GitHub Copilot and other AI tools, plus building custom LLM agents for engineering workflows."
+  },
+
+  "experience": [
+    {
+      "company": "Santander UK",
+      "position": { "en": "Software Engineer" },
+      "start": "Nov 2019",
+      "end": { "en": "Present" },
+      "location": { "en": "United Kingdom (Remote)" },
+      "bullets": {
+        "en": [
+          "Own credit risk and scoring models; drive improvements to risk processes and controls across retail and corporate banking.",
+          "Progressed from Software Developer to leading a small development team and advising technical architects on integration and security architecture decisions.",
+          "Built an AI-assisted internal dashboard for live case monitoring, replacing manual SQL queries with real-time visibility.",
+          "Use GitHub Copilot, Claude Code, OpenAI Codex, Google Antigravity and Devin daily for development and custom CI/CD workflows on OpenShift."
+        ]
+      },
+      "stack": ["Java", "Python", "Spring", "Node.js", "Kafka", "Docker", "OpenShift"]
+    },
+    {
+      "company": "UST Global Spain",
+      "position": { "en": "Software Developer" },
+      "start": "Jan 2019",
+      "end": { "en": "Nov 2019" },
+      "location": { "en": "Madrid" },
+      "bullets": {
+        "en": [
+          "Backend and API development for Inditex's Center of Excellence, including a Kafka + Apache Flink real-time monitoring dashboard providing alerting and traceability across internal and external APIs."
+        ]
+      },
+      "stack": []
+    },
+    {
+      "company": "Gfi Spain",
+      "position": { "en": "Software Developer" },
+      "start": "Oct 2015",
+      "end": { "en": "Jan 2019" },
+      "location": { "en": "Madrid area" },
+      "bullets": {
+        "en": [
+          "Architecture department. Delivered software engineering services on external client engagements, including the Santander Global Tech and Telefónica placements below."
+        ]
+      },
+      "stack": []
+    },
+    {
+      "company": "Santander Global Tech",
+      "position": { "en": "Software Developer (external, via Gfi Spain)" },
+      "start": "Sep 2017",
+      "end": { "en": "Dec 2018" },
+      "location": { "en": "Madrid area" },
+      "bullets": {
+        "en": [
+          "Risk Department — delivered one of Santander's earliest Machine Learning proofs of concept, integrating predictive models into the risk decisioning workflow years before enterprise AI adoption became mainstream.",
+          "Developed an API exposing risk prediction functionality for sales and financial products.",
+          "Requirements analysis, architecture design and development, using Agile methodology."
+        ]
+      },
+      "stack": ["PMML", "R", "Python", "Spring Boot", "TIBCO BW 6", "IBM API Connect", "AngularJS"]
+    },
+    {
+      "company": "Telefónica",
+      "position": { "en": "Software Developer (external, via Gfi Spain)" },
+      "start": "Jan 2016",
+      "end": { "en": "Dec 2016" },
+      "location": { "en": "Madrid area" },
+      "bullets": {
+        "en": [
+          "Telco 3.0 project — implemented REST architecture in the customer retention system.",
+          "Requirements analysis and technical documentation, using Agile methodology."
+        ]
+      },
+      "stack": ["Oracle BPM", "Java Spring", "AngularJS"]
+    }
+  ],
+
+  "education": [
+    {
+      "school": "Enrique Tierno Galván",
+      "start": "2013",
+      "end": "2014",
+      "qualification": { "en": "Higher Education in Multiplatform Application Development" },
+      "note": {
+        "en": "Spanish higher vocational qualification (Ciclo Formativo de Grado Superior). One-year program: first-year credits transferred from the Web Application Development qualification below."
+      }
+    },
+    {
+      "school": "Domenico Scarlatti",
+      "start": "2011",
+      "end": "2013",
+      "qualification": { "en": "Higher Education in Web Application Development" },
+      "note": {
+        "en": "Spanish higher vocational qualification (Ciclo Formativo de Grado Superior)."
+      }
+    }
+  ],
+
+  "skills": [
+    { "category": { "en": "Languages" }, "items": ["Java", "Python", "JavaScript / Node.js", "R"] },
+    { "category": { "en": "Cloud & Platforms" }, "items": ["AWS (S3, Lambda, Athena, CloudWatch)", "Terraform", "Docker", "OpenShift"] },
+    { "category": { "en": "Data & Streaming" }, "items": ["Kafka (MSK & on-premise)", "Redis", "Oracle", "MongoDB", "SQL", "NoSQL"] },
+    { "category": { "en": "Integration & Middleware" }, "items": ["TIBCO BusinessWorks", "Oracle SOA Suite", "API Gateways (IBM API Connect/DataPower, CA)", "OAuth2 / JWT"] },
+    { "category": { "en": "Observability" }, "items": ["Kibana", "Dynatrace", "Zipkin", "Grafana"] },
+    { "category": { "en": "Testing & Quality" }, "items": ["Cucumber", "Postman", "Bruno", "JMeter", "Chaos Monkey"] },
+    { "category": { "en": "AI Coding Tools" }, "items": ["Claude Code", "GitHub Copilot", "OpenAI Codex", "Google Antigravity", "Devin"] },
+    { "category": { "en": "AI & Automation" }, "items": ["Custom LLM agents (MCP: GitHub, Jira, Confluence, SonarQube, Elasticsearch)", "LLM-based predictive modeling", "prompt/plan engineering"] },
+    { "category": { "en": "Practices" }, "items": ["Microservices architecture", "REST APIs", "Agile methodology", "ETL & data modeling", "CI/CD (GitHub Actions, Jenkins, GitLab CI)"] }
+  ],
+
+  "projects": {
+    "githubUser": "britoruben",
+    "maxRepos": 6,
+    "requireDescription": false,
+    "exclude": [],
+    "knownDescriptions": {
+      "moai": "Voice-enabled \"second brain\": your notes and tools become a navigable 3D knowledge graph, powered by Claude.",
+      "RubenBrito-CV": "This site. Personal CV & portfolio, auto-built and deployed with GitHub Actions."
+    }
+  },
+
+  "sections": {
+    "about":      { "en": "About" },
+    "experience": { "en": "Work Experience" },
+    "skills":     { "en": "Skills" },
+    "education":  { "en": "Education" },
+    "contact":    { "en": "Get in Touch" },
+    "cv":         { "en": "Curriculum Vitae" },
+    "projects":   { "en": "Public Projects" }
+  },
+
+  "copy": {
+    "navAbout":       { "en": "About" },
+    "navExperience":  { "en": "Experience" },
+    "navSkills":      { "en": "Skills" },
+    "navEducation":   { "en": "Education" },
+    "navContact":     { "en": "Contact" },
+    "navProjects":    { "en": "Projects" },
+    "skipLink":       { "en": "Skip to content" },
+    "viewCv":         { "en": "View CV" },
+    "contactLead":    { "en": "Open to conversations about software engineering and applied AI — feel free to reach out." },
+    "sendEmail":      { "en": "Send Email" },
+    "cvLead":         { "en": "Download my complete CV in PDF format." },
+    "downloadCv":     { "en": "Download CV (PDF)" },
+    "cvNote":         { "en": "Auto-generated from this repository, always up to date." },
+    "projectsNote":   { "en": "Live from GitHub — fetched on load, not hand-curated." },
+    "projectsLoading":{ "en": "Loading from GitHub…" },
+    "projectsEmpty":  { "en": "No public repositories yet." },
+    "projectsError":  { "en": "Couldn't load live data right now — see them directly on" },
+    "noDescription":  { "en": "No description yet." },
+    "builtWith":      { "en": "Built with" },
+    "backToTop":      { "en": "Back to top" },
+    "toggleTheme":    { "en": "Toggle dark mode" }
+  },
+
+  "pdf": {
+    "sections": {
+      "summary":    { "en": "Summary" },
+      "experience": { "en": "Work Experience" },
+      "education":  { "en": "Education" },
+      "skills":     { "en": "Technical Skills" }
+    },
+    "keywords": "Software Engineer, Applied AI",
+    "subject": "Software Engineer"
+  }
+}
