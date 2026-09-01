@@ -101,11 +101,6 @@ ${preamble}
 \\begin{center}
     {\\Huge\\textbf{\\color{primaryColor}${escTex(profile.name)}}}
 \\end{center}
-\\vspace{-4mm}
-
-\\begin{center}
-    {\\small\\color{mutedGray}${escTex(tr(profile.pdfHeadline))}}
-\\end{center}
 \\vspace{-3mm}
 
 \\begin{center}

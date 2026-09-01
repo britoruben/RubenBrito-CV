@@ -281,28 +281,6 @@ section:target {
   }
 }
 
-.contact-row {
-  margin-top: 10px;
-  font-size: 14px;
-  color: var(--text-muted);
-}
-
-.contact-row a {
-  color: var(--text-muted);
-}
-
-.contact-row a:hover {
-  color: var(--brand);
-}
-
-.dot {
-  margin: 0 8px;
-}
-
-.cv-link {
-  font-weight: 600;
-}
-
 /* Content */
 .content {
   max-width: var(--max-width);
@@ -391,13 +369,6 @@ section {
   color: var(--brand);
 }
 
-.dot-sep {
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: var(--text-muted);
-}
-
 .position {
   font-weight: 600;
   font-style: italic;
@@ -422,11 +393,6 @@ section {
 
 .project-list li {
   margin-bottom: 4px;
-}
-
-.dashed-divider {
-  border-top: 1px dashed var(--border);
-  margin: 4px 0;
 }
 
 /* Skills */
@@ -766,21 +732,6 @@ section {
   }
 }
 
-/* Hero tagline and context line */
-.hero-tagline {
-  margin: 8px 0 0;
-  font-size: 17px;
-  line-height: 1.5;
-  color: var(--text);
-  max-width: 34em;
-}
-
-.hero-context {
-  margin: 12px 0 0;
-  font-size: 14px;
-  color: var(--text-muted);
-}
-
 /* Note under a role heading (e.g. relocation) */
 .role-note {
   font-size: 12.5px;
@@ -807,13 +758,6 @@ section {
 
 .engagement + .engagement {
   margin-top: 12px;
-}
-
-.engagement-head {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 8px;
 }
 
 .engagement-client {

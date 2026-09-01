@@ -11,21 +11,6 @@
   "profile": {
     "name": "Rubén Brito",
     "role": { "en": "Software Engineer", "es": "Software Engineer" },
-    "tagline": {
-      "en": "Full-stack and platform engineering — credit risk systems, from API design to production.",
-      "es": "Ingeniería full-stack y de plataforma — sistemas de riesgo de crédito, del diseño de la API a producción."
-    },
-    "contextLine": {
-      "en": ["11 years across banking, telecom and consulting", "At Santander UK since 2019", "Madrid, Spain"],
-      "es": ["11 años en banca, telecomunicaciones y consultoría", "En Santander UK desde 2019", "Madrid, España"]
-    },
-    "headline": {
-      "en": "Software Engineer · Credit Risk Systems, End to End",
-      "es": "Software Engineer · Sistemas de riesgo de crédito, de principio a fin"
-    },
-    "pdfHeadline": {
-      "en": "Software Engineer -- Full-stack & platform engineering for credit risk systems"
-    },
     "title": { "en": "Rubén Brito - Software Engineer", "es": "Rubén Brito - Software Engineer" },
     "email": "britoruben1984@gmail.com",
     "location": { "en": "Madrid, Spain", "es": "Madrid, España" },
@@ -52,14 +37,14 @@
   },
 
   "summary": {
-    "en": "Software Engineer with 11 years across banking, telecom and consulting, based in Madrid. At Santander UK since 2019, on the credit risk and scoring systems behind retail and corporate lending — owned end to end, from architecture and API contracts through delivery pipelines to how the services run in production: autoscaling, resource tuning and monitoring. Delivered one of Santander's earliest Machine Learning proofs of concept in risk decisioning in 2017–2018; today, custom MCP agents take the repetitive engineering work off the team.",
-    "es": "Ingeniero de software con 11 años de experiencia en banca, telecomunicaciones y consultoría, afincado en Madrid. Desde 2019 en Santander UK, en los sistemas de riesgo de crédito y scoring que sostienen las decisiones de financiación a particulares y empresas, de los que soy responsable de principio a fin: arquitectura y contratos de API, desarrollo, pipelines de despliegue y el funcionamiento de los servicios en producción, incluidos autoescalado, ajuste de recursos y monitorización. En 2017–2018 entregué una de las primeras pruebas de concepto de Machine Learning del Santander en decisión de riesgo; hoy construyo agentes MCP a medida que le quitan al equipo el trabajo repetitivo de ingeniería."
+    "en": "Software Engineer with 11 years across banking, telecom and consulting, based in Madrid. At Santander UK since 2019, on the credit risk and scoring systems behind retail and corporate lending — owned end to end, from architecture and API contracts through delivery pipelines to how the services run in production: autoscaling, resource tuning and monitoring. Delivered one of Santander's earliest Machine Learning proofs of concept in risk decisioning in 2017–2018.",
+    "es": "Ingeniero de software con 11 años de experiencia en banca, telecomunicaciones y consultoría, afincado en Madrid. Desde 2019 en Santander UK, en los sistemas de riesgo de crédito y scoring que sostienen las decisiones de financiación a particulares y empresas, de los que soy responsable de principio a fin: arquitectura y contratos de API, desarrollo, pipelines de despliegue y el funcionamiento de los servicios en producción, incluidos autoescalado, ajuste de recursos y monitorización. En 2017–2018 entregué una de las primeras pruebas de concepto de Machine Learning del Santander en decisión de riesgo."
   },
 
   "experience": [
     {
       "company": "Santander UK",
-      "position": { "en": "Software Engineering Specialist", "es": "Software Engineering Specialist" },
+      "position": { "en": "Software Engineer", "es": "Software Engineer" },
       "start": "Nov 2019",
       "end": { "en": "Present", "es": "Actualidad" },
       "location": { "en": "United Kingdom (Remote)", "es": "Reino Unido (remoto)" },
@@ -69,18 +54,16 @@
       },
       "bullets": {
         "en": [
-          "Own credit risk and scoring models across retail and corporate banking, driving improvements to risk processes and controls.",
-          "Take the services behind them from architecture and API contracts to production on OpenShift — delivery pipelines, load balancing, autoscaling, resource tuning and monitoring — running at ~100k requests/day on the core API and 5–10k/day across supporting services.",
-          "Advise technical architects on integration and security architecture decisions.",
+          "Integrate credit risk and scoring models into retail and corporate banking systems, implementing them into production.",
+          "Take the services behind them from architecture and API contracts to production on OpenShift — delivery pipelines, load balancing, autoscaling, resource tuning and monitoring — running at ~100k requests/day on internal APIs and 5–10k/day across supporting services.",
           "Run dependency and library vulnerability management end to end: analysis, remediation, and the CI pipelines that enforce it.",
           "Built the team's internal monitoring dashboard, replacing manual SQL queries with live case visibility.",
           "Automate engineering workflows with custom MCP agents and Devin — SonarQube issue triage and Jira-driven branch creation."
         ],
         "es": [
-          "Responsable de los modelos de riesgo de crédito y scoring de banca particular y de empresas, impulsando mejoras en los procesos y controles de riesgo.",
-          "Llevo los servicios que hay detrás desde la arquitectura y los contratos de API hasta producción en OpenShift — pipelines de despliegue, balanceo de carga, autoescalado, ajuste de recursos y monitorización — con ~100k peticiones/día en la API principal y 5–10k/día en los servicios de apoyo.",
-          "Asesoro a los arquitectos técnicos en decisiones de arquitectura de integración y de seguridad.",
-          "Gestión integral de vulnerabilidades en dependencias y librerías: análisis, resolución y los pipelines de CI que lo garantizan.",
+          "Integro los modelos de riesgo de crédito y scoring de banca particular y de empresas, implementándolos en los sistemas de producción.",
+          "Llevo los servicios que hay detrás desde la arquitectura y los contratos de API hasta producción en OpenShift — pipelines de despliegue, balanceo de carga, autoescalado, ajuste de recursos y monitorización — con ~100k peticiones/día en APIs internas y 5–10k/día en los servicios de apoyo.",
+          "Gestiono de forma integral las vulnerabilidades en dependencias y librerías: análisis, resolución y los pipelines de CI que lo garantizan.",
           "Construí el panel de monitorización interno del equipo, que sustituyó las consultas SQL manuales por visibilidad de casos en tiempo real.",
           "Automatizo flujos de trabajo de ingeniería con agentes MCP propios y Devin — triaje de incidencias de SonarQube y creación de ramas a partir de Jira."
         ]
@@ -90,7 +73,7 @@
     {
       "company": "UST Global Spain",
       "position": { "en": "Software Developer", "es": "Software Developer" },
-      "start": "Jan 2019",
+      "start": { "en": "Jan 2019", "es": "Ene 2019" },
       "end": { "en": "Nov 2019", "es": "Nov 2019" },
       "location": { "en": "Madrid", "es": "Madrid" },
       "bullets": {
@@ -98,7 +81,7 @@
           "Backend and API development for Inditex's Center of Excellence, including a Kafka + Apache Flink real-time monitoring dashboard providing alerting and traceability across internal and external APIs."
         ],
         "es": [
-          "Desarrollo de backend y APIs para el Centro de Excelencia de Inditex, incluido un panel de monitorización en tiempo real con Kafka y Apache Flink que aportaba alertado y trazabilidad sobre APIs internas y externas."
+          "Desarrollo de backend y APIs para el Centro de Excelencia de Inditex, incluido un panel de monitorización en tiempo real con Kafka y Apache Flink que aportaba alertas y trazabilidad sobre APIs internas y externas."
         ]
       },
       "stack": []
@@ -121,7 +104,7 @@
       "engagements": [
         {
           "client": "Telefónica",
-          "start": "Jan 2016",
+          "start": { "en": "Jan 2016", "es": "Ene 2016" },
           "end": { "en": "Dec 2016", "es": "Dic 2016" },
           "bullets": {
             "en": [
@@ -137,7 +120,7 @@
         },
         {
           "client": "Securitas Direct",
-          "start": "Jan 2017",
+          "start": { "en": "Jan 2017", "es": "Ene 2017" },
           "end": { "en": "Aug 2017", "es": "Ago 2017" },
           "bullets": {
             "en": [
@@ -161,8 +144,8 @@
             ],
             "es": [
               "Departamento de Riesgos — entregué una de las primeras pruebas de concepto de Machine Learning del Santander en decisión de riesgo, integrando modelos predictivos en el flujo de decisión crediticia.",
-              "Mejoró la evaluación de capacidad de pago en ambos sentidos: aprobaciones que arrastraban riesgo de impago no detectado, y solicitantes solventes a los que las reglas vigentes estaban denegando.",
-              "Desarrollo de una API que exponía la funcionalidad de predicción de riesgo para productos comerciales y financieros."
+              "Mejoré la evaluación de capacidad de pago en ambos sentidos: aprobaciones que arrastraban riesgo de impago no detectado, y solicitantes solventes a los que las reglas vigentes estaban denegando.",
+              "Desarrollé una API que exponía la funcionalidad de predicción de riesgo para productos comerciales y financieros."
             ]
           },
           "stack": ["PMML", "R", "Python", "Spring Boot", "TIBCO BW 6", "IBM API Connect", "AngularJS"]
@@ -181,7 +164,7 @@
         "es": "Técnico Superior en Desarrollo de Aplicaciones Multiplataforma"
       },
       "note": {
-        "en": "Spanish higher vocational qualification (Ciclo Formativo de Grado Superior). One-year program: first-year credits transferred from the Web Application Development qualification below.",
+        "en": "Spanish higher vocational qualification (Ciclo Formativo de Grado Superior). One-year programme: first-year credits transferred from the Web Application Development qualification below.",
         "es": "Ciclo Formativo de Grado Superior. Programa de un año: primer curso convalidado desde el título de Desarrollo de Aplicaciones Web."
       }
     },
@@ -250,7 +233,6 @@
     "langLabel":      { "en": "Language", "es": "Idioma" },
     "cvPreviewAlt":   { "en": "First page of the CV", "es": "Primera página del CV" },
     "skipLink":       { "en": "Skip to content", "es": "Ir al contenido" },
-    "viewCv":         { "en": "View CV", "es": "Ver CV" },
     "clientEngagements": { "en": "Client engagements", "es": "Proyectos de cliente" },
     "contactLead":    {
       "en": "Open to conversations about software engineering and applied AI — feel free to reach out.",

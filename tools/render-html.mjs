@@ -109,9 +109,6 @@ export function renderHtml(cv, locale = cv.meta.defaultLocale, pathPrefix = '') 
     .map((l) => `        <li class="language-item"><span class="language-name">${escHtml(tr(l.name))}</span>`
       + `<span class="language-level">${escHtml(tr(l.level))}</span></li>`)
     .join('\n');
-  const contextLine = tr(profile.contextLine)
-    .map((part) => escHtml(part))
-    .join(' <span class="dot" aria-hidden="true">&middot;</span> ');
 
   const knownDescriptions = Object.entries(cv.projects.knownDescriptions)
     .map(([k, v]) => `      '${k}': '${v.replace(/\\/g, '\\\\').replace(/'/g, "\\'")}'`)
@@ -221,9 +218,7 @@ ${langSwitch}
     <div class="hero-text">
       <h1 class="name">${escHtml(profile.name)}</h1>
       <p class="role-label">${escHtml(tr(profile.role))}</p>
-      <p class="hero-tagline">${escHtml(tr(profile.tagline))}</p>
       <div class="hero-accent" aria-hidden="true"></div>
-      <p class="hero-context">${contextLine}</p>
       <div class="hero-actions">
         <a href="${asset('RubenBrito-CV.pdf')}" download class="btn btn-primary">${icon('download')} ${escHtml(tr(copy.downloadCv))}</a>
         <a href="${profile.links.linkedin}" target="_blank" rel="noopener" class="btn btn-secondary">${icon('linkedin')} LinkedIn</a>
