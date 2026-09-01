@@ -1,4 +1,5 @@
 import { t, escHtml, escAttr, period } from './lib.mjs';
+import { icon } from './icons.mjs';
 
 const DASH = '-';
 const SEP = ' · ';
@@ -134,9 +135,6 @@ export function renderHtml(cv, locale = cv.meta.defaultLocale) {
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-
   <link rel="stylesheet" href="styles.css" />
 
   <script type="application/ld+json">
@@ -180,8 +178,8 @@ export function renderHtml(cv, locale = cv.meta.defaultLocale) {
       </div>
     </div>
     <button id="themeToggle" type="button" class="theme-toggle" aria-label="${escAttr(tr(copy.toggleTheme))}" title="Toggle theme">
-      <i aria-hidden="true" class="fa-solid fa-moon icon-moon"></i>
-      <i aria-hidden="true" class="fa-solid fa-sun icon-sun"></i>
+      ${icon('moon', 'icon-moon')}
+      ${icon('sun', 'icon-sun')}
     </button>
   </div>
 </nav>
@@ -199,16 +197,16 @@ export function renderHtml(cv, locale = cv.meta.defaultLocale) {
       <p class="hero-context">${tr(profile.contextLine).map((part) => escHtml(part)).join(' <span class="dot" aria-hidden="true">&middot;</span> ')}</p>
 
       <div class="contact-row">
-        <a href="mailto:${profile.email}"><i aria-hidden="true" class="fa-solid fa-envelope"></i> ${escHtml(profile.email)}</a>
+        <a href="mailto:${profile.email}">${icon('mail')} ${escHtml(profile.email)}</a>
         <span class="dot" aria-hidden="true">&middot;</span>
-        <span><i aria-hidden="true" class="fa-solid fa-location-dot"></i> ${escHtml(tr(profile.location))}</span>
+        <span>${icon('pin')} ${escHtml(tr(profile.location))}</span>
       </div>
       <div class="contact-row">
-        <a href="${profile.links.linkedin}" target="_blank" rel="noopener"><i aria-hidden="true" class="fa-brands fa-linkedin"></i> LinkedIn</a>
+        <a href="${profile.links.linkedin}" target="_blank" rel="noopener">${icon('linkedin')} LinkedIn</a>
         <span class="dot" aria-hidden="true">&middot;</span>
-        <a href="${profile.links.github}" target="_blank" rel="noopener"><i aria-hidden="true" class="fa-brands fa-github"></i> GitHub</a>
+        <a href="${profile.links.github}" target="_blank" rel="noopener">${icon('github')} GitHub</a>
         <span class="dot" aria-hidden="true">&middot;</span>
-        <a href="#cv" class="cv-link"><i aria-hidden="true" class="fa-solid fa-file-pdf"></i> ${escHtml(tr(copy.viewCv))}</a>
+        <a href="#cv" class="cv-link">${icon('file')} ${escHtml(tr(copy.viewCv))}</a>
       </div>
     </div>
   </div>
@@ -218,7 +216,7 @@ export function renderHtml(cv, locale = cv.meta.defaultLocale) {
 
   <!-- About Section -->
   <section id="about">
-    <h2 class="section-title"><i aria-hidden="true" class="fa-solid fa-user"></i> ${escHtml(tr(cv.sections.about))}</h2>
+    <h2 class="section-title">${icon('user')} ${escHtml(tr(cv.sections.about))}</h2>
     <p class="lead">
       ${escHtml(tr(cv.summary))}
     </p>
@@ -226,14 +224,14 @@ export function renderHtml(cv, locale = cv.meta.defaultLocale) {
 
   <!-- Experience Section -->
   <section id="experience">
-    <h2 class="section-title"><i aria-hidden="true" class="fa-solid fa-briefcase"></i> ${escHtml(tr(cv.sections.experience))}</h2>
+    <h2 class="section-title">${icon('briefcase')} ${escHtml(tr(cv.sections.experience))}</h2>
 
 ${roles}
   </section>
 
   <!-- Skills Section -->
   <section id="skills">
-    <h2 class="section-title"><i aria-hidden="true" class="fa-solid fa-code"></i> ${escHtml(tr(cv.sections.skills))}</h2>
+    <h2 class="section-title">${icon('code')} ${escHtml(tr(cv.sections.skills))}</h2>
 
     <div class="skills-grid">
 ${skills}
@@ -242,14 +240,14 @@ ${skills}
 
   <!-- Education Section -->
   <section id="education">
-    <h2 class="section-title"><i aria-hidden="true" class="fa-solid fa-graduation-cap"></i> ${escHtml(tr(cv.sections.education))}</h2>
+    <h2 class="section-title">${icon('graduation')} ${escHtml(tr(cv.sections.education))}</h2>
 
 ${edu}
   </section>
 
   <!-- Languages Section -->
   <section id="languages">
-    <h2 class="section-title"><i aria-hidden="true" class="fa-solid fa-language"></i> ${escHtml(tr(cv.sections.languages))}</h2>
+    <h2 class="section-title">${icon('globe')} ${escHtml(tr(cv.sections.languages))}</h2>
     <ul class="language-list">
 ${languages}
     </ul>
@@ -257,36 +255,36 @@ ${languages}
 
   <!-- Contact Section -->
   <section id="contact">
-    <h2 class="section-title"><i aria-hidden="true" class="fa-solid fa-envelope"></i> ${escHtml(tr(cv.sections.contact))}</h2>
+    <h2 class="section-title">${icon('mail')} ${escHtml(tr(cv.sections.contact))}</h2>
     <p class="lead">
       ${escHtml(tr(copy.contactLead))}
     </p>
     <div class="contact-buttons">
       <a href="mailto:${profile.email}" class="btn btn-primary">
-        <i aria-hidden="true" class="fa-solid fa-envelope"></i> ${escHtml(tr(copy.sendEmail))}
+        ${icon('mail')} ${escHtml(tr(copy.sendEmail))}
       </a>
       <a href="${profile.links.linkedin}" target="_blank" rel="noopener" class="btn btn-secondary">
-        <i aria-hidden="true" class="fa-brands fa-linkedin"></i> LinkedIn
+        ${icon('linkedin')} LinkedIn
       </a>
       <a href="${profile.links.github}" target="_blank" rel="noopener" class="btn btn-secondary">
-        <i aria-hidden="true" class="fa-brands fa-github"></i> GitHub
+        ${icon('github')} GitHub
       </a>
     </div>
   </section>
 
   <!-- CV Download Section -->
   <section id="cv">
-    <h2 class="section-title"><i aria-hidden="true" class="fa-solid fa-file-pdf"></i> ${escHtml(tr(cv.sections.cv))}</h2>
+    <h2 class="section-title">${icon('file')} ${escHtml(tr(cv.sections.cv))}</h2>
     <p class="lead">${escHtml(tr(copy.cvLead))}</p>
     <a href="RubenBrito-CV.pdf" download class="btn btn-primary">
-      <i aria-hidden="true" class="fa-solid fa-download"></i> ${escHtml(tr(copy.downloadCv))}
+      ${icon('download')} ${escHtml(tr(copy.downloadCv))}
     </a>
     <p class="cv-note">${escHtml(tr(copy.cvNote))}</p>
   </section>
 
   <!-- Projects Section -->
   <section id="projects">
-    <h2 class="section-title"><i aria-hidden="true" class="fa-brands fa-github"></i> ${escHtml(tr(cv.sections.projects))}</h2>
+    <h2 class="section-title">${icon('github')} ${escHtml(tr(cv.sections.projects))}</h2>
     <p class="section-note">${escHtml(tr(copy.projectsNote))}</p>
 
     <div id="projects-grid" class="projects-grid">
@@ -301,7 +299,7 @@ ${languages}
 </footer>
 
 <a href="#top" id="backToTop" class="back-to-top" aria-label="${escAttr(tr(copy.backToTop))}">
-  <i aria-hidden="true" class="fa-solid fa-arrow-up"></i>
+  ${icon('arrowUp')}
 </a>
 
 <script>
@@ -402,7 +400,7 @@ ${knownDescriptions}
         var desc = escapeHtml(KNOWN_DESCRIPTIONS[repo.name] || repo.description || '${tr(copy.noDescription)}');
         var lang = repo.language ? '<span class="project-stat">' + escapeHtml(repo.language) + '</span>' : '';
         var stars = repo.stargazers_count > 0
-          ? '<span class="project-stat"><i aria-hidden="true" class="fa-solid fa-star"></i> ' + repo.stargazers_count + '</span>'
+          ? '<span class="project-stat">${icon('star', 'icon-star')} ' + repo.stargazers_count + '</span>'
           : '';
         return '<a class="project-card" href="' + repo.html_url + '" target="_blank" rel="noopener">'
           + '<h3 class="project-card-title">' + escapeHtml(repo.name) + '</h3>'

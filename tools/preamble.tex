@@ -25,13 +25,16 @@
 \usepackage{tgheros}
 \renewcommand{\familydefault}{\sfdefault}
 
-% Color definitions - Santander-inspired palette (red accent, neutral grays)
-\definecolor{primaryColor}{HTML}{EC0000}      % Santander red
-\definecolor{accentColor}{HTML}{EC0000}       % Santander red (rules)
-\definecolor{accentDark}{HTML}{B30000}        % Darker red for links (contrast)
-\definecolor{mutedGray}{HTML}{4D4D4D}         % Body/secondary text
-\definecolor{badgeBg}{HTML}{F5F5F5}           % Light gray badge background
-\definecolor{boxBg}{HTML}{FAFAFA}             % Very light gray box background
+% Color definitions - Basalto & Oceano palette, matching the website.
+% Deep ocean brand, warm sand accent, basalt neutrals. All pairs verified at
+% WCAG AA against the paper background.
+\definecolor{primaryColor}{HTML}{0E4F49}      % Deep ocean - headings, company names
+\definecolor{accentColor}{HTML}{0E4F49}       % Section rules
+\definecolor{accentDark}{HTML}{0A3B36}        % Links (darker for contrast)
+\definecolor{accentWarm}{HTML}{8A5A16}        % Warm sand - bullets, used sparingly
+\definecolor{mutedGray}{HTML}{58635F}         % Body/secondary text
+\definecolor{badgeBg}{HTML}{F2F4F2}           % Badge background
+\definecolor{boxBg}{HTML}{FBFBFA}             % Page-tone box background
 
 % Page layout
 \pagestyle{fancy}
@@ -124,7 +127,7 @@
 }
 
 \newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*,labelsep=1mm,label={},itemsep=0.3mm,topsep=0pt]}
-\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=*,labelsep=1mm,itemsep=0.3mm,label=\textcolor{primaryColor}{\textbullet}]}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=*,labelsep=1mm,itemsep=0.3mm,label=\textcolor{accentWarm}{\textbullet}]}
 \newcommand{\resumeSubHeadingListEnd}{\end{itemize}\vspace{1mm}}
 \newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-2mm}}
 
