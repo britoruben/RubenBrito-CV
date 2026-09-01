@@ -16,8 +16,7 @@ const slug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g
 
 function sectionHead(key, title) {
   return `\\phantomsection\\pdfbookmark[1]{${title}}{sec:${slug(title)}}
-\\section{${SECTION_ICONS[key]}~~\\MakeUppercase{${title}}}
-\\vspace{-0.4mm}`;
+\\section{${SECTION_ICONS[key]}~~\\MakeUppercase{${title}}}`;
 }
 
 function badges(stack) {
@@ -76,7 +75,8 @@ export function renderTex(cv, locale = cv.meta.defaultLocale, preamblePath) {
     .replace('{{PDF_AUTHOR}}', profile.name)
     .replace('{{PDF_SUBJECT}}', cv.pdf.subject)
     .replace('{{PDF_KEYWORDS}}', cv.pdf.keywords)
-    .replace('{{PDF_LANG}}', locale === 'es' ? 'es-ES' : 'en-US');
+    .replace('{{PDF_LANG}}', locale === 'es' ? 'es-ES' : 'en-US')
+    .replace('{{PDF_FOOTER_NAME}}', escTex(profile.name));
 
   const roles = cv.experience
     .map((r, i) => roleEntry(r, locale, dl, i === cv.experience.length - 1))
@@ -125,7 +125,6 @@ ${preamble}
 
 ${sectionHead('summary', tr(S.summary))}
 ${escTex(tr(cv.summary))}
-\\vspace{-4mm}
 
 ${sectionHead('experience', tr(S.experience))}
   \\resumeSubHeadingListStart
@@ -133,7 +132,6 @@ ${sectionHead('experience', tr(S.experience))}
 ${roles}
 
   \\resumeSubHeadingListEnd
-\\vspace{-6mm}
 
 ${sectionHead('education', tr(S.education))}
 \\resumeSubHeadingListStart
@@ -141,13 +139,11 @@ ${sectionHead('education', tr(S.education))}
 ${edu}
 
 \\resumeSubHeadingListEnd
-\\vspace{-6mm}
 
 ${sectionHead('languages', tr(S.languages))}
 \\resumeSubHeadingListStart
 ${languages}
 \\resumeSubHeadingListEnd
-\\vspace{-6mm}
 
 ${sectionHead('skills', tr(S.skills))}
 \\resumeSubHeadingListStart
