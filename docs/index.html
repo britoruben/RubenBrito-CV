@@ -32,7 +32,8 @@
   <meta property="og:locale" content="en" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image" content="https://britoruben.github.io/RubenBrito-CV/assets/og-image.png" />
-  <meta name="theme-color" content="#0E4F49" />
+  <meta name="theme-color" content="#FCFCFD" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0D1117" media="(prefers-color-scheme: dark)" />
   <link rel="canonical" href="https://britoruben.github.io/RubenBrito-CV/" />
   <link rel="alternate" hreflang="en" href="https://britoruben.github.io/RubenBrito-CV/" />
   <link rel="alternate" hreflang="es" href="https://britoruben.github.io/RubenBrito-CV/es/" />
@@ -43,7 +44,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="styles.css" />
 
@@ -90,7 +91,7 @@
         <a class="lang-option is-current" href="./" hreflang="en" aria-current="true">EN</a>
         <a class="lang-option" href="es/" hreflang="es">ES</a>
       </div>
-      <button id="themeToggle" type="button" class="theme-toggle" aria-label="Toggle dark mode">
+      <button id="themeToggle" type="button" class="theme-toggle" aria-label="Toggle theme">
         <svg class="icon icon-moon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
         <svg class="icon icon-sun" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
       </button>
@@ -99,12 +100,14 @@
 </nav>
 
 <header class="hero" id="top">
+  <canvas class="hero-ambient" aria-hidden="true"></canvas>
   <div class="hero-content">
     <img class="hero-photo" src="assets/tangata-manu.png" alt="Rubén Brito — personal mark (Tangata Manu)" width="96" height="96" />
     <div class="hero-text">
       <h1 class="name">Rubén Brito</h1>
       <p class="role-label">Software Engineer</p>
       <div class="hero-accent" aria-hidden="true"></div>
+      <p class="hero-positioning">Eleven years across banking, telecom and consulting. Critical systems, end to end.</p>
       <div class="hero-actions">
         <a href="RubenBrito-CV.pdf" download class="btn btn-primary"><svg class="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download CV (PDF)</a>
         <a href="https://www.linkedin.com/in/brito-ruben/" target="_blank" rel="noopener" class="btn btn-secondary"><svg class="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05a3.74 3.74 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0Z"/></svg> LinkedIn</a>
@@ -117,17 +120,25 @@
 <main class="content" id="main-content">
 
   <section id="about">
-    <h2 class="section-title"><svg class="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> About</h2>
+    <h2 class="section-title" data-reveal-word><svg class="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> About</h2>
     <p class="lead">
       Software Engineer with 11 years across banking, telecom and consulting, based in Madrid. At Santander UK since 2019, on the credit risk and scoring systems behind retail and corporate lending — owned end to end, from architecture and API contracts through delivery pipelines to how the services run in production: autoscaling, resource tuning and monitoring. Delivered one of Santander's earliest Machine Learning proofs of concept in risk decisioning in 2017–2018.
     </p>
   </section>
 
   <section id="experience">
-    <h2 class="section-title"><svg class="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg> Work Experience</h2>
+    <h2 class="section-title" data-reveal-word><svg class="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg> Work Experience</h2>
+    <div class="density-toggle" role="group" aria-label="Detailed / Concise">
+      <button type="button" class="density-option" data-density="detailed" aria-pressed="true">Detailed</button>
+      <button type="button" class="density-option" data-density="concise" aria-pressed="false">Concise</button>
+    </div>
 
+    <div class="timeline">
+      <div class="timeline-rail" aria-hidden="true"></div>
+      <div class="timeline-progress" aria-hidden="true"></div>
     <article class="role-block" data-reveal>
       <div class="role-header">
+        <span class="role-year">2019</span>
         <h3 class="company">Santander UK</h3>
         <span class="position">Software Engineer</span>
         <span class="period">Nov 2019 – Present · United Kingdom (Remote)</span>
@@ -136,15 +147,16 @@
       <ul class="project-list">
         <li>Integrate credit risk and scoring models into retail and corporate banking systems, implementing them into production.</li>
         <li>Take the services behind them from architecture and API contracts to production on OpenShift — delivery pipelines, load balancing, autoscaling, resource tuning and monitoring — running at ~100k requests/day on internal APIs and 5–10k/day across supporting services.</li>
-        <li>Run dependency and library vulnerability management end to end: analysis, remediation, and the CI pipelines that enforce it.</li>
-        <li>Built the team's internal monitoring dashboard, replacing manual SQL queries with live case visibility.</li>
-        <li>Automate engineering workflows with custom MCP agents and Devin — SonarQube issue triage and Jira-driven branch creation.</li>
-        <li>Stack: Java, Python, Spring, Node.js, Kafka, Docker, OpenShift.</li>
+        <li class="is-secondary">Run dependency and library vulnerability management end to end: analysis, remediation, and the CI pipelines that enforce it.</li>
+        <li class="is-secondary">Built the team's internal monitoring dashboard, replacing manual SQL queries with live case visibility.</li>
+        <li class="is-secondary">Automate engineering workflows with custom MCP agents and Devin — SonarQube issue triage and Jira-driven branch creation.</li>
+        <li class="is-secondary">Stack: <button type="button" class="tech-tag" data-tech="java" aria-pressed="false">Java</button>, <button type="button" class="tech-tag" data-tech="python" aria-pressed="false">Python</button>, <button type="button" class="tech-tag" data-tech="spring" aria-pressed="false">Spring</button>, <button type="button" class="tech-tag" data-tech="node-js" aria-pressed="false">Node.js</button>, <button type="button" class="tech-tag" data-tech="kafka" aria-pressed="false">Kafka</button>, <button type="button" class="tech-tag" data-tech="docker" aria-pressed="false">Docker</button>, <button type="button" class="tech-tag" data-tech="openshift" aria-pressed="false">OpenShift</button>.</li>
       </ul>
     </article>
 
     <article class="role-block" data-reveal>
       <div class="role-header">
+        <span class="role-year">2019</span>
         <h3 class="company">UST Global Spain</h3>
         <span class="position">Software Developer</span>
         <span class="period">Jan 2019 – Nov 2019 · Madrid</span>
@@ -156,6 +168,7 @@
 
     <article class="role-block" data-reveal>
       <div class="role-header">
+        <span class="role-year">2015</span>
         <h3 class="company">Gfi Spain</h3>
         <span class="position">Software Developer</span>
         <span class="period">May 2015 – Jan 2019 · Madrid area</span>
@@ -168,42 +181,44 @@
           <details class="engagement" open>
             <summary class="engagement-summary">
               <span class="engagement-client">Telefónica</span>
-              <span class="engagement-period">Jan 2016 – Dec 2016</span>
+              <span class="engagement-period">Jan 2016 – Dec 2016</span><svg class="icon engagement-chevron" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
             </summary>
             <ul class="project-list engagement-list">
               <li>Telco 3.0 — implemented REST architecture in the customer retention system.</li>
-              <li>Requirements analysis and technical documentation, using Agile methodology.</li>
-              <li>Stack: Oracle BPM, Java Spring, AngularJS.</li>
+              <li class="is-secondary">Requirements analysis and technical documentation, using Agile methodology.</li>
+              <li class="is-secondary">Stack: <button type="button" class="tech-tag" data-tech="oracle-bpm" aria-pressed="false">Oracle BPM</button>, <button type="button" class="tech-tag" data-tech="java-spring" aria-pressed="false">Java Spring</button>, <button type="button" class="tech-tag" data-tech="angularjs" aria-pressed="false">AngularJS</button>.</li>
             </ul>
           </details>
           <details class="engagement" open>
             <summary class="engagement-summary">
               <span class="engagement-client">Securitas Direct</span>
-              <span class="engagement-period">Jan 2017 – Aug 2017</span>
+              <span class="engagement-period">Jan 2017 – Aug 2017</span><svg class="icon engagement-chevron" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
             </summary>
             <ul class="project-list engagement-list">
               <li>Cross-platform iOS/Android field application for door-to-door sales teams — customer information, contracting and retention on tablet, integrated with Securitas Direct's internal APIs.</li>
-              <li>Stack: Ionic, Java, Spring, MongoDB.</li>
+              <li class="is-secondary">Stack: <button type="button" class="tech-tag" data-tech="ionic" aria-pressed="false">Ionic</button>, <button type="button" class="tech-tag" data-tech="java" aria-pressed="false">Java</button>, <button type="button" class="tech-tag" data-tech="spring" aria-pressed="false">Spring</button>, <button type="button" class="tech-tag" data-tech="mongodb" aria-pressed="false">MongoDB</button>.</li>
             </ul>
           </details>
-          <details class="engagement" open>
+          <details class="engagement is-highlight" open>
             <summary class="engagement-summary">
               <span class="engagement-client">Santander Global Tech</span>
               <span class="engagement-period">Sep 2017 – Dec 2018</span>
+              <span class="engagement-highlight-label">Signature work</span><svg class="icon engagement-chevron" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
             </summary>
             <ul class="project-list engagement-list">
               <li>Risk Department — delivered one of Santander's earliest Machine Learning proofs of concept, integrating predictive models into the credit decisioning workflow.</li>
               <li>Improved affordability assessment in both directions: surfacing approvals that carried undetected repayment risk, and identifying creditworthy applicants the existing rules were declining.</li>
-              <li>Developed an API exposing risk prediction functionality for sales and financial products.</li>
-              <li>Stack: PMML, R, Python, Spring Boot, TIBCO BW 6, IBM API Connect, AngularJS.</li>
+              <li class="is-secondary">Developed an API exposing risk prediction functionality for sales and financial products.</li>
+              <li class="is-secondary">Stack: <button type="button" class="tech-tag" data-tech="pmml" aria-pressed="false">PMML</button>, <button type="button" class="tech-tag" data-tech="r" aria-pressed="false">R</button>, <button type="button" class="tech-tag" data-tech="python" aria-pressed="false">Python</button>, <button type="button" class="tech-tag" data-tech="spring-boot" aria-pressed="false">Spring Boot</button>, <button type="button" class="tech-tag" data-tech="tibco-bw-6" aria-pressed="false">TIBCO BW 6</button>, <button type="button" class="tech-tag" data-tech="ibm-api-connect" aria-pressed="false">IBM API Connect</button>, <button type="button" class="tech-tag" data-tech="angularjs" aria-pressed="false">AngularJS</button>.</li>
             </ul>
           </details>
       </div>
     </article>
+    </div>
   </section>
 
   <section id="projects">
-    <h2 class="section-title"><svg class="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="currentColor"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2 0-.4-.5-1.6.2-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.7 1.6.2 2.8.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3Z"/></svg> Public Projects</h2>
+    <h2 class="section-title" data-reveal-word><svg class="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="currentColor"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2 0-.4-.5-1.6.2-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.7 1.6.2 2.8.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3Z"/></svg> Public Projects</h2>
     <p class="section-note">Live from GitHub — fetched on load, not hand-curated.</p>
 
     <div id="projects-grid" class="projects-grid">
@@ -216,68 +231,68 @@
   </section>
 
   <section id="skills">
-    <h2 class="section-title"><svg class="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg> Skills</h2>
+    <h2 class="section-title" data-reveal-word><svg class="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg> Skills</h2>
 
     <div class="skills-grid">
       <div class="skill-category" data-reveal>
         <h3>Languages</h3>
         <ul class="skill-tags">
-          <li class="skill-tag">Java</li><li class="skill-tag">Python</li><li class="skill-tag">JavaScript / Node.js</li><li class="skill-tag">R</li>
+          <li><button type="button" class="skill-tag is-core" data-tech="java" aria-pressed="false">Java</button></li><li><button type="button" class="skill-tag is-core" data-tech="python" aria-pressed="false">Python</button></li><li><button type="button" class="skill-tag is-core" data-tech="javascript-node-js" aria-pressed="false">JavaScript / Node.js</button></li><li><button type="button" class="skill-tag is-history" data-tech="r" aria-pressed="false">R</button></li>
         </ul>
       </div>
       <div class="skill-category" data-reveal>
         <h3>Platform &amp; Runtime</h3>
         <ul class="skill-tags">
-          <li class="skill-tag">OpenShift</li><li class="skill-tag">Docker</li><li class="skill-tag">AWS (S3, Lambda, Athena, CloudWatch)</li><li class="skill-tag">Terraform</li><li class="skill-tag">Autoscaling &amp; resource tuning</li><li class="skill-tag">Load balancing</li>
+          <li><button type="button" class="skill-tag is-core" data-tech="openshift" aria-pressed="false">OpenShift</button></li><li><button type="button" class="skill-tag is-core" data-tech="docker" aria-pressed="false">Docker</button></li><li><button type="button" class="skill-tag is-core" data-tech="autoscaling-resource-tuning" aria-pressed="false">Autoscaling &amp; resource tuning</button></li><li><button type="button" class="skill-tag" data-tech="aws-s3-lambda-athena-cloudwatch" aria-pressed="false">AWS (S3, Lambda, Athena, CloudWatch)</button></li><li><button type="button" class="skill-tag" data-tech="terraform" aria-pressed="false">Terraform</button></li><li><button type="button" class="skill-tag" data-tech="load-balancing" aria-pressed="false">Load balancing</button></li>
         </ul>
       </div>
       <div class="skill-category" data-reveal>
         <h3>Data &amp; Streaming</h3>
         <ul class="skill-tags">
-          <li class="skill-tag">Kafka (MSK &amp; on-premise)</li><li class="skill-tag">Redis</li><li class="skill-tag">Oracle</li><li class="skill-tag">MongoDB</li><li class="skill-tag">SQL</li><li class="skill-tag">NoSQL</li>
+          <li><button type="button" class="skill-tag is-core" data-tech="kafka-msk-on-premise" aria-pressed="false">Kafka (MSK &amp; on-premise)</button></li><li><button type="button" class="skill-tag is-core" data-tech="sql" aria-pressed="false">SQL</button></li><li><button type="button" class="skill-tag" data-tech="redis" aria-pressed="false">Redis</button></li><li><button type="button" class="skill-tag" data-tech="oracle" aria-pressed="false">Oracle</button></li><li><button type="button" class="skill-tag" data-tech="mongodb" aria-pressed="false">MongoDB</button></li><li><button type="button" class="skill-tag" data-tech="nosql" aria-pressed="false">NoSQL</button></li>
         </ul>
       </div>
       <div class="skill-category" data-reveal>
         <h3>Integration &amp; APIs</h3>
         <ul class="skill-tags">
-          <li class="skill-tag">REST API &amp; contract design</li><li class="skill-tag">API gateways (IBM API Connect/DataPower, CA)</li><li class="skill-tag">TIBCO BusinessWorks</li><li class="skill-tag">Oracle SOA Suite</li>
+          <li><button type="button" class="skill-tag is-core" data-tech="rest-api-contract-design" aria-pressed="false">REST API &amp; contract design</button></li><li><button type="button" class="skill-tag" data-tech="api-gateways-ibm-api-connect-datapower-ca" aria-pressed="false">API gateways (IBM API Connect/DataPower, CA)</button></li><li><button type="button" class="skill-tag is-history" data-tech="tibco-businessworks" aria-pressed="false">TIBCO BusinessWorks</button></li><li><button type="button" class="skill-tag is-history" data-tech="oracle-soa-suite" aria-pressed="false">Oracle SOA Suite</button></li>
         </ul>
       </div>
       <div class="skill-category" data-reveal>
         <h3>Security</h3>
         <ul class="skill-tags">
-          <li class="skill-tag">Dependency &amp; library vulnerability management</li><li class="skill-tag">CI security pipelines</li><li class="skill-tag">OAuth2 / JWT (client credentials, resource owner)</li>
+          <li><button type="button" class="skill-tag is-core" data-tech="dependency-library-vulnerability-management" aria-pressed="false">Dependency &amp; library vulnerability management</button></li><li><button type="button" class="skill-tag is-core" data-tech="ci-security-pipelines" aria-pressed="false">CI security pipelines</button></li><li><button type="button" class="skill-tag" data-tech="oauth2-jwt-client-credentials-resource-owner" aria-pressed="false">OAuth2 / JWT (client credentials, resource owner)</button></li>
         </ul>
       </div>
       <div class="skill-category" data-reveal>
         <h3>Observability</h3>
         <ul class="skill-tags">
-          <li class="skill-tag">Kibana</li><li class="skill-tag">Dynatrace</li><li class="skill-tag">Zipkin</li><li class="skill-tag">Grafana</li>
+          <li><button type="button" class="skill-tag is-core" data-tech="kibana" aria-pressed="false">Kibana</button></li><li><button type="button" class="skill-tag is-core" data-tech="dynatrace" aria-pressed="false">Dynatrace</button></li><li><button type="button" class="skill-tag" data-tech="zipkin" aria-pressed="false">Zipkin</button></li><li><button type="button" class="skill-tag" data-tech="grafana" aria-pressed="false">Grafana</button></li>
         </ul>
       </div>
       <div class="skill-category" data-reveal>
         <h3>Testing &amp; Quality</h3>
         <ul class="skill-tags">
-          <li class="skill-tag">Cucumber</li><li class="skill-tag">Postman</li><li class="skill-tag">Bruno</li><li class="skill-tag">JMeter</li><li class="skill-tag">Chaos Monkey</li><li class="skill-tag">SonarQube</li>
+          <li><button type="button" class="skill-tag is-core" data-tech="sonarqube" aria-pressed="false">SonarQube</button></li><li><button type="button" class="skill-tag" data-tech="cucumber" aria-pressed="false">Cucumber</button></li><li><button type="button" class="skill-tag" data-tech="postman" aria-pressed="false">Postman</button></li><li><button type="button" class="skill-tag" data-tech="bruno" aria-pressed="false">Bruno</button></li><li><button type="button" class="skill-tag" data-tech="jmeter" aria-pressed="false">JMeter</button></li><li><button type="button" class="skill-tag is-history" data-tech="chaos-monkey" aria-pressed="false">Chaos Monkey</button></li>
         </ul>
       </div>
       <div class="skill-category" data-reveal>
         <h3>AI &amp; Automation</h3>
         <ul class="skill-tags">
-          <li class="skill-tag">Custom MCP agents (GitHub, Jira, Confluence, SonarQube, Elasticsearch)</li><li class="skill-tag">Claude Code</li><li class="skill-tag">GitHub Copilot</li><li class="skill-tag">OpenAI Codex</li><li class="skill-tag">Devin</li><li class="skill-tag">LLM-based predictive modeling</li>
+          <li><button type="button" class="skill-tag is-core" data-tech="custom-mcp-agents-github-jira-confluence-sonarqube-elasticsearch" aria-pressed="false">Custom MCP agents (GitHub, Jira, Confluence, SonarQube, Elasticsearch)</button></li><li><button type="button" class="skill-tag is-core" data-tech="claude-code" aria-pressed="false">Claude Code</button></li><li><button type="button" class="skill-tag is-core" data-tech="github-copilot" aria-pressed="false">GitHub Copilot</button></li><li><button type="button" class="skill-tag is-history" data-tech="openai-codex" aria-pressed="false">OpenAI Codex</button></li><li><button type="button" class="skill-tag is-history" data-tech="devin" aria-pressed="false">Devin</button></li><li><button type="button" class="skill-tag is-history" data-tech="llm-based-predictive-modeling" aria-pressed="false">LLM-based predictive modeling</button></li>
         </ul>
       </div>
       <div class="skill-category" data-reveal>
         <h3>Practices</h3>
         <ul class="skill-tags">
-          <li class="skill-tag">Microservices architecture</li><li class="skill-tag">Agile methodology</li><li class="skill-tag">ETL &amp; data modeling</li><li class="skill-tag">CI/CD (GitHub Actions, Jenkins, GitLab CI)</li>
+          <li><button type="button" class="skill-tag is-core" data-tech="microservices-architecture" aria-pressed="false">Microservices architecture</button></li><li><button type="button" class="skill-tag is-core" data-tech="ci-cd-github-actions-jenkins-gitlab-ci" aria-pressed="false">CI/CD (GitHub Actions, Jenkins, GitLab CI)</button></li><li><button type="button" class="skill-tag" data-tech="agile-methodology" aria-pressed="false">Agile methodology</button></li><li><button type="button" class="skill-tag" data-tech="etl-data-modeling" aria-pressed="false">ETL &amp; data modeling</button></li>
         </ul>
       </div>
     </div>
   </section>
 
   <section id="education">
-    <h2 class="section-title"><svg class="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg> Education</h2>
+    <h2 class="section-title" data-reveal-word><svg class="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg> Education</h2>
 
     <div class="edu-block" data-reveal>
       <div class="edu-head">
@@ -307,7 +322,7 @@
   </section>
 
   <section id="cv">
-    <h2 class="section-title"><svg class="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v5h6"/><path d="M9 13h6"/><path d="M9 17h6"/></svg> CV &amp; Contact</h2>
+    <h2 class="section-title" data-reveal-word><svg class="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v5h6"/><path d="M9 13h6"/><path d="M9 17h6"/></svg> CV &amp; Contact</h2>
 
     <div class="cv-panel" data-reveal>
       <a class="cv-thumb" href="RubenBrito-CV.pdf" download aria-label="Download CV (PDF)">
@@ -318,14 +333,16 @@
         <div class="contact-buttons">
           <a href="RubenBrito-CV.pdf" download class="btn btn-primary"><svg class="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download CV (PDF)</a>
           <a href="mailto:britoruben1984@gmail.com" class="btn btn-secondary"><svg class="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg> Send Email</a>
+          <button type="button" id="printCvBtn" class="btn btn-tertiary">Print this page</button>
         </div>
         <ul class="contact-list">
           <li><svg class="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg> <a href="mailto:britoruben1984@gmail.com">britoruben1984@gmail.com</a></li>
-          <li><svg class="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> Madrid, Spain</li>
+          <li class="contact-location"><svg class="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> Madrid, Spain</li>
           <li><svg class="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05a3.74 3.74 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0Z"/></svg> <a href="https://www.linkedin.com/in/brito-ruben/" target="_blank" rel="noopener">LinkedIn</a></li>
           <li><svg class="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="currentColor"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2 0-.4-.5-1.6.2-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.7 1.6.2 2.8.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3Z"/></svg> <a href="https://github.com/britoruben" target="_blank" rel="noopener">GitHub</a></li>
         </ul>
         <p class="cv-note">Auto-generated from this repository, always up to date.</p>
+        <p class="cv-note">This CV as data: <a href="cv.json">JSON</a> · <a href="cv.txt">plain text</a></p>
       </div>
     </div>
   </section>
@@ -340,10 +357,26 @@
   <svg class="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
 </a>
 
+<button type="button" id="clearTechFilter" class="clear-filter" hidden>Clear filter</button>
+
 <script>
+  (function() {
+    try {
+      console.log('%c  ^   ^\n / \\ / \\', 'color:#7A5B2E;font-family:monospace;');
+      console.log('This entire site and its PDF are generated from a single content/cv.json.');
+      console.log('https://github.com/britoruben/RubenBrito-CV');
+    } catch (e) {}
+  })();
+
   (function() {
     var yearEl = document.getElementById('footerYear');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
+  })();
+
+  (function() {
+    var btn = document.getElementById('printCvBtn');
+    if (!btn) return;
+    btn.addEventListener('click', function() { window.print(); });
   })();
 
   (function() {
@@ -361,6 +394,661 @@
     });
   })();
 
+  (function() {
+    var langLinks = Array.prototype.slice.call(document.querySelectorAll('.lang-option'));
+    if (!langLinks.length) return;
+    langLinks.forEach(function(link) {
+      link.addEventListener('click', function() {
+        var hash = window.location.hash;
+        if (!hash) return;
+        var href = link.getAttribute('href');
+        if (href.indexOf('#') !== -1) return;
+        link.setAttribute('href', href + hash);
+      });
+    });
+  })();
+
+  (function() {
+    try {
+      var otherLocale = 'es';
+      var nav = navigator.language || navigator.userLanguage || '';
+      if (nav.toLowerCase().indexOf(otherLocale) !== 0) return;
+      var KEY = 'langSuggestDismissed';
+      if (localStorage.getItem(KEY) === otherLocale) return;
+      var banner = document.createElement('div');
+      banner.className = 'lang-suggest';
+      banner.setAttribute('role', 'region');
+      banner.setAttribute('aria-label', 'Cambiar');
+      var text = document.createElement('span');
+      text.textContent = 'Esta página también está en español.';
+      var actions = document.createElement('div');
+      actions.className = 'lang-suggest-actions';
+      var go = document.createElement('a');
+      go.className = 'lang-suggest-go';
+      go.href = 'es/';
+      go.textContent = 'Cambiar';
+      var dismiss = document.createElement('button');
+      dismiss.type = 'button';
+      dismiss.className = 'lang-suggest-dismiss';
+      dismiss.textContent = 'Cerrar';
+      dismiss.addEventListener('click', function() {
+        try { localStorage.setItem(KEY, otherLocale); } catch (e) {}
+        banner.remove();
+      });
+      actions.appendChild(go);
+      actions.appendChild(dismiss);
+      banner.appendChild(text);
+      banner.appendChild(actions);
+      document.querySelector('.topnav').insertAdjacentElement('afterend', banner);
+    } catch (e) {}
+  })();
+
+  (function() {
+    try {
+      var contactList = document.querySelector('.contact-list');
+      var locationLi = document.querySelector('.contact-list .contact-location');
+      if (!contactList || !locationLi) return;
+
+      var localTimeLabel = 'local time in Madrid';
+      var locale = 'en';
+      var interval = null;
+
+      function updateLocalTime() {
+        var dtf = new Intl.DateTimeFormat(locale === 'es' ? 'es-ES' : 'en-GB', {
+          timeZone: 'Europe/Madrid',
+          hour: '2-digit',
+          minute: '2-digit',
+          hour12: false
+        });
+        var timeStr = dtf.format(new Date());
+        var timeSpan = document.getElementById('localTimeValue');
+        if (timeSpan) timeSpan.textContent = timeStr;
+      }
+
+      function startInterval() {
+        if (interval) return;
+        updateLocalTime();
+        interval = setInterval(updateLocalTime, 60000);
+      }
+
+      function stopInterval() {
+        if (interval) {
+          clearInterval(interval);
+          interval = null;
+        }
+      }
+
+      document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+          stopInterval();
+        } else {
+          startInterval();
+        }
+      });
+
+      var li = document.createElement('li');
+      var span = document.createElement('span');
+      span.id = 'localTimeValue';
+      li.appendChild(span);
+      var label = document.createElement('span');
+      label.textContent = ' ' + localTimeLabel;
+      li.appendChild(label);
+      locationLi.parentNode.insertBefore(li, locationLi.nextSibling);
+
+      startInterval();
+    } catch (e) {}
+  })();
+
+  // Reflects the current view in the URL (?view=, ?tech=) via replaceState, so
+  // it never adds to the back-stack. Shared by the density toggle and the
+  // technology filter below. Both reads and writes fail silently: the URL is
+  // a convenience layer only, never a requirement.
+  function updateQueryParam(key, value) {
+    try {
+      var url = new URL(window.location.href);
+      if (value) url.searchParams.set(key, value);
+      else url.searchParams.delete(key);
+      history.replaceState(null, '', url.pathname + url.search + url.hash);
+    } catch (e) {}
+  }
+
+  function readQueryParam(key) {
+    try {
+      return new URLSearchParams(window.location.search).get(key);
+    } catch (e) {
+      return null;
+    }
+  }
+
+  (function() {
+    var group = document.querySelector('.density-toggle');
+    var section = document.getElementById('experience');
+    if (!group || !section) return;
+    var buttons = Array.prototype.slice.call(group.querySelectorAll('.density-option'));
+    if (!buttons.length) return;
+    var KEY = 'densityView';
+
+    function setView(view, persist) {
+      var concise = view === 'concise';
+      section.classList.toggle('is-concise', concise);
+      var secondary = Array.prototype.slice.call(section.querySelectorAll('.is-secondary'));
+      secondary.forEach(function(li) {
+        // A collapsed bullet can contain technology-filter buttons (the
+        // "Stack: ..." line). Pull them out of the tab order while hidden so
+        // a keyboard user never lands on an invisible control.
+        var techButtons = Array.prototype.slice.call(li.querySelectorAll('[data-tech]'));
+        if (concise) {
+          li.setAttribute('aria-hidden', 'true');
+          techButtons.forEach(function(b) { b.setAttribute('tabindex', '-1'); });
+        } else {
+          li.removeAttribute('aria-hidden');
+          techButtons.forEach(function(b) { b.removeAttribute('tabindex'); });
+        }
+      });
+      buttons.forEach(function(btn) {
+        var active = btn.getAttribute('data-density') === view;
+        btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+      if (persist) {
+        try { localStorage.setItem(KEY, view); } catch (e) {}
+      }
+      updateQueryParam('view', concise ? 'concise' : null);
+    }
+
+    buttons.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        setView(btn.getAttribute('data-density'), true);
+      });
+    });
+
+    var urlView = readQueryParam('view');
+    if (urlView === 'concise' || urlView === 'detailed') {
+      setView(urlView, false);
+    } else {
+      try {
+        var saved = localStorage.getItem(KEY);
+        if (saved === 'concise' || saved === 'detailed') setView(saved, false);
+      } catch (e) {}
+    }
+  })();
+
+  // Technology filter: clicking a skill pill or a "Stack: ..." entry marks
+  // every matching [data-tech] element across the page and dims (not
+  // removes) the role blocks, client engagements and skill categories that
+  // do not mention it. A second click on the same technology, the Clear
+  // filter button, or Escape all clear it.
+  (function() {
+    var techEls = Array.prototype.slice.call(document.querySelectorAll('[data-tech]'));
+    if (!techEls.length) return;
+    var clearBtn = document.getElementById('clearTechFilter');
+    var SCOPES = '.role-block, .engagement, .skill-category';
+    var activeSlug = null;
+
+    function applyFilter(slug, persistUrl) {
+      activeSlug = slug || null;
+      techEls.forEach(function(el) {
+        var match = !!activeSlug && el.getAttribute('data-tech') === activeSlug;
+        el.setAttribute('aria-pressed', match ? 'true' : 'false');
+        el.classList.toggle('tech-match', match);
+      });
+      var scopes = Array.prototype.slice.call(document.querySelectorAll(SCOPES));
+      scopes.forEach(function(scope) {
+        var dim = !!activeSlug && !scope.querySelector('[data-tech="' + activeSlug + '"]');
+        scope.classList.toggle('is-dimmed', dim);
+      });
+      document.body.classList.toggle('tech-filter-active', !!activeSlug);
+      if (clearBtn) clearBtn.hidden = !activeSlug;
+      if (persistUrl) updateQueryParam('tech', activeSlug);
+    }
+
+    techEls.forEach(function(el) {
+      el.addEventListener('click', function() {
+        var slug = el.getAttribute('data-tech');
+        applyFilter(activeSlug === slug ? null : slug, true);
+      });
+    });
+
+    if (clearBtn) {
+      clearBtn.addEventListener('click', function() { applyFilter(null, true); });
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && activeSlug) applyFilter(null, true);
+    });
+
+    var urlTech = readQueryParam('tech');
+    if (urlTech && techEls.some(function(el) { return el.getAttribute('data-tech') === urlTech; })) {
+      applyFilter(urlTech, false);
+    }
+  })();
+
+  // Command palette. Every command reuses a destination or an action already
+  // reachable elsewhere on the page (the nav links, the theme toggle, the PDF
+  // download, the contact links) — nothing here states anything new. Entirely
+  // JS-created: with JavaScript disabled neither the trigger nor the dialog
+  // exist in the DOM, so nothing renders and nothing breaks.
+  (function() {
+    var COMMANDS = [{"id":"about","icon":"\u003csvg class=\"icon\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" aria-hidden=\"true\" focusable=\"false\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\u003cpath d=\"M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2\"/>\u003ccircle cx=\"12\" cy=\"7\" r=\"4\"/>\u003c/svg>","label":"About","action":"jump","target":"#about"},{"id":"experience","icon":"\u003csvg class=\"icon\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" aria-hidden=\"true\" focusable=\"false\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\u003crect x=\"2\" y=\"7\" width=\"20\" height=\"14\" rx=\"2\"/>\u003cpath d=\"M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16\"/>\u003c/svg>","label":"Experience","action":"jump","target":"#experience"},{"id":"projects","icon":"\u003csvg class=\"icon\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" aria-hidden=\"true\" focusable=\"false\" fill=\"currentColor\">\u003cpath d=\"M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2 0-.4-.5-1.6.2-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.7 1.6.2 2.8.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3Z\"/>\u003c/svg>","label":"Projects","action":"jump","target":"#projects"},{"id":"skills","icon":"\u003csvg class=\"icon\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" aria-hidden=\"true\" focusable=\"false\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\u003cpolyline points=\"16 18 22 12 16 6\"/>\u003cpolyline points=\"8 6 2 12 8 18\"/>\u003c/svg>","label":"Skills","action":"jump","target":"#skills"},{"id":"education","icon":"\u003csvg class=\"icon\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" aria-hidden=\"true\" focusable=\"false\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\u003cpath d=\"M22 10 12 5 2 10l10 5 10-5Z\"/>\u003cpath d=\"M6 12v5c3 3 9 3 12 0v-5\"/>\u003c/svg>","label":"Education","action":"jump","target":"#education"},{"id":"cv","icon":"\u003csvg class=\"icon\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" aria-hidden=\"true\" focusable=\"false\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\u003cpath d=\"M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z\"/>\u003cpath d=\"M14 2v5h6\"/>\u003cpath d=\"M9 13h6\"/>\u003cpath d=\"M9 17h6\"/>\u003c/svg>","label":"CV","action":"jump","target":"#cv"},{"id":"lang","icon":"\u003csvg class=\"icon\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" aria-hidden=\"true\" focusable=\"false\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\u003ccircle cx=\"12\" cy=\"12\" r=\"10\"/>\u003cpath d=\"M2 12h20\"/>\u003cpath d=\"M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10Z\"/>\u003c/svg>","label":"Switch · ES","action":"lang","href":"es/"},{"id":"theme","icon":"\u003csvg class=\"icon icon-moon\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" aria-hidden=\"true\" focusable=\"false\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\u003cpath d=\"M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z\"/>\u003c/svg>\u003csvg class=\"icon icon-sun\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" aria-hidden=\"true\" focusable=\"false\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\u003ccircle cx=\"12\" cy=\"12\" r=\"4\"/>\u003cpath d=\"M12 2v2\"/>\u003cpath d=\"M12 20v2\"/>\u003cpath d=\"m4.93 4.93 1.41 1.41\"/>\u003cpath d=\"m17.66 17.66 1.41 1.41\"/>\u003cpath d=\"M2 12h2\"/>\u003cpath d=\"M20 12h2\"/>\u003cpath d=\"m6.34 17.66-1.41 1.41\"/>\u003cpath d=\"m19.07 4.93-1.41 1.41\"/>\u003c/svg>","label":"Toggle theme","action":"theme"},{"id":"pdf","icon":"\u003csvg class=\"icon\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" aria-hidden=\"true\" focusable=\"false\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\u003cpath d=\"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4\"/>\u003cpolyline points=\"7 10 12 15 17 10\"/>\u003cline x1=\"12\" y1=\"15\" x2=\"12\" y2=\"3\"/>\u003c/svg>","label":"Download CV (PDF)","action":"pdf"},{"id":"email","icon":"\u003csvg class=\"icon\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" aria-hidden=\"true\" focusable=\"false\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\u003crect x=\"2\" y=\"4\" width=\"20\" height=\"16\" rx=\"2\"/>\u003cpath d=\"m22 7-10 6L2 7\"/>\u003c/svg>","label":"britoruben1984@gmail.com","action":"email","value":"britoruben1984@gmail.com"},{"id":"linkedin","icon":"\u003csvg class=\"icon\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" aria-hidden=\"true\" focusable=\"false\" fill=\"currentColor\">\u003cpath d=\"M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05a3.74 3.74 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0Z\"/>\u003c/svg>","label":"LinkedIn","action":"open","href":"https://www.linkedin.com/in/brito-ruben/"},{"id":"github","icon":"\u003csvg class=\"icon\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" aria-hidden=\"true\" focusable=\"false\" fill=\"currentColor\">\u003cpath d=\"M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2 0-.4-.5-1.6.2-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.7 1.6.2 2.8.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3Z\"/>\u003c/svg>","label":"GitHub","action":"open","href":"https://github.com/britoruben"}];
+    var navTools = document.querySelector('.nav-tools');
+    if (!navTools || !COMMANDS.length) return;
+
+    var PLACEHOLDER = 'Search or jump to…';
+    var HINT = 'Open with Ctrl K';
+    var EMPTY = 'No matches';
+    var COPIED = 'Email copied';
+
+    var status = document.createElement('span');
+    status.className = 'sr-only';
+    status.setAttribute('aria-live', 'polite');
+    document.body.appendChild(status);
+
+    var trigger = document.createElement('button');
+    trigger.type = 'button';
+    trigger.className = 'palette-trigger';
+    trigger.setAttribute('aria-label', HINT);
+    trigger.innerHTML = '<kbd>Ctrl</kbd><kbd>K</kbd>';
+    navTools.insertBefore(trigger, navTools.firstChild);
+
+    var overlay = null;
+    var input = null;
+    var list = null;
+    var filtered = COMMANDS;
+    var activeIndex = 0;
+    var opener = null;
+
+    function runCommand(cmd) {
+      if (cmd.action === 'jump') {
+        window.location.hash = cmd.target;
+      } else if (cmd.action === 'theme') {
+        var themeBtn = document.getElementById('themeToggle');
+        if (themeBtn) themeBtn.click();
+      } else if (cmd.action === 'pdf') {
+        var pdfLink = document.querySelector('a[download]');
+        if (pdfLink) pdfLink.click();
+      } else if (cmd.action === 'email') {
+        try {
+          navigator.clipboard.writeText(cmd.value).then(function() {
+            status.textContent = COPIED;
+          }).catch(function() {});
+        } catch (e) {}
+      } else if (cmd.action === 'lang') {
+        var hash = window.location.hash;
+        var href = cmd.href;
+        if (hash && href.indexOf('#') === -1) href += hash;
+        window.location.href = href;
+      } else if (cmd.action === 'open') {
+        window.open(cmd.href, '_blank', 'noopener');
+      }
+      closePalette();
+    }
+
+    function renderList() {
+      list.innerHTML = '';
+      if (!filtered.length) {
+        var empty = document.createElement('li');
+        empty.className = 'palette-empty';
+        empty.textContent = EMPTY;
+        list.appendChild(empty);
+        input.removeAttribute('aria-activedescendant');
+        return;
+      }
+      filtered.forEach(function(cmd, i) {
+        var li = document.createElement('li');
+        li.id = 'palette-opt-' + cmd.id;
+        li.setAttribute('role', 'option');
+        li.className = 'palette-option' + (i === activeIndex ? ' is-active' : '');
+        li.setAttribute('aria-selected', i === activeIndex ? 'true' : 'false');
+        var iconWrap = document.createElement('span');
+        iconWrap.className = 'palette-option-icon';
+        iconWrap.innerHTML = cmd.icon; // trusted, build-time SVG from icons.mjs
+        var labelSpan = document.createElement('span');
+        labelSpan.textContent = cmd.label;
+        li.appendChild(iconWrap);
+        li.appendChild(labelSpan);
+        li.addEventListener('mousedown', function(e) {
+          e.preventDefault();
+          runCommand(cmd);
+        });
+        list.appendChild(li);
+      });
+      input.setAttribute('aria-activedescendant', 'palette-opt-' + filtered[activeIndex].id);
+    }
+
+    function setActive(i) {
+      if (!filtered.length) return;
+      activeIndex = (i + filtered.length) % filtered.length;
+      renderList();
+    }
+
+    function filterCommands(query) {
+      var q = query.trim().toLowerCase();
+      filtered = q ? COMMANDS.filter(function(c) { return c.label.toLowerCase().indexOf(q) !== -1; }) : COMMANDS;
+      activeIndex = 0;
+      renderList();
+    }
+
+    function openPalette() {
+      if (overlay) return;
+      opener = document.activeElement;
+
+      overlay = document.createElement('div');
+      overlay.className = 'palette-overlay';
+      overlay.addEventListener('mousedown', function(e) {
+        if (e.target === overlay) closePalette();
+      });
+
+      var dialog = document.createElement('div');
+      dialog.className = 'palette';
+      dialog.setAttribute('role', 'dialog');
+      dialog.setAttribute('aria-modal', 'true');
+      dialog.setAttribute('aria-label', PLACEHOLDER);
+
+      input = document.createElement('input');
+      input.type = 'text';
+      input.className = 'palette-input';
+      input.setAttribute('role', 'combobox');
+      input.setAttribute('aria-expanded', 'true');
+      input.setAttribute('aria-controls', 'paletteList');
+      input.setAttribute('aria-autocomplete', 'list');
+      input.placeholder = PLACEHOLDER;
+      input.addEventListener('input', function() { filterCommands(input.value); });
+
+      list = document.createElement('ul');
+      list.id = 'paletteList';
+      list.className = 'palette-list';
+      list.setAttribute('role', 'listbox');
+
+      dialog.appendChild(input);
+      dialog.appendChild(list);
+      overlay.appendChild(dialog);
+
+      dialog.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          e.preventDefault();
+          closePalette();
+        } else if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          setActive(activeIndex + 1);
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          setActive(activeIndex - 1);
+        } else if (e.key === 'Enter') {
+          e.preventDefault();
+          if (filtered[activeIndex]) runCommand(filtered[activeIndex]);
+        } else if (e.key === 'Tab') {
+          // The input is the only focusable control while the dialog is
+          // open, so trapping focus is just refusing to let it leave.
+          e.preventDefault();
+        }
+      });
+
+      document.body.appendChild(overlay);
+      filterCommands('');
+      input.focus();
+    }
+
+    function closePalette() {
+      if (!overlay) return;
+      overlay.remove();
+      overlay = null;
+      input = null;
+      list = null;
+      if (opener && typeof opener.focus === 'function') opener.focus();
+      opener = null;
+    }
+
+    trigger.addEventListener('click', function() {
+      if (overlay) closePalette();
+      else openPalette();
+    });
+
+    document.addEventListener('keydown', function(e) {
+      var key = e.key ? e.key.toLowerCase() : '';
+      if ((e.ctrlKey || e.metaKey) && key === 'k') {
+        e.preventDefault();
+        if (overlay) closePalette();
+        else openPalette();
+      }
+    });
+  })();
+
+  // Terminal mode: a small console overlay layered over the normal page,
+  // never replacing it as the entry point. Entirely JS-created, like the
+  // command palette above — with JavaScript disabled neither the trigger nor
+  // the dialog exist in the DOM, so nothing renders and nothing breaks.
+  // Every command's output is read from DATA, computed at generation time
+  // from the exact same content/cv.json fields the rest of the page renders
+  // — this never states a fact the page does not already state.
+  (function() {
+    var navTools = document.querySelector('.nav-tools');
+    if (!navTools) return;
+
+    var DATA = {"whoami":["Rubén Brito","Software Engineer","Eleven years across banking, telecom and consulting. Critical systems, end to end."],"experience":[{"company":"Santander UK","position":"Software Engineer","period":"Nov 2019 – Present · United Kingdom (Remote)","bullets":["Integrate credit risk and scoring models into retail and corporate banking systems, implementing them into production.","Take the services behind them from architecture and API contracts to production on OpenShift — delivery pipelines, load balancing, autoscaling, resource tuning and monitoring — running at ~100k requests/day on internal APIs and 5–10k/day across supporting services.","Run dependency and library vulnerability management end to end: analysis, remediation, and the CI pipelines that enforce it.","Built the team's internal monitoring dashboard, replacing manual SQL queries with live case visibility.","Automate engineering workflows with custom MCP agents and Devin — SonarQube issue triage and Jira-driven branch creation."],"stack":["Java","Python","Spring","Node.js","Kafka","Docker","OpenShift"],"engagements":[]},{"company":"UST Global Spain","position":"Software Developer","period":"Jan 2019 – Nov 2019 · Madrid","bullets":["Backend and API development for Inditex's Center of Excellence, including a Kafka + Apache Flink real-time monitoring dashboard providing alerting and traceability across internal and external APIs."],"stack":[],"engagements":[]},{"company":"Gfi Spain","position":"Software Developer","period":"May 2015 – Jan 2019 · Madrid area","bullets":["Joined through the final-year internship programme and hired onto the permanent staff in October 2015. Architecture department, delivering engineering work on client engagements across telecom, security and banking."],"stack":[],"engagements":[{"client":"Telefónica","period":"Jan 2016 – Dec 2016","bullets":["Telco 3.0 — implemented REST architecture in the customer retention system.","Requirements analysis and technical documentation, using Agile methodology."],"stack":["Oracle BPM","Java Spring","AngularJS"]},{"client":"Securitas Direct","period":"Jan 2017 – Aug 2017","bullets":["Cross-platform iOS/Android field application for door-to-door sales teams — customer information, contracting and retention on tablet, integrated with Securitas Direct's internal APIs."],"stack":["Ionic","Java","Spring","MongoDB"]},{"client":"Santander Global Tech","period":"Sep 2017 – Dec 2018","bullets":["Risk Department — delivered one of Santander's earliest Machine Learning proofs of concept, integrating predictive models into the credit decisioning workflow.","Improved affordability assessment in both directions: surfacing approvals that carried undetected repayment risk, and identifying creditworthy applicants the existing rules were declining.","Developed an API exposing risk prediction functionality for sales and financial products."],"stack":["PMML","R","Python","Spring Boot","TIBCO BW 6","IBM API Connect","AngularJS"]}]}],"skills":[{"category":"Languages","items":["Java","Python","JavaScript / Node.js","R"]},{"category":"Platform & Runtime","items":["OpenShift","Docker","AWS (S3, Lambda, Athena, CloudWatch)","Terraform","Autoscaling & resource tuning","Load balancing"]},{"category":"Data & Streaming","items":["Kafka (MSK & on-premise)","Redis","Oracle","MongoDB","SQL","NoSQL"]},{"category":"Integration & APIs","items":["REST API & contract design","API gateways (IBM API Connect/DataPower, CA)","TIBCO BusinessWorks","Oracle SOA Suite"]},{"category":"Security","items":["Dependency & library vulnerability management","CI security pipelines","OAuth2 / JWT (client credentials, resource owner)"]},{"category":"Observability","items":["Kibana","Dynatrace","Zipkin","Grafana"]},{"category":"Testing & Quality","items":["Cucumber","Postman","Bruno","JMeter","Chaos Monkey","SonarQube"]},{"category":"AI & Automation","items":["Custom MCP agents (GitHub, Jira, Confluence, SonarQube, Elasticsearch)","Claude Code","GitHub Copilot","OpenAI Codex","Devin","LLM-based predictive modeling"]},{"category":"Practices","items":["Microservices architecture","Agile methodology","ETL & data modeling","CI/CD (GitHub Actions, Jenkins, GitLab CI)"]}],"projectsNote":"Live from GitHub — fetched on load, not hand-curated.","githubUrl":"https://github.com/britoruben","contact":{"email":"britoruben1984@gmail.com","location":"Madrid, Spain","linkedin":"https://www.linkedin.com/in/brito-ruben/","github":"https://github.com/britoruben"}};
+    var COMMANDS = ['help', 'whoami', 'experience', 'skills', 'projects', 'cv', 'contact', 'clear', 'exit'];
+    var OPEN_LABEL = 'Terminal mode';
+    var HINT = 'type help';
+    var UNKNOWN = 'Unknown command. Try help.';
+    var CLOSE_LABEL = 'Close terminal';
+    var CV_LABEL = 'Download CV (PDF)';
+    var STACK_LABEL = 'Stack';
+    var EMAIL_LABEL = 'Email';
+    var LOCATION_LABEL = 'Location';
+
+    var trigger = document.createElement('button');
+    trigger.type = 'button';
+    trigger.className = 'terminal-trigger';
+    trigger.setAttribute('aria-label', OPEN_LABEL);
+    trigger.innerHTML = '<kbd>~</kbd>';
+    navTools.appendChild(trigger);
+
+    var overlay = null;
+    var output = null;
+    var input = null;
+    var closeBtn = null;
+    var opener = null;
+    var history = [];
+    var histIndex = 0;
+
+    function isEditable(el) {
+      if (!el) return false;
+      var tag = el.tagName;
+      return tag === 'INPUT' || tag === 'TEXTAREA' || el.isContentEditable;
+    }
+
+    function scrollOutput() {
+      output.scrollTop = output.scrollHeight;
+    }
+
+    function printLine(text) {
+      var line = document.createElement('div');
+      line.className = 'terminal-line';
+      line.textContent = text;
+      output.appendChild(line);
+    }
+
+    function printEcho(raw) {
+      var line = document.createElement('div');
+      line.className = 'terminal-line terminal-line-echo';
+      var p = document.createElement('span');
+      p.className = 'terminal-prompt-inline';
+      p.setAttribute('aria-hidden', 'true');
+      p.textContent = '> ';
+      line.appendChild(p);
+      line.appendChild(document.createTextNode(raw));
+      output.appendChild(line);
+    }
+
+    function runCommand(raw) {
+      printEcho(raw);
+      var cmd = raw.trim();
+      if (cmd) {
+        history.push(raw);
+        histIndex = history.length;
+      }
+      var key = cmd.toLowerCase();
+      if (!cmd) {
+        // empty line: nothing to run
+      } else if (key === 'help') {
+        printLine(COMMANDS.join(', '));
+      } else if (key === 'whoami') {
+        DATA.whoami.forEach(function(line) { printLine(line); });
+      } else if (key === 'experience') {
+        DATA.experience.forEach(function(role, i) {
+          if (i > 0) printLine('');
+          printLine(role.company + ' - ' + role.position + ' (' + role.period + ')');
+          role.bullets.forEach(function(b) { printLine('- ' + b); });
+          if (role.stack.length) printLine(STACK_LABEL + ': ' + role.stack.join(', '));
+          role.engagements.forEach(function(eng) {
+            printLine('  ' + eng.client + ' (' + eng.period + ')');
+            eng.bullets.forEach(function(b) { printLine('  - ' + b); });
+            if (eng.stack.length) printLine('  ' + STACK_LABEL + ': ' + eng.stack.join(', '));
+          });
+        });
+      } else if (key === 'skills') {
+        DATA.skills.forEach(function(g) { printLine(g.category + ': ' + g.items.join(', ')); });
+      } else if (key === 'projects') {
+        printLine(DATA.projectsNote);
+        printLine(DATA.githubUrl);
+      } else if (key === 'cv') {
+        printLine(CV_LABEL);
+        var pdfLink = document.querySelector('a[download]');
+        if (pdfLink) pdfLink.click();
+      } else if (key === 'contact') {
+        printLine(EMAIL_LABEL + ': ' + DATA.contact.email);
+        printLine(LOCATION_LABEL + ': ' + DATA.contact.location);
+        printLine('LinkedIn: ' + DATA.contact.linkedin);
+        printLine('GitHub: ' + DATA.contact.github);
+      } else if (key === 'clear') {
+        output.innerHTML = '';
+      } else if (key === 'exit') {
+        closeTerminal();
+        return;
+      } else {
+        printLine(UNKNOWN);
+      }
+      scrollOutput();
+    }
+
+    function openTerminal() {
+      if (overlay) return;
+      opener = document.activeElement;
+
+      overlay = document.createElement('div');
+      overlay.className = 'terminal-overlay';
+      overlay.addEventListener('mousedown', function(e) {
+        if (e.target === overlay) closeTerminal();
+      });
+
+      var dialog = document.createElement('div');
+      dialog.className = 'terminal';
+      dialog.setAttribute('role', 'dialog');
+      dialog.setAttribute('aria-modal', 'true');
+      dialog.setAttribute('aria-label', OPEN_LABEL);
+
+      var header = document.createElement('div');
+      header.className = 'terminal-header';
+      var title = document.createElement('span');
+      title.className = 'terminal-title';
+      title.textContent = OPEN_LABEL;
+      closeBtn = document.createElement('button');
+      closeBtn.type = 'button';
+      closeBtn.className = 'terminal-close';
+      closeBtn.setAttribute('aria-label', CLOSE_LABEL);
+      closeBtn.textContent = String.fromCharCode(215);
+      closeBtn.addEventListener('click', closeTerminal);
+      header.appendChild(title);
+      header.appendChild(closeBtn);
+
+      output = document.createElement('div');
+      output.className = 'terminal-output';
+      output.setAttribute('role', 'log');
+      output.setAttribute('aria-live', 'polite');
+
+      var inputRow = document.createElement('div');
+      inputRow.className = 'terminal-input-row';
+      var promptEl = document.createElement('span');
+      promptEl.className = 'terminal-prompt-inline';
+      promptEl.setAttribute('aria-hidden', 'true');
+      promptEl.textContent = '>';
+      input = document.createElement('input');
+      input.type = 'text';
+      input.className = 'terminal-input';
+      input.setAttribute('aria-label', OPEN_LABEL);
+      input.placeholder = HINT;
+      input.setAttribute('autocomplete', 'off');
+      input.setAttribute('spellcheck', 'false');
+      inputRow.appendChild(promptEl);
+      inputRow.appendChild(input);
+
+      dialog.appendChild(header);
+      dialog.appendChild(output);
+      dialog.appendChild(inputRow);
+      overlay.appendChild(dialog);
+
+      input.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          var val = input.value;
+          input.value = '';
+          runCommand(val);
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          if (histIndex > 0) {
+            histIndex -= 1;
+            input.value = history[histIndex];
+          }
+        } else if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          if (histIndex < history.length - 1) {
+            histIndex += 1;
+            input.value = history[histIndex];
+          } else {
+            histIndex = history.length;
+            input.value = '';
+          }
+        }
+      });
+
+      dialog.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          e.preventDefault();
+          closeTerminal();
+        } else if (e.key === 'Tab') {
+          e.preventDefault();
+          if (document.activeElement === input) closeBtn.focus();
+          else input.focus();
+        }
+      });
+
+      document.body.appendChild(overlay);
+      input.focus();
+    }
+
+    function closeTerminal() {
+      if (!overlay) return;
+      overlay.remove();
+      overlay = null;
+      output = null;
+      input = null;
+      closeBtn = null;
+      if (opener && typeof opener.focus === 'function') opener.focus();
+      opener = null;
+    }
+
+    trigger.addEventListener('click', function() {
+      if (overlay) closeTerminal();
+      else openTerminal();
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === '~' && !isEditable(e.target)) {
+        e.preventDefault();
+        if (overlay) closeTerminal();
+        else openTerminal();
+      }
+    });
+  })();
+
   // Keep anchor targets clear of the sticky nav, whatever height it actually is.
   (function() {
     var nav = document.querySelector('.topnav');
@@ -371,6 +1059,173 @@
     sync();
     window.addEventListener('resize', sync);
     if ('ResizeObserver' in window) new ResizeObserver(sync).observe(nav);
+  })();
+
+  // Ambient contour-line background for the hero only: canvas 2D, no
+  // library. .hero provides the positioning context and clipped overflow;
+  // this layer sits behind .hero-content and never receives pointer events.
+  // The canvas ships empty in the generated markup, so with JavaScript
+  // disabled — or if anything here bails out early — the hero looks exactly
+  // as it does without this script.
+  (function() {
+    var hero = document.getElementById('top');
+    var canvas = hero ? hero.querySelector('.hero-ambient') : null;
+    if (!hero || !canvas || !canvas.getContext) return;
+    var ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    var LINE_COUNT = 10;
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var width = 0;
+    var height = 0;
+    var elapsed = 0;
+    var lastTime = null;
+    var rafId = null;
+
+    // Subtle pointer-reactive parallax: driftX/driftY ease toward whatever
+    // the pointer last set as a target while over .hero, and ease back to 0
+    // on mouseleave. Only frame() ever advances them, so with reduced motion
+    // (frame() never runs) they stay at 0 and draw() below is a no-op change
+    // from before this feature existed.
+    var DRIFT_MAX = 14; // px of offset at the hero's edge, desktop scale
+    var DRIFT_EASE = 0.06;
+    var driftX = 0;
+    var driftY = 0;
+    var driftTargetX = 0;
+    var driftTargetY = 0;
+
+    var lines = [];
+    for (var i = 0; i < LINE_COUNT; i++) {
+      lines.push({
+        baseY: (i + 0.5) / LINE_COUNT,
+        amp1: 10 + (i % 4) * 6,
+        freq1: 0.006 + (i % 3) * 0.0018,
+        phase1: i * 0.9,
+        speed1: 0.00002 + (i % 5) * 0.000006,
+        amp2: 5 + (i % 3) * 4,
+        freq2: 0.014 + (i % 4) * 0.003,
+        phase2: i * 1.7,
+        speed2: -0.000015 - (i % 4) * 0.000005
+      });
+    }
+
+    // Resolved from the current theme rather than read from the CSS custom
+    // property, so a stalled/backgrounded-tab redraw or a toggle mid-loop
+    // never has to touch the DOM more than the one click listener below.
+    function strokeRgb() {
+      return document.documentElement.getAttribute('data-theme') === 'dark' ? '79, 192, 174' : '14, 79, 73';
+    }
+
+    function draw(t) {
+      if (!width || !height) return;
+      ctx.clearRect(0, 0, width, height);
+      var rgb = strokeRgb();
+      var step = 6;
+      lines.forEach(function(line, idx) {
+        var alpha = 0.05 + (idx % 3) * 0.02;
+        ctx.beginPath();
+        for (var x = 0; x <= width; x += step) {
+          var y = line.baseY * height
+            + Math.sin(x * line.freq1 + line.phase1 + t * line.speed1 + driftX * 0.01) * line.amp1
+            + Math.sin(x * line.freq2 + line.phase2 + t * line.speed2 - driftX * 0.008) * line.amp2
+            + driftY * (0.4 + (idx % 3) * 0.3);
+          if (x === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+        }
+        ctx.strokeStyle = 'rgba(' + rgb + ', ' + alpha + ')';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      });
+    }
+
+    function resize() {
+      var rect = hero.getBoundingClientRect();
+      width = Math.max(1, Math.round(rect.width));
+      height = Math.max(1, Math.round(rect.height));
+      canvas.width = Math.round(width * dpr);
+      canvas.height = Math.round(height * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      draw(elapsed);
+    }
+
+    function frame(now) {
+      if (lastTime === null) lastTime = now;
+      var dt = Math.min(now - lastTime, 100);
+      lastTime = now;
+      elapsed += dt;
+      driftX += (driftTargetX - driftX) * DRIFT_EASE;
+      driftY += (driftTargetY - driftY) * DRIFT_EASE;
+      draw(elapsed);
+      rafId = requestAnimationFrame(frame);
+    }
+
+    function startLoop() {
+      if (reduced || rafId !== null) return;
+      lastTime = null;
+      rafId = requestAnimationFrame(frame);
+    }
+
+    function stopLoop() {
+      if (rafId !== null) {
+        cancelAnimationFrame(rafId);
+        rafId = null;
+      }
+    }
+
+    var heroVisible = true;
+    var pageVisible = !document.hidden;
+
+    function sync() {
+      if (reduced) return;
+      if (heroVisible && pageVisible) startLoop(); else stopLoop();
+    }
+
+    resize();
+
+    if ('ResizeObserver' in window) {
+      new ResizeObserver(resize).observe(hero);
+    } else {
+      window.addEventListener('resize', resize);
+    }
+
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) { heroVisible = entry.isIntersecting; });
+        sync();
+      }, { threshold: 0 }).observe(hero);
+    }
+
+    document.addEventListener('visibilitychange', function() {
+      pageVisible = !document.hidden;
+      sync();
+    });
+
+    var themeBtn = document.getElementById('themeToggle');
+    if (themeBtn) themeBtn.addEventListener('click', function() { draw(elapsed); });
+
+    // "The page notices you": the lines drift very slightly toward the
+    // pointer while it's over the hero, and ease back to rest on leave.
+    // Scoped to .hero rather than window, so it never fires on touch
+    // devices (no mousemove there) and never fights the resize/visibility
+    // pause logic above -- driftX/driftY simply stop advancing whenever
+    // frame() isn't running.
+    hero.addEventListener('mousemove', function(e) {
+      var rect = hero.getBoundingClientRect();
+      if (!rect.width || !rect.height) return;
+      var nx = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+      var ny = ((e.clientY - rect.top) / rect.height) * 2 - 1;
+      driftTargetX = nx * DRIFT_MAX;
+      driftTargetY = ny * DRIFT_MAX;
+    });
+    hero.addEventListener('mouseleave', function() {
+      driftTargetX = 0;
+      driftTargetY = 0;
+    });
+
+    // Reduced motion: draw the single deterministic frame at t=0 above (via
+    // resize()) and never start the rAF loop — sync() short-circuits before
+    // startLoop() in every path, including this initial call.
+    sync();
   })();
 
   (function() {
@@ -406,14 +1261,68 @@
     heroObserver.observe(hero);
   })();
 
-  // Reveal on scroll. Elements start visible in CSS and are only hidden once
-  // this runs, so the page is fully readable with JavaScript disabled.
+  // Motion base: one shared IntersectionObserver drives both the
+  // element-group reveal ([data-reveal], its direct children staggered) and
+  // the per-word heading reveal ([data-reveal-word], the name and every
+  // section title). Elements start fully visible in CSS and are only hidden
+  // once this runs — with motion allowed and JavaScript on — so a no-JS or
+  // reduced-motion reader sees every word and every child immediately, in
+  // document order, exactly as before.
   (function() {
-    var items = Array.prototype.slice.call(document.querySelectorAll('[data-reveal]'));
-    if (!items.length) return;
+    var groups = Array.prototype.slice.call(document.querySelectorAll('[data-reveal]'));
+    var headings = Array.prototype.slice.call(document.querySelectorAll('[data-reveal-word]'));
+    if (!groups.length && !headings.length) return;
     var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduced || !('IntersectionObserver' in window)) return;
     document.documentElement.classList.add('reveal-ready');
+
+    var MAX_STAGGER = 6;
+
+    // Splits only the TEXT nodes of a heading into per-word spans, leaving any
+    // element node (a section's icon) untouched and in its original position.
+    // The heading's full original text becomes its aria-label, so the
+    // accessible name and reading order are exactly what they were before the
+    // split — if that guarantee ever looked shaky for some future heading
+    // shape, the fix is to skip splitting it, not to ship a broken name.
+    function splitHeadingWords(el) {
+      var original = el.textContent.trim();
+      if (!original) return;
+      var frag = document.createDocumentFragment();
+      var wordIndex = 0;
+      Array.prototype.slice.call(el.childNodes).forEach(function(node) {
+        if (node.nodeType === Node.TEXT_NODE) {
+          node.textContent.split(/(\s+)/).forEach(function(part) {
+            if (!part) return;
+            if (!part.trim()) {
+              frag.appendChild(document.createTextNode(part));
+              return;
+            }
+            var span = document.createElement('span');
+            span.className = 'word-reveal';
+            span.setAttribute('aria-hidden', 'true');
+            span.style.setProperty('--i', Math.min(wordIndex, 10));
+            span.textContent = part;
+            frag.appendChild(span);
+            wordIndex += 1;
+          });
+        } else {
+          frag.appendChild(node);
+        }
+      });
+      el.setAttribute('aria-label', original);
+      el.textContent = '';
+      el.appendChild(frag);
+    }
+
+    function stageChildren(el) {
+      Array.prototype.slice.call(el.children).forEach(function(child, i) {
+        child.style.setProperty('--stagger-i', Math.min(i, MAX_STAGGER));
+      });
+    }
+
+    groups.forEach(stageChildren);
+    headings.forEach(splitHeadingWords);
+
     var observer = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
         if (entry.isIntersecting) {
@@ -422,8 +1331,88 @@
         }
       });
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
-    items.forEach(function(item) { observer.observe(item); });
+
+    groups.forEach(function(item) { observer.observe(item); });
+    headings.forEach(function(item) { observer.observe(item); });
   })();
+
+  // Experience timeline: the rail and each role's dot/year marker are plain
+  // CSS and markup, so they read the same with JavaScript disabled. This
+  // IIFE only drives the extra progress fill, a compositor-only scaleY
+  // transform kept in sync with scroll position by one shared, rAF-throttled
+  // listener — it never touches a layout property.
+  (function() {
+    var timeline = document.querySelector('.timeline');
+    var fill = timeline ? timeline.querySelector('.timeline-progress') : null;
+    var roleBlocks = timeline ? Array.prototype.slice.call(timeline.querySelectorAll('.role-block')) : [];
+    if (!timeline || !fill || roleBlocks.length < 2) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var lineStart = 0;
+    var lineEnd = 0;
+    var ticking = false;
+
+    // Matches the CSS inset on .timeline-rail/.timeline-progress (top: 8px,
+    // bottom: 8px) exactly, so the fill overlays the rail pixel-for-pixel
+    // rather than needing separate per-dot geometry.
+    function measure() {
+      var rect = timeline.getBoundingClientRect();
+      var top = rect.top + window.pageYOffset;
+      lineStart = top + 8;
+      lineEnd = top + rect.height - 8;
+    }
+
+    function update() {
+      ticking = false;
+      var anchor = window.pageYOffset + window.innerHeight * 0.5;
+      var range = lineEnd - lineStart;
+      var p = range > 0 ? (anchor - lineStart) / range : 0;
+      p = Math.min(1, Math.max(0, p));
+      fill.style.transform = 'scaleY(' + p + ')';
+    }
+
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    }
+
+    function onResize() {
+      measure();
+      update();
+    }
+
+    measure();
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onResize);
+    // Also catches role-block height changes from the density toggle
+    // collapsing/expanding secondary bullets, without any extra wiring.
+    if ('ResizeObserver' in window) new ResizeObserver(onResize).observe(timeline);
+  })();
+
+  // These live at script scope (not inside either IIFE below) because
+  // timeAgo() is called from two separate, sibling IIFEs (the projects
+  // loader and the build-status loader) — var-scoping them inside just one
+  // would leave the other unable to see them and throw a ReferenceError.
+  var TIME_AGO_TODAY = 'today';
+  var TIME_AGO_ONE_DAY = '1 day ago';
+  var TIME_AGO_DAYS = '{n} days ago';
+  var TIME_AGO_ONE_MONTH = '1 month ago';
+  var TIME_AGO_MONTHS = '{n} months ago';
+  var TIME_AGO_ONE_YEAR = '1 year ago';
+  var TIME_AGO_YEARS = '{n} years ago';
+
+  function timeAgo(dateStr) {
+    var days = Math.floor((Date.now() - new Date(dateStr).getTime()) / 86400000);
+    if (days < 1) return TIME_AGO_TODAY;
+    if (days === 1) return TIME_AGO_ONE_DAY;
+    if (days < 30) return TIME_AGO_DAYS.replace('{n}', days);
+    var months = Math.floor(days / 30);
+    if (months < 12) return months === 1 ? TIME_AGO_ONE_MONTH : TIME_AGO_MONTHS.replace('{n}', months);
+    var years = Math.floor(months / 12);
+    return years === 1 ? TIME_AGO_ONE_YEAR : TIME_AGO_YEARS.replace('{n}', years);
+  }
 
   (function() {
     var GITHUB_USER = 'britoruben';
@@ -431,25 +1420,15 @@
     var REQUIRE_DESCRIPTION = true;
     var EXCLUDE = [];
     var KNOWN_DESCRIPTIONS = {
-      'moai': 'Voice-enabled "second brain": your notes and tools become a navigable 3D knowledge graph, powered by Claude.',
+      'MoAI-Tumu': 'Voice-enabled "second brain": your notes and tools become a navigable 3D knowledge graph, powered by Claude.',
       'RubenBrito-CV': 'This site. Personal CV & portfolio, auto-built and deployed with GitHub Actions.'
     };
+    var PROJECT_UPDATED_LABEL = 'Updated';
 
     function escapeHtml(str) {
       var div = document.createElement('div');
       div.textContent = str == null ? '' : str;
       return div.innerHTML;
-    }
-
-    function timeAgo(dateStr) {
-      var days = Math.floor((Date.now() - new Date(dateStr).getTime()) / 86400000);
-      if (days < 1) return 'today';
-      if (days === 1) return '1 day ago';
-      if (days < 30) return days + ' days ago';
-      var months = Math.floor(days / 30);
-      if (months < 12) return months + (months === 1 ? ' month ago' : ' months ago');
-      var years = Math.floor(months / 12);
-      return years + (years === 1 ? ' year ago' : ' years ago');
     }
 
     function renderProjects(repos) {
@@ -469,7 +1448,7 @@
           + '<h3 class="project-card-title">' + escapeHtml(repo.name) + '</h3>'
           + '<p class="project-card-desc">' + desc + '</p>'
           + '<div class="project-card-meta">' + lang + stars
-          + '<span class="project-stat">Updated ' + timeAgo(repo.pushed_at) + '</span></div>'
+          + '<span class="project-stat">' + PROJECT_UPDATED_LABEL + ' ' + timeAgo(repo.pushed_at) + '</span></div>'
           + '</a>';
       }).join('');
     }
@@ -498,6 +1477,31 @@
             + '<a href="https://github.com/' + GITHUB_USER + '" target="_blank" rel="noopener">GitHub</a>.</p>';
         }
       });
+  })();
+
+  (function() {
+    var API_URL = 'https://api.github.com/repos/britoruben/RubenBrito-CV/actions/workflows/compile-latex.yml/runs?per_page=1&status=success';
+    fetch(API_URL)
+      .then(function(res) {
+        if (!res.ok) throw new Error('build status unavailable');
+        return res.json();
+      })
+      .then(function(data) {
+        var run = data && data.workflow_runs && data.workflow_runs[0];
+        if (!run || !run.conclusion || !run.html_url || !run.updated_at) return;
+        var note = document.querySelector('.cv-note');
+        if (!note || !note.parentNode) return;
+        var p = document.createElement('p');
+        p.className = 'build-status';
+        var a = document.createElement('a');
+        a.href = run.html_url;
+        a.target = '_blank';
+        a.rel = 'noopener';
+        a.textContent = 'This PDF was compiled by GitHub Actions' + ' — ' + run.conclusion + ', ' + timeAgo(run.updated_at);
+        p.appendChild(a);
+        note.parentNode.insertBefore(p, note.nextSibling);
+      })
+      .catch(function() { /* progressive enhancement: render nothing on failure */ });
   })();
 </script>
 

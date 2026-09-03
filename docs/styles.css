@@ -3,46 +3,48 @@
    Every text/background pair is verified at WCAG AA (4.5:1) in both themes. */
 
 :root {
-  --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font: 'Archivo', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   --max-width: 860px;
   --radius: 6px;
+  --measure: 68ch;
 
   /* Type scale */
-  --fs-xs: 12px;
-  --fs-sm: 13px;
-  --fs-base: 14px;
-  --fs-md: 15px;
-  --fs-lg: 17px;
-  --fs-title: 20px;
+  --fs-xs: 12.5px;
+  --fs-sm: 13.5px;
+  --fs-base: 16px;
+  --fs-md: 16.5px;
+  --fs-lg: 18px;
+  --fs-title: 21px;
   --fs-name: 36px;
 }
 
 :root[data-theme="light"] {
-  --bg: #FBFBFA;
-  --bg-alt: #F2F4F2;
-  --border: #DDE2DE;
-  --text: #141A19;
-  --text-muted: #58635F;
-  --brand: #0E4F49;
-  --brand-hover: #0A3B36;
-  --accent: #8A5A16;
+  --bg: #FCFCFD;
+  --bg-alt: #F1F3F6;
+  --border: #DDE1E8;
+  --text: #11151C;
+  --text-muted: #525A69;
+  --brand: #1F3A5F;
+  --brand-hover: #16293F;
+  --accent: #7A5B2E;
   --on-brand: #FFFFFF;
   --link: var(--brand);
-  --shadow-sm: 0 1px 2px rgba(20, 26, 25, 0.05), 0 1px 1px rgba(20, 26, 25, 0.03);
-  --shadow-md: 0 8px 20px rgba(20, 26, 25, 0.08);
-  --nav-shadow: 0 1px 0 var(--border), 0 2px 8px rgba(20, 26, 25, 0.04);
+  --shadow-sm: 0 1px 2px rgba(17, 21, 28, 0.05), 0 1px 1px rgba(17, 21, 28, 0.03);
+  --shadow-md: 0 8px 20px rgba(17, 21, 28, 0.08);
+  --nav-shadow: 0 1px 0 var(--border), 0 2px 8px rgba(17, 21, 28, 0.04);
 }
 
 :root[data-theme="dark"] {
-  --bg: #0C1211;
-  --bg-alt: #121A18;
-  --border: #1F2B28;
-  --text: #E8EDEB;
-  --text-muted: #96A29E;
-  --brand: #4FC0AE;
-  --brand-hover: #6FD4C4;
-  --accent: #E0A95E;
-  --on-brand: #0C1211;
+  --bg: #0D1117;
+  --bg-alt: #151B24;
+  --border: #232B36;
+  --text: #E6EAF0;
+  --text-muted: #98A2B1;
+  --brand: #8FB4DE;
+  --brand-hover: #AFCBE9;
+  --accent: #CBA96B;
+  --on-brand: #0D1117;
   --link: var(--brand);
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
   --shadow-md: 0 12px 24px rgba(0, 0, 0, 0.45);
@@ -121,7 +123,7 @@ button:focus-visible {
   padding: 14px 24px;
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 18px;
 }
 
 .nav-brand {
@@ -161,26 +163,26 @@ button:focus-visible {
 :root[data-theme="dark"] .icon-moon { display: none; }
 :root[data-theme="dark"] .icon-sun { display: inline-block; }
 
+/* The links fit at every width now (the palette trigger steps aside below
+   900px, where the Spanish labels are what push it over). overflow-x stays
+   as a safety valve for a stray long translation, but the scrollbar and the
+   right-hand fade are gone: both used to render unconditionally, so the bar
+   always looked truncated even when nothing was cut off. */
 .nav-links-wrap {
   overflow-x: auto;
   position: relative;
   flex: 1;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
-.nav-links-wrap::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 24px;
-  background: linear-gradient(to right, transparent, var(--bg));
-  pointer-events: none;
+.nav-links-wrap::-webkit-scrollbar {
+  display: none;
 }
 
 .nav-links {
   display: flex;
-  gap: 20px;
+  gap: 16px;
   font-size: 14px;
 }
 
@@ -197,16 +199,37 @@ button:focus-visible {
 .nav-links a.active {
   color: var(--brand);
   font-weight: 600;
+  text-decoration-line: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
 }
 
 /* Hero */
 .hero {
+  position: relative;
+  overflow: hidden;
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 56px 24px 32px;
 }
 
+/* Ambient contour-line layer, drawn by tools/render-html.mjs. Bounded to the
+   hero (which supplies the positioning context and clipped overflow above),
+   behind .hero-content, inert to pointer input. An empty <canvas> renders
+   nothing on its own, so a no-JS reader sees the hero exactly as before. */
+.hero-ambient {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
 .hero-content {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: flex-start;
   gap: 28px;
@@ -223,7 +246,7 @@ button:focus-visible {
 
 .name {
   margin: 0;
-  font-size: 36px;
+  font-size: var(--fs-name);
   font-weight: 700;
 }
 
@@ -245,6 +268,16 @@ button:focus-visible {
   background: linear-gradient(90deg, var(--brand), var(--accent), var(--brand));
   background-size: 200% 100%;
   animation: heroShimmer 7s ease-in-out infinite;
+}
+
+.hero-positioning {
+  margin: 14px 0 0;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  text-wrap: balance;
+  max-width: 46ch;
+  color: var(--text);
 }
 
 @keyframes targetHighlight {
@@ -294,7 +327,7 @@ section {
 }
 
 .section-title {
-  font-size: 20px;
+  font-size: var(--fs-title);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.03em;
@@ -331,8 +364,9 @@ section {
 }
 
 .lead {
-  color: var(--text-muted);
-  font-size: 15px;
+  color: var(--text);
+  font-size: var(--fs-md);
+  max-width: var(--measure);
 }
 
 .cv-note {
@@ -342,15 +376,75 @@ section {
   font-style: italic;
 }
 
-/* Experience */
-.role-block {
-  padding: 16px 0 16px 16px;
-  border-left: 2px solid var(--border);
-  transition: border-color 0.15s ease;
+/* Experience timeline: extends the client-engagement rail language further
+   down this file up to the top-level roles, so the career reads as one
+   continuous line rather than three unrelated blocks. Replaces the old
+   per-block left border with one shared rail plus a scroll-driven progress
+   fill (JS, compositor `scaleY` only — see tools/render-html.mjs); the rail,
+   each dot and each year marker are plain CSS/markup and read the same with
+   JavaScript disabled — only the progress fill needs the script. */
+.timeline {
+  position: relative;
 }
 
-.role-block:hover {
-  border-left-color: var(--brand);
+.timeline-rail,
+.timeline-progress {
+  position: absolute;
+  left: 3px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+}
+
+.timeline-rail {
+  background: var(--border);
+}
+
+.timeline-progress {
+  background: var(--brand);
+  transform-origin: top;
+  transform: scaleY(0);
+}
+
+@media print {
+  .timeline-progress {
+    display: none;
+  }
+}
+
+.role-block {
+  position: relative;
+  padding: 16px 0 16px 24px;
+}
+
+.role-block::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 20px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px var(--bg);
+  transition: box-shadow 0.15s ease;
+}
+
+.role-block:hover::after {
+  box-shadow: 0 0 0 3px var(--bg), 0 0 0 5px var(--brand);
+}
+
+.role-year {
+  align-self: center;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--accent);
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1px 6px;
 }
 
 .role-header {
@@ -363,7 +457,7 @@ section {
 
 .company {
   margin: 0;
-  font-size: 18px;
+  font-size: var(--fs-lg);
   font-weight: 700;
   letter-spacing: -0.015em;
   color: var(--brand);
@@ -376,15 +470,18 @@ section {
 
 .period {
   margin-left: auto;
+  font-family: var(--font-mono);
   font-size: 13px;
-  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+  color: var(--accent);
 }
 
 .project-list {
   margin: 0;
   padding-left: 18px;
-  font-size: 14px;
-  color: var(--text-muted);
+  font-size: var(--fs-base);
+  color: var(--text);
+  max-width: var(--measure);
 }
 
 .project-list li::marker {
@@ -393,6 +490,68 @@ section {
 
 .project-list li {
   margin-bottom: 4px;
+}
+
+/* ---------- Experience density control ---------- */
+.density-toggle {
+  display: inline-flex;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.density-option {
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-family: var(--font);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  padding: 6px 14px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.density-option:hover {
+  color: var(--text);
+}
+
+.density-option[aria-pressed="true"] {
+  background: var(--brand);
+  color: var(--on-brand);
+}
+
+.project-list li.is-secondary {
+  overflow: hidden;
+  max-height: 300px;
+  opacity: 1;
+  transition: max-height 0.35s ease, opacity 0.25s ease, margin 0.35s ease;
+}
+
+#experience.is-concise .project-list li.is-secondary {
+  max-height: 0;
+  opacity: 0;
+  margin-bottom: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-list li.is-secondary {
+    transition: none;
+  }
+}
+
+@media print {
+  .density-toggle {
+    display: none;
+  }
+
+  .project-list li.is-secondary {
+    max-height: none !important;
+    opacity: 1 !important;
+    margin-bottom: 4px !important;
+  }
 }
 
 /* Skills */
@@ -437,13 +596,130 @@ section {
 
 .skill-tag {
   display: inline-block;
-  font-size: 12.5px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
   line-height: 1.4;
-  color: var(--text-muted);
+  color: var(--text);
   background: var(--bg);
   border: 1px solid var(--border);
   border-radius: 999px;
   padding: 3px 10px;
+  appearance: none;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+}
+
+.skill-tag.is-core {
+  font-weight: 600;
+  border-color: var(--text);
+}
+
+.skill-tag.is-history {
+  color: var(--text-muted);
+}
+
+/* ---------- Technology filter ---------- */
+/* .skill-tag (above) and .tech-tag (below) are both real <button>s carrying
+   data-tech, so the same technology can be filtered from either the Skills
+   grid or a role's "Stack: ..." line. With JavaScript disabled they sit
+   inert — same look, same place, click does nothing — exactly like the
+   density toggle and print button elsewhere on the page. */
+.tech-tag {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: var(--border);
+  text-underline-offset: 2px;
+}
+
+.tech-tag:hover {
+  color: var(--brand);
+  text-decoration-color: var(--brand);
+}
+
+.skill-tag.tech-match,
+.tech-tag.tech-match {
+  color: var(--brand);
+  font-weight: 700;
+}
+
+.skill-tag.tech-match {
+  border-color: var(--brand);
+  background: color-mix(in srgb, var(--brand) 14%, var(--bg));
+}
+
+.tech-tag.tech-match {
+  text-decoration-color: var(--brand);
+}
+
+.role-block.is-dimmed,
+.engagement.is-dimmed,
+.skill-category.is-dimmed {
+  transition: opacity 0.2s ease;
+}
+
+/* Prefixed with body.tech-filter-active for the specificity headroom that
+   originally guarded against the reveal-on-scroll rule further down this
+   file. Since that rule now animates [data-reveal]'s CHILDREN rather than
+   [data-reveal] itself, it no longer touches .role-block/.skill-category's
+   own opacity at all — the conflict this prefix was written for is gone —
+   but the extra specificity is harmless, so it stays rather than being
+   pulled out without a concrete reason to (see loop-instructions.md rule 9). */
+body.tech-filter-active .role-block.is-dimmed,
+body.tech-filter-active .engagement.is-dimmed,
+body.tech-filter-active .skill-category.is-dimmed {
+  opacity: 0.35;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .role-block.is-dimmed,
+  .engagement.is-dimmed,
+  .skill-category.is-dimmed,
+  .engagement-chevron {
+    transition: none;
+  }
+}
+
+.clear-filter {
+  position: fixed;
+  left: 24px;
+  bottom: 24px;
+  z-index: 50;
+  background: var(--brand);
+  color: var(--on-brand);
+  border: none;
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+}
+
+.clear-filter:hover {
+  background: var(--brand-hover);
+}
+
+@media print {
+  .clear-filter {
+    display: none;
+  }
+
+  /* The reveal system's print rule now targets [data-reveal]'s children, not
+     .role-block/.skill-category themselves, so all three selectors here need
+     their own !important to outrank the higher-specificity
+     body.tech-filter-active dimming rule regardless of data-reveal. */
+  .role-block.is-dimmed,
+  .skill-category.is-dimmed,
+  .engagement.is-dimmed {
+    opacity: 1 !important;
+  }
 }
 
 /* Projects (live from GitHub) */
@@ -479,8 +755,8 @@ section {
 }
 
 .project-card-desc {
-  font-size: 13px;
-  color: var(--text-muted);
+  font-size: var(--fs-sm);
+  color: var(--text);
   margin: 0 0 10px;
   line-height: 1.5;
   display: -webkit-box;
@@ -544,8 +820,8 @@ section {
 }
 
 .edu-extra {
-  font-size: 13px;
-  color: var(--text-muted);
+  font-size: var(--fs-sm);
+  color: var(--text);
   margin-top: 4px;
 }
 
@@ -595,6 +871,20 @@ section {
   border-color: var(--brand);
   color: var(--brand);
   box-shadow: var(--shadow-sm);
+}
+
+.btn-tertiary {
+  background: transparent;
+  border-color: transparent;
+  color: var(--text-muted);
+  padding: 10px 12px;
+}
+
+.btn-tertiary:hover {
+  color: var(--brand);
+  text-decoration: underline;
+  box-shadow: none;
+  transform: none;
 }
 
 /* Footer */
@@ -669,7 +959,8 @@ section {
   .skip-link,
   .contact-buttons,
   #cv .btn,
-  .hero-accent {
+  .hero-accent,
+  .hero-ambient {
     display: none;
   }
 
@@ -686,7 +977,7 @@ section {
   .skill-category,
   .project-card {
     box-shadow: none;
-    border: 1px solid #DDE2DE;
+    border: 1px solid #DDE1E8;
     break-inside: avoid;
   }
 
@@ -734,7 +1025,7 @@ section {
 
 /* Note under a role heading (e.g. relocation) */
 .role-note {
-  font-size: 12.5px;
+  font-size: var(--fs-xs);
   font-style: italic;
   color: var(--text-muted);
   margin: -4px 0 8px;
@@ -768,13 +1059,16 @@ section {
 
 .engagement-period {
   margin-left: auto;
+  font-family: var(--font-mono);
   font-size: 12px;
-  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+  color: var(--accent);
 }
 
 .engagement-list {
   margin-top: 6px;
-  font-size: 13.5px;
+  font-size: var(--fs-sm);
+  max-width: var(--measure);
 }
 
 /* Languages */
@@ -846,6 +1140,378 @@ section {
   color: var(--on-brand);
 }
 
+.lang-suggest {
+  position: relative;
+  z-index: 40;
+  max-width: 420px;
+  width: calc(100% - 32px);
+  margin: 12px auto 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 14px;
+  padding: 12px 16px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  font-size: 13.5px;
+  color: var(--text);
+}
+
+.lang-suggest-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
+}
+
+.lang-suggest-go {
+  font-weight: 700;
+  color: var(--brand);
+}
+
+.lang-suggest-dismiss {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 13px;
+  padding: 4px;
+}
+
+.lang-suggest-dismiss:hover {
+  color: var(--text);
+}
+
+/* On a 375px phone the banner is the first thing above the fold and it wraps to
+   two rows, costing ~92px of an 812px screen and pushing the About lead below
+   the fold for a first-time visitor. Tighten it there; the dismissed state was
+   already fine. */
+@media (max-width: 480px) {
+  .lang-suggest {
+    width: calc(100% - 24px);
+    margin: 8px auto 0;
+    padding: 9px 12px;
+    gap: 4px 12px;
+    font-size: 14px;
+  }
+
+  .lang-suggest-actions {
+    gap: 10px;
+  }
+
+  .lang-suggest-dismiss {
+    font-size: 12px;
+  }
+}
+
+/* ---------- Command palette ---------- */
+/* Entirely JS-created (see tools/render-html.mjs) — every rule below only
+   ever applies to elements a script put in the DOM, so none of it can affect
+   a no-JS reader. */
+.palette-trigger {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid var(--border);
+  background: transparent;
+  border-radius: 999px;
+  padding: 5px 9px;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: border-color 0.15s ease;
+}
+
+.palette-trigger:hover {
+  border-color: var(--brand);
+}
+
+@media (max-width: 900px) {
+  .palette-trigger {
+    display: none;
+  }
+}
+
+.palette-trigger kbd {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  line-height: 1;
+  padding: 3px 5px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--bg-alt);
+  color: var(--text-muted);
+}
+
+.palette-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  justify-content: center;
+  padding: 12vh 16px 16px;
+  background: color-mix(in srgb, black 55%, transparent);
+  animation: paletteFadeIn 0.15s ease both;
+}
+
+.palette {
+  width: 100%;
+  max-width: 560px;
+  max-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  animation: paletteScaleIn 0.18s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.palette-input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  font-family: var(--font);
+  font-size: var(--fs-lg);
+  padding: 16px 20px;
+  flex-shrink: 0;
+}
+
+.palette-input:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: -2px;
+}
+
+.palette-list {
+  list-style: none;
+  margin: 0;
+  padding: 8px;
+  overflow-y: auto;
+}
+
+.palette-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 6px;
+  color: var(--text);
+  font-size: var(--fs-sm);
+  cursor: pointer;
+}
+
+.palette-option:hover,
+.palette-option.is-active {
+  background: var(--bg-alt);
+}
+
+.palette-option.is-active .palette-option-icon {
+  color: var(--brand);
+}
+
+.palette-option-icon {
+  display: flex;
+  align-items: center;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.palette-empty {
+  padding: 20px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@keyframes paletteFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes paletteScaleIn {
+  from { opacity: 0; transform: translateY(-8px) scale(0.98); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .palette-overlay,
+  .palette {
+    animation: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .palette-overlay {
+    padding: 8vh 12px 12px;
+  }
+}
+
+/* ---------- Terminal mode ---------- */
+/* Entirely JS-created (see tools/render-html.mjs) — every rule below only
+   ever applies to elements a script put in the DOM, so none of it can affect
+   a no-JS reader. */
+.terminal-trigger {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--border);
+  background: transparent;
+  border-radius: 999px;
+  padding: 5px 9px;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: border-color 0.15s ease;
+}
+
+.terminal-trigger:hover {
+  border-color: var(--brand);
+}
+
+.terminal-trigger kbd {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  line-height: 1;
+  color: var(--text-muted);
+}
+
+.terminal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  justify-content: center;
+  padding: 10vh 16px 16px;
+  background: color-mix(in srgb, black 55%, transparent);
+  animation: paletteFadeIn 0.15s ease both;
+}
+
+.terminal {
+  width: 100%;
+  max-width: 640px;
+  max-height: 72vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  font-family: var(--font-mono);
+  animation: paletteScaleIn 0.18s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.terminal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.terminal-title {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.terminal-close {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.terminal-close:hover {
+  color: var(--text);
+  background: var(--bg-alt);
+}
+
+.terminal-output {
+  flex: 1;
+  overflow-y: auto;
+  padding: 14px 16px;
+  font-size: var(--fs-sm);
+  color: var(--text);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.terminal-line {
+  line-height: 1.6;
+}
+
+.terminal-line-echo {
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+.terminal-prompt-inline {
+  color: var(--accent);
+  margin-right: 6px;
+}
+
+.terminal-input-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-top: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.terminal-input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+}
+
+.terminal-input::placeholder {
+  color: var(--text-muted);
+}
+
+.terminal-input:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: -2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .terminal-overlay,
+  .terminal {
+    animation: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .terminal-overlay {
+    padding: 8vh 12px 12px;
+  }
+}
+
 /* ---------- Hero ---------- */
 .hero-actions {
   display: flex;
@@ -889,8 +1555,29 @@ section {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--brand);
+  background: var(--accent);
   box-shadow: 0 0 0 3px var(--bg);
+}
+
+.engagement.is-highlight {
+  background: var(--bg-alt);
+  border-radius: var(--radius);
+  padding-top: 6px;
+  padding-right: 10px;
+  padding-bottom: 8px;
+}
+
+.engagement.is-highlight::after {
+  background: var(--accent);
+  box-shadow: 0 0 0 3px var(--bg-alt);
+}
+
+.engagement-highlight-label {
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
 }
 
 .engagement-summary {
@@ -913,10 +1600,21 @@ section {
   border-radius: 3px;
 }
 
+.engagement-chevron {
+  flex-shrink: 0;
+  color: var(--text-muted);
+  transition: transform 0.15s ease;
+}
+
+.engagement:not([open]) .engagement-chevron {
+  transform: rotate(-90deg);
+}
+
 .engagement-list {
   margin-top: 6px;
   margin-bottom: 10px;
-  font-size: 13.5px;
+  font-size: var(--fs-sm);
+  max-width: var(--measure);
 }
 
 /* ---------- Subsection (languages inside education) ---------- */
@@ -986,22 +1684,44 @@ section {
   flex-shrink: 0;
 }
 
-/* ---------- Reveal on scroll ---------- */
+/* ---------- Motion base: reveal on scroll + word-by-word headings ---------- */
 /* Content is visible by default; the script only opts in when it runs and
-   motion is allowed, so no-JS and reduced-motion readers see everything. */
-.reveal-ready [data-reveal] {
+   motion is allowed, so no-JS and reduced-motion readers see everything.
+   [data-reveal] groups no longer fade as one slab — their DIRECT CHILDREN
+   stagger in individually (--stagger-i, set in tools/render-html.mjs), so a
+   role block or a skill category reads as several related things arriving
+   together rather than one rectangle. [data-reveal-word] headings (the name,
+   every .section-title) are split into per-word spans by the same script and
+   stagger via --i; the container keeps its full original text as aria-label
+   so the accessible name and reading order are unaffected by the split. */
+.reveal-ready [data-reveal] > * {
   opacity: 0;
   transform: translateY(10px);
-  transition: opacity 0.45s ease, transform 0.45s ease;
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--stagger-i, 0) * 0.06s);
 }
 
-.reveal-ready [data-reveal].is-revealed {
+.reveal-ready [data-reveal].is-revealed > * {
+  opacity: 1;
+  transform: none;
+}
+
+.reveal-ready .word-reveal {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--i, 0) * 0.07s);
+}
+
+.reveal-ready [data-reveal-word].is-revealed .word-reveal {
   opacity: 1;
   transform: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal-ready [data-reveal] {
+  .reveal-ready [data-reveal] > *,
+  .reveal-ready .word-reveal {
     opacity: 1;
     transform: none;
     transition: none;
@@ -1016,11 +1736,15 @@ section {
   .lang-switch,
   .nav-tools,
   .hero-actions,
-  .cv-thumb {
+  .cv-thumb,
+  .lang-suggest,
+  .palette-overlay,
+  .terminal-overlay {
     display: none;
   }
 
-  [data-reveal] {
+  [data-reveal] > *,
+  .word-reveal {
     opacity: 1 !important;
     transform: none !important;
   }
@@ -1045,10 +1769,32 @@ section {
    The nav is sticky, so every pixel it takes is permanently lost from the
    viewport. At 390px it wrapped to two rows and 118px tall - about 14% of the
    screen, held for the whole scroll. */
+@media (max-width: 900px) {
+  .nav-links {
+    gap: 14px;
+    font-size: 13px;
+  }
+
+  /* Only meaningful where the bar can still scroll: above 900px everything
+     fits, and an unconditional fade is what made a complete nav look cut
+     off in the first place. */
+  .nav-links-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 20px;
+    background: linear-gradient(to right, transparent, var(--bg));
+    pointer-events: none;
+  }
+}
+
 @media (max-width: 560px) {
   .nav-inner {
     padding: 9px 16px;
-    gap: 12px;
+    gap: 10px;
+    flex-wrap: nowrap;
   }
 
   .nav-brand {
@@ -1056,7 +1802,9 @@ section {
   }
 
   .nav-links-wrap {
-    margin-top: 6px;
+    order: 0;
+    flex-basis: auto;
+    margin-top: 0;
   }
 
   .nav-links {
@@ -1080,5 +1828,9 @@ section {
 
   .hero-content {
     gap: 18px;
+  }
+
+  .hero-actions {
+    margin-top: 16px;
   }
 }

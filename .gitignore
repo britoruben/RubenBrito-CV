@@ -30,3 +30,4 @@ build/
 
 # Local scratch files (never committed)
 tmp/
+.moai/

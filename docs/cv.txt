@@ -1,0 +1,92 @@
+Rubén Brito
+Software Engineer
+Madrid, Spain
+
+Email: britoruben1984@gmail.com
+LinkedIn: https://www.linkedin.com/in/brito-ruben/
+GitHub: https://github.com/britoruben
+
+SUMMARY
+Software Engineer with 11 years across banking, telecom and consulting, based in
+Madrid. At Santander UK since 2019, on the credit risk and scoring systems
+behind retail and corporate lending — owned end to end, from architecture and
+API contracts through delivery pipelines to how the services run in production:
+autoscaling, resource tuning and monitoring. Delivered one of Santander's
+earliest Machine Learning proofs of concept in risk decisioning in 2017–2018.
+
+WORK EXPERIENCE
+
+Santander UK - Software Engineer
+Nov 2019 - Present | United Kingdom (Remote)
+- Integrate credit risk and scoring models into retail and corporate banking
+systems, implementing them into production.
+- Take the services behind them from architecture and API contracts to
+production on OpenShift — delivery pipelines, load balancing, autoscaling,
+resource tuning and monitoring — running at ~100k requests/day on internal
+APIs and 5–10k/day across supporting services.
+- Run dependency and library vulnerability management end to end: analysis,
+remediation, and the CI pipelines that enforce it.
+- Built the team's internal monitoring dashboard, replacing manual SQL queries
+with live case visibility.
+- Automate engineering workflows with custom MCP agents and Devin — SonarQube
+issue triage and Jira-driven branch creation.
+
+UST Global Spain - Software Developer
+Jan 2019 - Nov 2019 | Madrid
+- Backend and API development for Inditex's Center of Excellence, including a
+Kafka + Apache Flink real-time monitoring dashboard providing alerting and
+traceability across internal and external APIs.
+
+Gfi Spain - Software Developer
+May 2015 - Jan 2019 | Madrid area
+- Joined through the final-year internship programme and hired onto the
+permanent staff in October 2015. Architecture department, delivering
+engineering work on client engagements across telecom, security and banking.
+
+  Client: Telefónica (Jan 2016 - Dec 2016)
+  - Telco 3.0 — implemented REST architecture in the customer retention system.
+  - Requirements analysis and technical documentation, using Agile methodology.
+
+  Client: Securitas Direct (Jan 2017 - Aug 2017)
+  - Cross-platform iOS/Android field application for door-to-door sales teams —
+customer information, contracting and retention on tablet, integrated with
+Securitas Direct's internal APIs.
+
+  Client: Santander Global Tech (Sep 2017 - Dec 2018)
+  - Risk Department — delivered one of Santander's earliest Machine Learning
+proofs of concept, integrating predictive models into the credit decisioning
+workflow.
+  - Improved affordability assessment in both directions: surfacing approvals
+that carried undetected repayment risk, and identifying creditworthy
+applicants the existing rules were declining.
+  - Developed an API exposing risk prediction functionality for sales and
+financial products.
+
+EDUCATION
+
+Enrique Tierno Galván (2014 - 2015)
+Higher Education in Multiplatform Application Development
+
+Domenico Scarlatti (2012 - 2014)
+Higher Education in Web Application Development
+
+LANGUAGES
+Spanish: Native
+English: Professional working proficiency
+
+SKILLS
+Languages: Java, Python, JavaScript / Node.js, R
+Platform & Runtime: OpenShift, Docker, AWS (S3, Lambda, Athena, CloudWatch),
+Terraform, Autoscaling & resource tuning, Load balancing
+Data & Streaming: Kafka (MSK & on-premise), Redis, Oracle, MongoDB, SQL, NoSQL
+Integration & APIs: REST API & contract design, API gateways (IBM API
+Connect/DataPower, CA), TIBCO BusinessWorks, Oracle SOA Suite
+Security: Dependency & library vulnerability management, CI security pipelines,
+OAuth2 / JWT (client credentials, resource owner)
+Observability: Kibana, Dynatrace, Zipkin, Grafana
+Testing & Quality: Cucumber, Postman, Bruno, JMeter, Chaos Monkey, SonarQube
+AI & Automation: Custom MCP agents (GitHub, Jira, Confluence, SonarQube,
+Elasticsearch), Claude Code, GitHub Copilot, OpenAI Codex, Devin, LLM-based
+predictive modeling
+Practices: Microservices architecture, Agile methodology, ETL & data modeling,
+CI/CD (GitHub Actions, Jenkins, GitLab CI)
