@@ -201,7 +201,7 @@
     { "category": { "en": "Security", "es": "Seguridad" }, "items": ["Dependency & library vulnerability management", "CI security pipelines", "OAuth2 / JWT (client credentials, resource owner)"] },
     { "category": { "en": "Observability", "es": "Observabilidad" }, "items": ["Kibana", "Dynatrace", "Zipkin", "Grafana"] },
     { "category": { "en": "Testing & Quality", "es": "Testing y calidad" }, "items": ["Cucumber", "Postman", "Bruno", "JMeter", "Chaos Monkey", "SonarQube"] },
-    { "category": { "en": "AI & Automation", "es": "IA y automatización" }, "items": ["Custom MCP agents (GitHub, Jira, Confluence, SonarQube, Elasticsearch)", "Claude Code", "GitHub Copilot", "OpenAI Codex", "Devin", "LLM-based predictive modeling"] },
+    { "category": { "en": "AI & Automation", "es": "IA y automatización" }, "items": ["Custom MCP agents (GitHub, Jira, Confluence, SonarQube, Elasticsearch)", "Claude Code", "Claude Opus 5.5 & Sonnet 5.5", "GitHub Copilot", "OpenAI Codex", "Devin", "LLM-based predictive modeling"] },
     { "category": { "en": "Practices", "es": "Prácticas" }, "items": ["Microservices architecture", "Agile methodology", "ETL & data modeling", "CI/CD (GitHub Actions, Jenkins, GitLab CI)"] }
   ],
 
@@ -215,7 +215,7 @@
   },
 
   "skillTiers": {
-    "core": ["Java", "Python", "JavaScript / Node.js", "OpenShift", "Docker", "Autoscaling & resource tuning", "Kafka (MSK & on-premise)", "SQL", "REST API & contract design", "Dependency & library vulnerability management", "CI security pipelines", "Kibana", "Dynatrace", "SonarQube", "Custom MCP agents (GitHub, Jira, Confluence, SonarQube, Elasticsearch)", "Claude Code", "GitHub Copilot", "Microservices architecture", "CI/CD (GitHub Actions, Jenkins, GitLab CI)"],
+    "core": ["Java", "Python", "JavaScript / Node.js", "OpenShift", "Docker", "Autoscaling & resource tuning", "Kafka (MSK & on-premise)", "SQL", "REST API & contract design", "Dependency & library vulnerability management", "CI security pipelines", "Kibana", "Dynatrace", "SonarQube", "Custom MCP agents (GitHub, Jira, Confluence, SonarQube, Elasticsearch)", "Claude Code", "Claude Opus 5.5 & Sonnet 5.5", "GitHub Copilot", "Microservices architecture", "CI/CD (GitHub Actions, Jenkins, GitLab CI)"],
     "history": ["R", "TIBCO BusinessWorks", "Oracle SOA Suite", "Chaos Monkey", "OpenAI Codex", "Devin", "LLM-based predictive modeling"]
   },
 

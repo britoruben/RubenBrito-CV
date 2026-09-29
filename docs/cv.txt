@@ -86,7 +86,7 @@ OAuth2 / JWT (client credentials, resource owner)
 Observability: Kibana, Dynatrace, Zipkin, Grafana
 Testing & Quality: Cucumber, Postman, Bruno, JMeter, Chaos Monkey, SonarQube
 AI & Automation: Custom MCP agents (GitHub, Jira, Confluence, SonarQube,
-Elasticsearch), Claude Code, GitHub Copilot, OpenAI Codex, Devin, LLM-based
-predictive modeling
+Elasticsearch), Claude Code, Claude Opus 5.5 & Sonnet 5.5, GitHub Copilot,
+OpenAI Codex, Devin, LLM-based predictive modeling
 Practices: Microservices architecture, Agile methodology, ETL & data modeling,
 CI/CD (GitHub Actions, Jenkins, GitLab CI)
